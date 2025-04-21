@@ -1,4 +1,4 @@
-# OpenMP
+# Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.
 
 Texto do Minicurso OpenMP.
 

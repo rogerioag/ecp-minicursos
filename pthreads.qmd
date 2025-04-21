@@ -1,4 +1,4 @@
-# Pthreads
+# Introdução à Computação Paralela e Programação Multithreading usando Pthreads.
 
 ## Introdução {#sec-openmp-intro}
 

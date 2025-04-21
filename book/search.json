@@ -431,5 +431,15 @@
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Installing R and RStudio</span>"
     ]
+  },
+  {
+    "objectID": "index.html#contribuidores",
+    "href": "index.html#contribuidores",
+    "title": "Escola de Computação Paralela: Minicursos",
+    "section": "Contribuidores",
+    "text": "Contribuidores\n\n\n\n\n\n\n\n\n\nNome\nE-mail\nCategoria\nMinicurso/Tema\n\n\n\n\nRogério Aparecido Gonçalves\nrogerioag@utfpr.edu.br\nDocente\nCoordenador\n\n\nJoao Fabrício Filho\njoaof@utfpr.edu.br\nDocente\nVice-Coordenador\n\n\nGuilherme A. Lopes\nguiguigui098@gmail.com\nAluno\nVetorização\n\n\nPaulo H. P. da Silva\nphps6200@gmail.com\nAluno\nOpenMP\n\n\nWilliam W. T. Rodrigues\nwilliamwallace@alunos.utfpr.edu.br\nAluno\nPthreads\n\n\nGabriela P. Sereniski\ngabsereniski@gmail.com\nAluno\nCluster\n\n\nGabriel M. L. Pereira\ngabrielmlobato@gmail.com\nAluno\nIA\n\n\nJoão Victor Briganti de Oliveira\njoliveira.2022@alunos.utfpr.edu.br\nAluno\nLLVM",
+    "crumbs": [
+      "Bem-vindo"
+    ]
   }
 ]

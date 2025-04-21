@@ -12,6 +12,19 @@ description-meta: |
 
 Este livro reune o material dos Minicursos preparados e ministrados no contexto do __Projeto Escola de Computação Paralela (ECP)__. Nele apresentamos minicursos sobre alguns assuntos importantes na Computação Paralela, como __Pthreads__, __Vetorização__, __OpenMP__ e __LLVM__.
 
+## Contribuidores
+
+| Nome | E-mail | Categoria                          | Minicurso/Tema |
+| ---- | ------------- | ------- | --------- |
+| Rogério Aparecido Gonçalves | rogerioag@utfpr.edu.br             | Docente | Coordenador      |
+| Joao Fabrício Filho        | joaof@utfpr.edu.br                 | Docente | Vice-Coordenador |
+| Guilherme A. Lopes          | guiguigui098@gmail.com             | Aluno   | Vetorização |
+| Paulo H. P. da Silva        | phps6200@gmail.com                 | Aluno   | OpenMP |
+| William W. T. Rodrigues     | williamwallace@alunos.utfpr.edu.br | Aluno   | Pthreads |
+| Gabriela P. Sereniski       | gabsereniski@gmail.com             | Aluno   | Cluster |
+| Gabriel M. L. Pereira       | gabrielmlobato@gmail.com           | Aluno   | IA |
+| João Victor Briganti de Oliveira       | joliveira.2022@alunos.utfpr.edu.br           | Aluno   | LLVM |
+
 
 <!--
 ::: {.callout-note appearance="simple"}

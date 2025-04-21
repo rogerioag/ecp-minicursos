@@ -18,12 +18,15 @@ book:
     - part: pthreads-resumo.qmd
       chapters:
         - pthreads.qmd
-    - part: simd-resumo.qmd
-      chapters:
-        - simd.qmd
     - part: opemp-resumo.qmd
       chapters:
         - openmp.qmd
+    - part: simd-resumo.qmd
+      chapters:
+        - simd.qmd
+    - part: ia-resumo.qmd
+      chapters:
+        - ia.qmd
     - part: llvm-resumo.qmd
       chapters:
         - llvm.qmd

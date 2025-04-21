@@ -1,0 +1,12 @@
+# IA
+
+## Introdução {#sec-ia-intro}
+
+## Ferramentas
+
+## Bibliotecas e Implementações
+
+## Modelo de Programação e Execução
+...
+
+## Considerações Finais {#sec-ia-consid-finais}

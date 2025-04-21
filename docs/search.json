@@ -366,5 +366,70 @@
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Installing R and RStudio</span>"
     ]
+  },
+  {
+    "objectID": "ia-resumo.html",
+    "href": "ia-resumo.html",
+    "title": "Minicurso: IA",
+    "section": "",
+    "text": "Resumo de IA.",
+    "crumbs": [
+      "Minicurso: IA"
+    ]
+  },
+  {
+    "objectID": "ia.html",
+    "href": "ia.html",
+    "title": "5  IA",
+    "section": "",
+    "text": "5.1 Introdução",
+    "crumbs": [
+      "Minicurso: IA",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>IA</span>"
+    ]
+  },
+  {
+    "objectID": "ia.html#ferramentas",
+    "href": "ia.html#ferramentas",
+    "title": "5  IA",
+    "section": "5.2 Ferramentas",
+    "text": "5.2 Ferramentas",
+    "crumbs": [
+      "Minicurso: IA",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>IA</span>"
+    ]
+  },
+  {
+    "objectID": "ia.html#bibliotecas-e-implementações",
+    "href": "ia.html#bibliotecas-e-implementações",
+    "title": "5  IA",
+    "section": "5.3 Bibliotecas e Implementações",
+    "text": "5.3 Bibliotecas e Implementações",
+    "crumbs": [
+      "Minicurso: IA",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>IA</span>"
+    ]
+  },
+  {
+    "objectID": "ia.html#modelo-de-programação-e-execução",
+    "href": "ia.html#modelo-de-programação-e-execução",
+    "title": "5  IA",
+    "section": "5.4 Modelo de Programação e Execução",
+    "text": "5.4 Modelo de Programação e Execução\n…",
+    "crumbs": [
+      "Minicurso: IA",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>IA</span>"
+    ]
+  },
+  {
+    "objectID": "ia.html#sec-ia-consid-finais",
+    "href": "ia.html#sec-ia-consid-finais",
+    "title": "5  IA",
+    "section": "5.5 Considerações Finais",
+    "text": "5.5 Considerações Finais",
+    "crumbs": [
+      "Minicurso: IA",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>IA</span>"
+    ]
   }
 ]

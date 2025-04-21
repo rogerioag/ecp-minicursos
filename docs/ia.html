@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Minicurso: Vetorização – Escola de Computação Paralela: Minicursos</title>
+<title>5&nbsp; IA – Escola de Computação Paralela: Minicursos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./simd.html" rel="next">
-<link href="./openmp.html" rel="prev">
+<link href="./llvm-resumo.html" rel="next">
+<link href="./ia-resumo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simd-resumo.html">Minicurso: Vetorização</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ia-resumo.html">Minicurso: IA</a></li><li class="breadcrumb-item"><a href="./ia.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">IA</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -186,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./simd-resumo.html" class="sidebar-item-text sidebar-link active">
+            <a href="./simd-resumo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Minicurso: Vetorização</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -212,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ia.html" class="sidebar-item-text sidebar-link">
+  <a href="./ia.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">IA</span></span></a>
   </div>
 </li>
@@ -257,15 +257,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-ia-intro" id="toc-sec-ia-intro" class="nav-link active" data-scroll-target="#sec-ia-intro"><span class="header-section-number">5.1</span> Introdução</a></li>
+  <li><a href="#ferramentas" id="toc-ferramentas" class="nav-link" data-scroll-target="#ferramentas"><span class="header-section-number">5.2</span> Ferramentas</a></li>
+  <li><a href="#bibliotecas-e-implementações" id="toc-bibliotecas-e-implementações" class="nav-link" data-scroll-target="#bibliotecas-e-implementações"><span class="header-section-number">5.3</span> Bibliotecas e Implementações</a></li>
+  <li><a href="#modelo-de-programação-e-execução" id="toc-modelo-de-programação-e-execução" class="nav-link" data-scroll-target="#modelo-de-programação-e-execução"><span class="header-section-number">5.4</span> Modelo de Programação e Execução</a></li>
+  <li><a href="#sec-ia-consid-finais" id="toc-sec-ia-consid-finais" class="nav-link" data-scroll-target="#sec-ia-consid-finais"><span class="header-section-number">5.5</span> Considerações Finais</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/ia.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ia-resumo.html">Minicurso: IA</a></li><li class="breadcrumb-item"><a href="./ia.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">IA</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Minicurso: Vetorização</h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">IA</span></h1>
 </div>
 
 
@@ -282,9 +292,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Resumo sobre vetorização.</p>
+<section id="sec-ia-intro" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-ia-intro"><span class="header-section-number">5.1</span> Introdução</h2>
+</section>
+<section id="ferramentas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="ferramentas"><span class="header-section-number">5.2</span> Ferramentas</h2>
+</section>
+<section id="bibliotecas-e-implementações" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="bibliotecas-e-implementações"><span class="header-section-number">5.3</span> Bibliotecas e Implementações</h2>
+</section>
+<section id="modelo-de-programação-e-execução" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="modelo-de-programação-e-execução"><span class="header-section-number">5.4</span> Modelo de Programação e Execução</h2>
+<p>…</p>
+</section>
+<section id="sec-ia-consid-finais" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="sec-ia-consid-finais"><span class="header-section-number">5.5</span> Considerações Finais</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -706,13 +731,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./openmp.html" class="pagination-link" aria-label="OpenMP">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">OpenMP</span></span>
+      <a href="./ia-resumo.html" class="pagination-link" aria-label="Minicurso: IA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Minicurso: IA</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./simd.html" class="pagination-link" aria-label="Vetorização">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetorização</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./llvm-resumo.html" class="pagination-link" aria-label="Minicurso: LLVM">
+        <span class="nav-page-text">Minicurso: LLVM</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -721,4 +746,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/simd-resumo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/ia.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

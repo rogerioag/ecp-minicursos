@@ -1,9 +1,10 @@
 # ecp-minicursos
 
-Minicursos do Projeto de Extensão Escola de Computação Paralela (ECP)
+Minicursos e Tutoriais do Projeto de Extensão Escola de Computação Paralela (ECP)
 
-Projeto de Extensão: Escola de Computação Paralela (ECP 2024) 
-Registro UTFPR: 10503
+__Projeto de Extensão:__ Escola de Computação Paralela (ECP 2024)
+
+__Registro UTFPR:__ 10503
 
 
 ## Objetivo

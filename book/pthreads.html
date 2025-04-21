@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Vetorização – Escola de Computação Paralela: Minicursos</title>
+<title>2&nbsp; Pthreads – Escola de Computação Paralela: Minicursos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./openmp.html" rel="next">
-<link href="./simd-resumo.html" rel="prev">
+<link href="./pthreads-resumo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simd-resumo.html">Minicurso: Vetorização</a></li><li class="breadcrumb-item"><a href="./simd.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vetorização</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pthreads-resumo.html">Minicurso: Pthreads</a></li><li class="breadcrumb-item"><a href="./pthreads.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pthreads</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -161,8 +161,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pthreads.html" class="sidebar-item-text sidebar-link">
+  <a href="./pthreads.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pthreads</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">opemp-resumo.qmd</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./openmp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">OpenMP</span></span></a>
   </div>
 </li>
       </ul>
@@ -171,23 +188,6 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="./simd-resumo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Minicurso: Vetorização</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./simd.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vetorização</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">opemp-resumo.qmd</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -195,8 +195,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./openmp.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">OpenMP</span></span></a>
+  <a href="./simd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetorização</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./ia-resumo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Minicurso: IA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">IA</span></span></a>
   </div>
 </li>
       </ul>
@@ -205,28 +222,28 @@ ul.task-list li input[type="checkbox"] {
       <div class="sidebar-item-container"> 
             <a href="./llvm-resumo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Minicurso: LLVM</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llvm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">LLVM</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">LLVM</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a1-starting.html" class="sidebar-item-text sidebar-link">
@@ -245,20 +262,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-vet-intro" id="toc-sec-vet-intro" class="nav-link active" data-scroll-target="#sec-vet-intro"><span class="header-section-number">3.1</span> Introdução</a></li>
-  <li><a href="#vetorização" id="toc-vetorização" class="nav-link" data-scroll-target="#vetorização"><span class="header-section-number">3.2</span> Vetorização</a></li>
-  <li><a href="#intrisics-do-gcc" id="toc-intrisics-do-gcc" class="nav-link" data-scroll-target="#intrisics-do-gcc"><span class="header-section-number">3.3</span> Intrisics do GCC</a></li>
-  <li><a href="#suporte-do-openmp" id="toc-suporte-do-openmp" class="nav-link" data-scroll-target="#suporte-do-openmp"><span class="header-section-number">3.4</span> Suporte do OpenMP?</a></li>
-  <li><a href="#sec-vet-consid-finais" id="toc-sec-vet-consid-finais" class="nav-link" data-scroll-target="#sec-vet-consid-finais"><span class="header-section-number">3.5</span> Considerações Finais</a></li>
+  <li><a href="#sec-openmp-intro" id="toc-sec-openmp-intro" class="nav-link active" data-scroll-target="#sec-openmp-intro"><span class="header-section-number">2.1</span> Introdução</a></li>
+  <li><a href="#padrão-posix" id="toc-padrão-posix" class="nav-link" data-scroll-target="#padrão-posix"><span class="header-section-number">2.2</span> Padrão POSIX</a></li>
+  <li><a href="#suporte-do-hardware-e-sistema-operacional" id="toc-suporte-do-hardware-e-sistema-operacional" class="nav-link" data-scroll-target="#suporte-do-hardware-e-sistema-operacional"><span class="header-section-number">2.3</span> Suporte do Hardware e Sistema Operacional</a></li>
+  <li><a href="#bibliotecas-e-implementações" id="toc-bibliotecas-e-implementações" class="nav-link" data-scroll-target="#bibliotecas-e-implementações"><span class="header-section-number">2.4</span> Bibliotecas e Implementações</a></li>
+  <li><a href="#modelo-de-programação-e-execução" id="toc-modelo-de-programação-e-execução" class="nav-link" data-scroll-target="#modelo-de-programação-e-execução"><span class="header-section-number">2.5</span> Modelo de Programação e Execução</a></li>
+  <li><a href="#sec-openmp-consid-finais" id="toc-sec-openmp-consid-finais" class="nav-link" data-scroll-target="#sec-openmp-consid-finais"><span class="header-section-number">2.6</span> Considerações Finais</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/simd.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/pthreads.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simd-resumo.html">Minicurso: Vetorização</a></li><li class="breadcrumb-item"><a href="./simd.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vetorização</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./pthreads-resumo.html">Minicurso: Pthreads</a></li><li class="breadcrumb-item"><a href="./pthreads.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pthreads</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Vetorização</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pthreads</span></h1>
 </div>
 
 
@@ -275,22 +293,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Texto do Minicurso de Vetorização.</p>
-<section id="sec-vet-intro" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="sec-vet-intro"><span class="header-section-number">3.1</span> Introdução</h2>
+<section id="sec-openmp-intro" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-openmp-intro"><span class="header-section-number">2.1</span> Introdução</h2>
 </section>
-<section id="vetorização" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="vetorização"><span class="header-section-number">3.2</span> Vetorização</h2>
+<section id="padrão-posix" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="padrão-posix"><span class="header-section-number">2.2</span> Padrão POSIX</h2>
 </section>
-<section id="intrisics-do-gcc" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="intrisics-do-gcc"><span class="header-section-number">3.3</span> Intrisics do GCC</h2>
+<section id="suporte-do-hardware-e-sistema-operacional" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="suporte-do-hardware-e-sistema-operacional"><span class="header-section-number">2.3</span> Suporte do Hardware e Sistema Operacional</h2>
 </section>
-<section id="suporte-do-openmp" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="suporte-do-openmp"><span class="header-section-number">3.4</span> Suporte do OpenMP?</h2>
+<section id="bibliotecas-e-implementações" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="bibliotecas-e-implementações"><span class="header-section-number">2.4</span> Bibliotecas e Implementações</h2>
+</section>
+<section id="modelo-de-programação-e-execução" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="modelo-de-programação-e-execução"><span class="header-section-number">2.5</span> Modelo de Programação e Execução</h2>
 <p>…</p>
 </section>
-<section id="sec-vet-consid-finais" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="sec-vet-consid-finais"><span class="header-section-number">3.5</span> Considerações Finais</h2>
+<section id="sec-openmp-consid-finais" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-openmp-consid-finais"><span class="header-section-number">2.6</span> Considerações Finais</h2>
 
 
 </section>
@@ -715,13 +735,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./simd-resumo.html" class="pagination-link" aria-label="Minicurso: Vetorização">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Minicurso: Vetorização</span>
+      <a href="./pthreads-resumo.html" class="pagination-link" aria-label="Minicurso: Pthreads">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Minicurso: Pthreads</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./openmp.html" class="pagination-link" aria-label="OpenMP">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">OpenMP</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">OpenMP</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -730,4 +750,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/simd.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/pthreads.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

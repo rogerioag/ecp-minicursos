@@ -17,7 +17,7 @@ O público-alvo esperado é composto por alunos, funcionários da UTFPR e profis
 Como produção de recursos educacionais para serem disponibilizados, pretendemos elaborar um conjunto de materiais e tutoriais que serão agrupados em uma edição de um livro texto __"Escola de Computação Paralela: Minicursos e Tutoriais"__. Os minicursos pretendidos estão listados:
 
 | Minicurso | Responsável |
-| ---- | ------------- |
+| ---- | ---- |
 | Introdução à Computação Paralela e Programação Multithreading usando Pthreads | Willian Wallace |
 | Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação | Paulo Henrique |
 | Uso das Diretivas de Compilação do padrão OpenACC | em aberto |

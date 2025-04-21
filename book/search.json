@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Escola de Computação Paralela: Minicursos",
+    "title": "Escola de Computação Paralela: Minicursos e Tutoriais",
     "section": "",
     "text": "Bem-vindo\nEste livro reune o material dos Minicursos preparados e ministrados no contexto do Projeto Escola de Computação Paralela (ECP). Nele apresentamos minicursos sobre alguns assuntos importantes na Computação Paralela, como Pthreads, Vetorização, OpenMP e LLVM.",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#licença",
     "href": "index.html#licença",
-    "title": "Escola de Computação Paralela: Minicursos",
+    "title": "Escola de Computação Paralela: Minicursos e Tutoriais",
     "section": "Licença",
     "text": "Licença\nEste material é livre para o uso e está sobre a licença Creative Commons Attribution-NonCommercial-NoDerivs 4.0.",
     "crumbs": [
@@ -32,143 +32,143 @@
   {
     "objectID": "pthreads-resumo.html",
     "href": "pthreads-resumo.html",
-    "title": "Minicurso: Pthreads",
+    "title": "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "",
     "text": "Resumo de Pthreads.",
     "crumbs": [
-      "Minicurso: Pthreads"
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads."
     ]
   },
   {
     "objectID": "pthreads.html",
     "href": "pthreads.html",
-    "title": "2  Pthreads",
+    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "",
     "text": "2.1 Introdução",
     "crumbs": [
-      "Minicurso: Pthreads",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pthreads</span>"
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
     ]
   },
   {
     "objectID": "pthreads.html#padrão-posix",
     "href": "pthreads.html#padrão-posix",
-    "title": "2  Pthreads",
+    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "2.2 Padrão POSIX",
     "text": "2.2 Padrão POSIX",
     "crumbs": [
-      "Minicurso: Pthreads",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pthreads</span>"
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
     ]
   },
   {
     "objectID": "pthreads.html#suporte-do-hardware-e-sistema-operacional",
     "href": "pthreads.html#suporte-do-hardware-e-sistema-operacional",
-    "title": "2  Pthreads",
+    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "2.3 Suporte do Hardware e Sistema Operacional",
     "text": "2.3 Suporte do Hardware e Sistema Operacional",
     "crumbs": [
-      "Minicurso: Pthreads",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pthreads</span>"
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
     ]
   },
   {
     "objectID": "pthreads.html#bibliotecas-e-implementações",
     "href": "pthreads.html#bibliotecas-e-implementações",
-    "title": "2  Pthreads",
+    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "2.4 Bibliotecas e Implementações",
     "text": "2.4 Bibliotecas e Implementações",
     "crumbs": [
-      "Minicurso: Pthreads",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pthreads</span>"
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
     ]
   },
   {
     "objectID": "pthreads.html#modelo-de-programação-e-execução",
     "href": "pthreads.html#modelo-de-programação-e-execução",
-    "title": "2  Pthreads",
+    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "2.5 Modelo de Programação e Execução",
     "text": "2.5 Modelo de Programação e Execução\n…",
     "crumbs": [
-      "Minicurso: Pthreads",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pthreads</span>"
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
     ]
   },
   {
     "objectID": "pthreads.html#sec-openmp-consid-finais",
     "href": "pthreads.html#sec-openmp-consid-finais",
-    "title": "2  Pthreads",
+    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "2.6 Considerações Finais",
     "text": "2.6 Considerações Finais",
     "crumbs": [
-      "Minicurso: Pthreads",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Pthreads</span>"
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
     ]
   },
   {
     "objectID": "openmp.html",
     "href": "openmp.html",
-    "title": "3  OpenMP",
+    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
     "section": "",
     "text": "3.1 Introdução\nTexto do Minicurso OpenMP.",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>OpenMP</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
     ]
   },
   {
     "objectID": "openmp.html#padrão-openmp",
     "href": "openmp.html#padrão-openmp",
-    "title": "3  OpenMP",
+    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
     "section": "3.2 Padrão OpenMP",
     "text": "3.2 Padrão OpenMP",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>OpenMP</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
     ]
   },
   {
     "objectID": "openmp.html#bibliotecas-e-implementações",
     "href": "openmp.html#bibliotecas-e-implementações",
-    "title": "3  OpenMP",
+    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
     "section": "3.3 Bibliotecas e Implementações",
     "text": "3.3 Bibliotecas e Implementações",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>OpenMP</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
     ]
   },
   {
     "objectID": "openmp.html#compiladores",
     "href": "openmp.html#compiladores",
-    "title": "3  OpenMP",
+    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
     "section": "3.4 Compiladores",
     "text": "3.4 Compiladores",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>OpenMP</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
     ]
   },
   {
     "objectID": "openmp.html#diretivas-de-compilação",
     "href": "openmp.html#diretivas-de-compilação",
-    "title": "3  OpenMP",
+    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
     "section": "3.5 Diretivas de Compilação",
     "text": "3.5 Diretivas de Compilação\n…",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>OpenMP</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
     ]
   },
   {
     "objectID": "openmp.html#sec-openmp-consid-finais",
     "href": "openmp.html#sec-openmp-consid-finais",
-    "title": "3  OpenMP",
+    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
     "section": "3.6 Considerações Finais",
     "text": "3.6 Considerações Finais",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>OpenMP</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
     ]
   },
   {
@@ -435,7 +435,7 @@
   {
     "objectID": "index.html#contribuidores",
     "href": "index.html#contribuidores",
-    "title": "Escola de Computação Paralela: Minicursos",
+    "title": "Escola de Computação Paralela: Minicursos e Tutoriais",
     "section": "Contribuidores",
     "text": "Contribuidores\n\n\n\n\n\n\n\n\n\nNome\nE-mail\nCategoria\nMinicurso/Tema\n\n\n\n\nRogério Aparecido Gonçalves\nrogerioag@utfpr.edu.br\nDocente\nCoordenador\n\n\nJoao Fabrício Filho\njoaof@utfpr.edu.br\nDocente\nVice-Coordenador\n\n\nGuilherme A. Lopes\nguiguigui098@gmail.com\nAluno\nVetorização\n\n\nPaulo H. P. da Silva\nphps6200@gmail.com\nAluno\nOpenMP\n\n\nWilliam W. T. Rodrigues\nwilliamwallace@alunos.utfpr.edu.br\nAluno\nPthreads\n\n\nGabriela P. Sereniski\ngabsereniski@gmail.com\nAluno\nCluster\n\n\nGabriel M. L. Pereira\ngabrielmlobato@gmail.com\nAluno\nIA\n\n\nJoão Victor Briganti de Oliveira\njoliveira.2022@alunos.utfpr.edu.br\nAluno\nLLVM",
     "crumbs": [

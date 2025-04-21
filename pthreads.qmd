@@ -1,0 +1,14 @@
+# Pthreads
+
+## Introdução {#sec-openmp-intro}
+
+## Padrão POSIX
+
+## Suporte do Hardware e Sistema Operacional
+
+## Bibliotecas e Implementações
+
+## Modelo de Programação e Execução
+...
+
+## Considerações Finais {#sec-openmp-consid-finais}

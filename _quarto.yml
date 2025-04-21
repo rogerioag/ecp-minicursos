@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: docs
+  
+book:
+  title: "Escola de Computação Paralela: Minicursos"
+  author: "Rogério Aparecido Gonçalves (rogerioag@utfpr.edu.br) e João Fabrício Filho (joaof@utfpr.edu.br)"
+  cover-image: images/cover.png
+  site-url: https://rogerioag.github.io/ecp-minicursos
+  repo-url: https://github.com/rogerioag/ecp-minicursos  
+  repo-branch: master
+  repo-actions: [edit]
+  sharing: [twitter, facebook, linkedin]
+  chapters:
+    - index.qmd
+    - preface.qmd
+    - intro.qmd
+    - part: pthreads-resumo.qmd
+      chapters:
+        - pthreads.qmd
+    - part: simd-resumo.qmd
+      chapters:
+        - simd.qmd
+    - part: opemp-resumo.qmd
+      chapters:
+        - openmp.qmd
+    - part: llvm-resumo.qmd
+      chapters:
+        - llvm.qmd
+  appendices:
+    - a1-starting.qmd
+
+format:
+  html: 
+    theme: cosmo
+    cover-image: cover.png
+    code-link: true
+
+

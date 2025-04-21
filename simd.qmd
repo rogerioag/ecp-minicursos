@@ -1,0 +1,18 @@
+# Vetorização
+
+
+Texto do Minicurso de Vetorização.
+
+##  Introdução {#sec-vet-intro}
+
+## Vetorização
+
+## Intrisics do GCC
+
+## Suporte do OpenMP?
+
+...
+
+## Considerações Finais {#sec-vet-consid-finais}
+
+

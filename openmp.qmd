@@ -1,0 +1,17 @@
+# OpenMP
+
+Texto do Minicurso OpenMP.
+
+## Introdução {#sec-openmp-intro}
+
+## Padrão OpenMP
+
+## Bibliotecas e Implementações
+
+## Compiladores
+
+## Diretivas de Compilação
+
+...
+
+## Considerações Finais {#sec-openmp-consid-finais}

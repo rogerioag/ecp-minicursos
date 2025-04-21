@@ -1,0 +1,3 @@
+# Minicurso: OpenMP
+
+Resumo de OpenMP.

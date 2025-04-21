@@ -1,0 +1,4 @@
+# Minicurso: Vetorização
+
+Resumo sobre vetorização.
+

@@ -174,66 +174,66 @@
   {
     "objectID": "simd-resumo.html",
     "href": "simd-resumo.html",
-    "title": "Minicurso: Vetorização",
+    "title": "Minicurso: Introdução à Programação Paralela: Vetorização",
     "section": "",
     "text": "Resumo sobre vetorização.",
     "crumbs": [
-      "Minicurso: Vetorização"
+      "Minicurso: Introdução à Programação Paralela: Vetorização"
     ]
   },
   {
     "objectID": "simd.html",
     "href": "simd.html",
-    "title": "4  Vetorização",
+    "title": "4  Introdução à Programação Paralela: Vetorização",
     "section": "",
     "text": "4.1 Introdução\nTexto do Minicurso de Vetorização.",
     "crumbs": [
-      "Minicurso: Vetorização",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Vetorização</span>"
+      "Minicurso: Introdução à Programação Paralela: Vetorização",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
     ]
   },
   {
     "objectID": "simd.html#vetorização",
     "href": "simd.html#vetorização",
-    "title": "4  Vetorização",
+    "title": "4  Introdução à Programação Paralela: Vetorização",
     "section": "4.2 Vetorização",
     "text": "4.2 Vetorização",
     "crumbs": [
-      "Minicurso: Vetorização",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Vetorização</span>"
+      "Minicurso: Introdução à Programação Paralela: Vetorização",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
     ]
   },
   {
     "objectID": "simd.html#intrisics-do-gcc",
     "href": "simd.html#intrisics-do-gcc",
-    "title": "4  Vetorização",
+    "title": "4  Introdução à Programação Paralela: Vetorização",
     "section": "4.3 Intrisics do GCC",
     "text": "4.3 Intrisics do GCC",
     "crumbs": [
-      "Minicurso: Vetorização",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Vetorização</span>"
+      "Minicurso: Introdução à Programação Paralela: Vetorização",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
     ]
   },
   {
     "objectID": "simd.html#suporte-do-openmp",
     "href": "simd.html#suporte-do-openmp",
-    "title": "4  Vetorização",
+    "title": "4  Introdução à Programação Paralela: Vetorização",
     "section": "4.4 Suporte do OpenMP?",
     "text": "4.4 Suporte do OpenMP?\n…",
     "crumbs": [
-      "Minicurso: Vetorização",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Vetorização</span>"
+      "Minicurso: Introdução à Programação Paralela: Vetorização",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
     ]
   },
   {
     "objectID": "simd.html#sec-vet-consid-finais",
     "href": "simd.html#sec-vet-consid-finais",
-    "title": "4  Vetorização",
+    "title": "4  Introdução à Programação Paralela: Vetorização",
     "section": "4.5 Considerações Finais",
     "text": "4.5 Considerações Finais",
     "crumbs": [
-      "Minicurso: Vetorização",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Vetorização</span>"
+      "Minicurso: Introdução à Programação Paralela: Vetorização",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
     ]
   },
   {

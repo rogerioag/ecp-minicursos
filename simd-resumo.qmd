@@ -1,4 +1,5 @@
-# Minicurso: Vetorização
+# Minicurso: Introdução à Programação Paralela: Vetorização
+
 
 Resumo sobre vetorização.
 

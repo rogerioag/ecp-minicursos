@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/index.html</loc>
-    <lastmod>2025-04-21T20:27:50.033Z</lastmod>
+    <lastmod>2025-04-21T20:32:47.800Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/preface.html</loc>
@@ -51,5 +51,9 @@
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/a1-starting.html</loc>
     <lastmod>2025-03-28T23:37:43.412Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rogerioag.github.io/ecp-minicursos/a1.html</loc>
+    <lastmod>2025-04-21T20:31:25.963Z</lastmod>
   </url>
 </urlset>

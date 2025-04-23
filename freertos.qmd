@@ -1,0 +1,18 @@
+# Introdução à Programação para Sistemas Embarcados com FreeRTOS
+
+
+Texto do Minicurso sobre LLVM.
+
+## Introdução {#sec-llvm-intro}
+
+## Projeto FreeRTOS
+
+## Ferramentas e Recursos
+
+## Programação
+
+Sugiro apresentar o conteúdo com exemplos de tarefas e outros temas relacionados a Sistemas Operacionais. Filas, semáforos, comunicação entre tarefas...
+
+## Considerações Finais {#sec-llvm-consid-finais}
+
+

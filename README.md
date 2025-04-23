@@ -30,3 +30,4 @@ Como produção de recursos educacionais para serem disponibilizados, pretendemo
 | Introdução à Modernização de Código | em aberto |
 | Introdução à Computação Heterogênea com a Linguagem Julia | em aberto |
 | Suporte a Aceleradores em Linguagens de Programação Modernas | em aberto |
+| Introdução à Programação para Sistemas Embarcados com FreeRTOS | Luiz Gustavo Takeda |

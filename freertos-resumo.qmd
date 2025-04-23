@@ -1,0 +1,3 @@
+# Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS
+
+Resumo sobre o Minicurso, falando de FreeRTOS e assuntos abordados.

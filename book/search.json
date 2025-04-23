@@ -108,67 +108,67 @@
   {
     "objectID": "openmp.html",
     "href": "openmp.html",
-    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
+    "title": "3  Introdução à Programação Paralela com OpenMP",
     "section": "",
     "text": "3.1 Introdução\nTexto do Minicurso OpenMP.",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP</span>"
     ]
   },
   {
     "objectID": "openmp.html#padrão-openmp",
     "href": "openmp.html#padrão-openmp",
-    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
+    "title": "3  Introdução à Programação Paralela com OpenMP",
     "section": "3.2 Padrão OpenMP",
     "text": "3.2 Padrão OpenMP",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP</span>"
     ]
   },
   {
     "objectID": "openmp.html#bibliotecas-e-implementações",
     "href": "openmp.html#bibliotecas-e-implementações",
-    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
+    "title": "3  Introdução à Programação Paralela com OpenMP",
     "section": "3.3 Bibliotecas e Implementações",
     "text": "3.3 Bibliotecas e Implementações",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP</span>"
     ]
   },
   {
     "objectID": "openmp.html#compiladores",
     "href": "openmp.html#compiladores",
-    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
+    "title": "3  Introdução à Programação Paralela com OpenMP",
     "section": "3.4 Compiladores",
     "text": "3.4 Compiladores",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP</span>"
     ]
   },
   {
     "objectID": "openmp.html#diretivas-de-compilação",
     "href": "openmp.html#diretivas-de-compilação",
-    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
+    "title": "3  Introdução à Programação Paralela com OpenMP",
     "section": "3.5 Diretivas de Compilação",
     "text": "3.5 Diretivas de Compilação\n…",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP</span>"
     ]
   },
   {
     "objectID": "openmp.html#sec-openmp-consid-finais",
     "href": "openmp.html#sec-openmp-consid-finais",
-    "title": "3  Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.",
+    "title": "3  Introdução à Programação Paralela com OpenMP",
     "section": "3.6 Considerações Finais",
     "text": "3.6 Considerações Finais",
     "crumbs": [
       "opemp-resumo.qmd",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação.</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP</span>"
     ]
   },
   {

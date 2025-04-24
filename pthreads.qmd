@@ -1,6 +1,13 @@
 # Introdução à Computação Paralela e Programação Multithreading usando Pthreads.
 
-## Introdução {#sec-openmp-intro}
+-- William W. T. Rodrigues <br>
+<williamwallace@alunos.utfpr.edu.br>
+
+> __Resumo:__
+> Texto do Resumo **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+
+## Introdução {#sec-pthreads-intro}
 
 ## Padrão POSIX
 
@@ -11,4 +18,4 @@
 ## Modelo de Programação e Execução
 ...
 
-## Considerações Finais {#sec-openmp-consid-finais}
+## Considerações Finais {#sec-pthreads-consid-finais}

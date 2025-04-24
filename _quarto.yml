@@ -30,6 +30,9 @@ book:
     - part: llvm-resumo.qmd
       chapters:
         - llvm.qmd
+    - part: freertos-resumo.qmd
+      chapters:
+        - freertos.qmd
   appendices:
     - a1.qmd
 

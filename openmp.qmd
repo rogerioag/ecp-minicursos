@@ -1,5 +1,12 @@
 # Introdução à Programação Paralela com OpenMP
 
+-- Paulo H. P. da Silva <br>
+<phps6200@gmail.com>
+
+> __Resumo:__
+> Texto do Resumo **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+
 Texto do Minicurso OpenMP.
 
 ## Introdução {#sec-openmp-intro}

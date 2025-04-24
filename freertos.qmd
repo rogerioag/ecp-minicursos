@@ -1,9 +1,16 @@
 # Introdução à Programação para Sistemas Embarcados com FreeRTOS
 
+-- Luiz Gustavo Takeda <br>
+<luiztakeda@alunos.utfpr.edu.br>
+
+> __Resumo:__
+> Texto do Resumo **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+
 
 Texto do Minicurso sobre LLVM.
 
-## Introdução {#sec-llvm-intro}
+## Introdução {#sec-freertos-intro}
 
 ## Projeto FreeRTOS
 
@@ -13,6 +20,6 @@ Texto do Minicurso sobre LLVM.
 
 Sugiro apresentar o conteúdo com exemplos de tarefas e outros temas relacionados a Sistemas Operacionais. Filas, semáforos, comunicação entre tarefas...
 
-## Considerações Finais {#sec-llvm-consid-finais}
+## Considerações Finais {#sec-freertos-consid-finais}
 
 

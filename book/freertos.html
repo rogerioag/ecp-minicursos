@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Rogério Aparecido Gonçalves (rogerioag@utfpr.edu.br) e João Fabrício Filho (joaof@utfpr.edu.br)">
-<meta name="description" content="<p>Este livro irá te ensinar algumas técnicas do Computação Paralela.</p>">
 
-<title>Escola de Computação Paralela: Minicursos e Tutoriais</title>
+<title>7&nbsp; Introdução à Programação para Sistemas Embarcados com FreeRTOS – Escola de Computação Paralela: Minicursos e Tutoriais</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./preface.html" rel="next">
+<link href="./a1.html" rel="next">
+<link href="./freertos-resumo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Bem-vindo</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./freertos-resumo.html">Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS</a></li><li class="breadcrumb-item"><a href="./freertos.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução à Programação para Sistemas Embarcados com FreeRTOS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -135,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bem-vindo</span></a>
   </div>
 </li>
@@ -247,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./freertos.html" class="sidebar-item-text sidebar-link">
+  <a href="./freertos.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução à Programação para Sistemas Embarcados com FreeRTOS</span></span></a>
   </div>
 </li>
@@ -280,30 +279,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bem-vindo" id="toc-bem-vindo" class="nav-link active" data-scroll-target="#bem-vindo">Bem-vindo</a></li>
-  <li><a href="#contribuidores" id="toc-contribuidores" class="nav-link" data-scroll-target="#contribuidores">Contribuidores</a></li>
-  <li><a href="#licença" id="toc-licença" class="nav-link" data-scroll-target="#licença">Licença</a></li>
+  <li><a href="#sec-llvm-intro" id="toc-sec-llvm-intro" class="nav-link active" data-scroll-target="#sec-llvm-intro"><span class="header-section-number">7.1</span> Introdução</a></li>
+  <li><a href="#projeto-freertos" id="toc-projeto-freertos" class="nav-link" data-scroll-target="#projeto-freertos"><span class="header-section-number">7.2</span> Projeto FreeRTOS</a></li>
+  <li><a href="#ferramentas-e-recursos" id="toc-ferramentas-e-recursos" class="nav-link" data-scroll-target="#ferramentas-e-recursos"><span class="header-section-number">7.3</span> Ferramentas e Recursos</a></li>
+  <li><a href="#programação" id="toc-programação" class="nav-link" data-scroll-target="#programação"><span class="header-section-number">7.4</span> Programação</a></li>
+  <li><a href="#sec-llvm-consid-finais" id="toc-sec-llvm-consid-finais" class="nav-link" data-scroll-target="#sec-llvm-consid-finais"><span class="header-section-number">7.5</span> Considerações Finais</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/freertos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./freertos-resumo.html">Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS</a></li><li class="breadcrumb-item"><a href="./freertos.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução à Programação para Sistemas Embarcados com FreeRTOS</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Escola de Computação Paralela: Minicursos e Tutoriais</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução à Programação para Sistemas Embarcados com FreeRTOS</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Rogério Aparecido Gonçalves (rogerioag@utfpr.edu.br) e João Fabrício Filho (joaof@utfpr.edu.br) </p>
-          </div>
-  </div>
     
   
     
@@ -314,97 +309,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="bem-vindo" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="bem-vindo">Bem-vindo</h2><p><img src="cover.png" title="Escola de Computação Paralela: Minicursos e Tutoriais" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>Este livro reune o material dos Minicursos preparados e ministrados no contexto do <strong>Projeto Escola de Computação Paralela (ECP)</strong>. Nele apresentamos minicursos sobre alguns assuntos importantes na Computação Paralela, como <strong>Pthreads</strong>, <strong>Vetorização</strong>, <strong>OpenMP</strong> e <strong>LLVM</strong>.</p>
+<p>– Luiz Gustavo Takeda <br> <a href="mailto:luiztakeda@alunos.utfpr.edu.br" class="email">luiztakeda@alunos.utfpr.edu.br</a></p>
+<blockquote class="blockquote">
+<p><strong>Resumo:</strong> Texto do Resumo <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.</p>
+</blockquote>
+<p>Texto do Minicurso sobre LLVM.</p>
+<section id="sec-llvm-intro" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-llvm-intro"><span class="header-section-number">7.1</span> Introdução</h2>
 </section>
-<section id="contribuidores" class="level2">
-<h2 class="anchored" data-anchor-id="contribuidores">Contribuidores</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 39%">
-<col style="width: 21%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Nome</th>
-<th>E-mail</th>
-<th>Categoria</th>
-<th>Minicurso/Tema</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Rogério Aparecido Gonçalves</td>
-<td>rogerioag@utfpr.edu.br</td>
-<td>Docente</td>
-<td>Coordenador</td>
-</tr>
-<tr class="even">
-<td>Joao Fabrício Filho</td>
-<td>joaof@utfpr.edu.br</td>
-<td>Docente</td>
-<td>Vice-Coordenador</td>
-</tr>
-<tr class="odd">
-<td>Guilherme A. Lopes</td>
-<td>guiguigui098@gmail.com</td>
-<td>Aluno</td>
-<td>Vetorização</td>
-</tr>
-<tr class="even">
-<td>Paulo H. P. da Silva</td>
-<td>phps6200@gmail.com</td>
-<td>Aluno</td>
-<td>OpenMP</td>
-</tr>
-<tr class="odd">
-<td>William W. T. Rodrigues</td>
-<td>williamwallace@alunos.utfpr.edu.br</td>
-<td>Aluno</td>
-<td>Pthreads</td>
-</tr>
-<tr class="even">
-<td>Gabriela P. Sereniski</td>
-<td>gabsereniski@gmail.com</td>
-<td>Aluno</td>
-<td>Cluster</td>
-</tr>
-<tr class="odd">
-<td>Gabriel M. L. Pereira</td>
-<td>gabrielmlobato@gmail.com</td>
-<td>Aluno</td>
-<td>IA</td>
-</tr>
-<tr class="even">
-<td>João Victor Briganti de Oliveira</td>
-<td>joliveira.2022@alunos.utfpr.edu.br</td>
-<td>Aluno</td>
-<td>LLVM</td>
-</tr>
-<tr class="odd">
-<td>Luiz Gustavo Takeda</td>
-<td>luiztakeda@alunos.utfpr.edu.br</td>
-<td>Aluno</td>
-<td>FreeRTOS</td>
-</tr>
-</tbody>
-</table>
-<!--
-::: {.callout-note appearance="simple"}
-This book was originally created using [bookdown](https://bookdown.org) and published at <https://rstudio-education.github.io/hopr/>. This site is a port of the original book source to the [Quarto](https://quarto.org) publishing system in order to provide an example of it's use.
-:::
-
--->
+<section id="projeto-freertos" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="projeto-freertos"><span class="header-section-number">7.2</span> Projeto FreeRTOS</h2>
 </section>
-<section id="licença" class="level2">
-<h2 class="anchored" data-anchor-id="licença">Licença</h2>
-<p>Este material é <strong>livre para o uso</strong> e está sobre a licença <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivs 4.0</a>.</p>
-<!--
-If you'd like a **physical copy** of the book, you can order it from [amazon](https://www.amazon.com/Hands-Programming-Write-Functions-Simulations/dp/1449359019); it was published by O'Reilly in July 2014. If you'd like to give back, please consider reporting a typo or leaving a pull request at [github.com/rstudio-education/hopr](https://github.com/rstudio-education/hopr).-->
+<section id="ferramentas-e-recursos" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="ferramentas-e-recursos"><span class="header-section-number">7.3</span> Ferramentas e Recursos</h2>
+</section>
+<section id="programação" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="programação"><span class="header-section-number">7.4</span> Programação</h2>
+<p>Sugiro apresentar o conteúdo com exemplos de tarefas e outros temas relacionados a Sistemas Operacionais. Filas, semáforos, comunicação entre tarefas…</p>
+</section>
+<section id="sec-llvm-consid-finais" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-llvm-consid-finais"><span class="header-section-number">7.5</span> Considerações Finais</h2>
 
 
 </section>
@@ -829,10 +753,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./freertos-resumo.html" class="pagination-link" aria-label="Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./preface.html" class="pagination-link" aria-label="Prefácio">
-        <span class="nav-page-text">Prefácio</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./a1.html" class="pagination-link" aria-label="Apêndice A1">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apêndice A1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -841,4 +768,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/freertos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

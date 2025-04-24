@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/index.html</loc>
-    <lastmod>2025-04-21T20:41:29.214Z</lastmod>
+    <lastmod>2025-04-24T01:43:50.210Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/preface.html</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/pthreads.html</loc>
-    <lastmod>2025-04-21T19:56:02.693Z</lastmod>
+    <lastmod>2025-04-24T01:59:47.244Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/openmp.html</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/ia.html</loc>
-    <lastmod>2025-04-21T19:23:26.701Z</lastmod>
+    <lastmod>2025-04-24T01:55:08.781Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/llvm-resumo.html</loc>
@@ -55,5 +55,13 @@
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/a1.html</loc>
     <lastmod>2025-04-21T20:31:25.963Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rogerioag.github.io/ecp-minicursos/freertos-resumo.html</loc>
+    <lastmod>2025-04-23T11:47:21.700Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rogerioag.github.io/ecp-minicursos/freertos.html</loc>
+    <lastmod>2025-04-24T01:53:54.452Z</lastmod>
   </url>
 </urlset>

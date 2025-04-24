@@ -44,7 +44,7 @@
     "href": "pthreads.html",
     "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "",
-    "text": "2.1 Introdução",
+    "text": "2.1 Introdução\n– William W. T. Rodrigues  williamwallace@alunos.utfpr.edu.br",
     "crumbs": [
       "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
@@ -251,7 +251,7 @@
     "href": "ia.html",
     "title": "5  IA",
     "section": "",
-    "text": "5.1 Introdução",
+    "text": "5.1 Introdução\n– Gabriel M. L. Pereira  gabrielmlobato@gmail.com",
     "crumbs": [
       "Minicurso: IA",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>IA</span>"
@@ -437,9 +437,85 @@
     "href": "index.html#contribuidores",
     "title": "Escola de Computação Paralela: Minicursos e Tutoriais",
     "section": "Contribuidores",
-    "text": "Contribuidores\n\n\n\n\n\n\n\n\n\nNome\nE-mail\nCategoria\nMinicurso/Tema\n\n\n\n\nRogério Aparecido Gonçalves\nrogerioag@utfpr.edu.br\nDocente\nCoordenador\n\n\nJoao Fabrício Filho\njoaof@utfpr.edu.br\nDocente\nVice-Coordenador\n\n\nGuilherme A. Lopes\nguiguigui098@gmail.com\nAluno\nVetorização\n\n\nPaulo H. P. da Silva\nphps6200@gmail.com\nAluno\nOpenMP\n\n\nWilliam W. T. Rodrigues\nwilliamwallace@alunos.utfpr.edu.br\nAluno\nPthreads\n\n\nGabriela P. Sereniski\ngabsereniski@gmail.com\nAluno\nCluster\n\n\nGabriel M. L. Pereira\ngabrielmlobato@gmail.com\nAluno\nIA\n\n\nJoão Victor Briganti de Oliveira\njoliveira.2022@alunos.utfpr.edu.br\nAluno\nLLVM",
+    "text": "Contribuidores\n\n\n\n\n\n\n\n\n\nNome\nE-mail\nCategoria\nMinicurso/Tema\n\n\n\n\nRogério Aparecido Gonçalves\nrogerioag@utfpr.edu.br\nDocente\nCoordenador\n\n\nJoao Fabrício Filho\njoaof@utfpr.edu.br\nDocente\nVice-Coordenador\n\n\nGuilherme A. Lopes\nguiguigui098@gmail.com\nAluno\nVetorização\n\n\nPaulo H. P. da Silva\nphps6200@gmail.com\nAluno\nOpenMP\n\n\nWilliam W. T. Rodrigues\nwilliamwallace@alunos.utfpr.edu.br\nAluno\nPthreads\n\n\nGabriela P. Sereniski\ngabsereniski@gmail.com\nAluno\nCluster\n\n\nGabriel M. L. Pereira\ngabrielmlobato@gmail.com\nAluno\nIA\n\n\nJoão Victor Briganti de Oliveira\njoliveira.2022@alunos.utfpr.edu.br\nAluno\nLLVM\n\n\nLuiz Gustavo Takeda\nluiztakeda@alunos.utfpr.edu.br\nAluno\nFreeRTOS",
     "crumbs": [
       "Bem-vindo"
+    ]
+  },
+  {
+    "objectID": "freertos-resumo.html",
+    "href": "freertos-resumo.html",
+    "title": "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "",
+    "text": "Resumo sobre o Minicurso, falando de FreeRTOS e assuntos abordados.",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS"
+    ]
+  },
+  {
+    "objectID": "freertos.html",
+    "href": "freertos.html",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "",
+    "text": "7.1 Introdução\n– Luiz Gustavo Takeda  luiztakeda@alunos.utfpr.edu.br\nTexto do Minicurso sobre LLVM.",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "freertos.html#projeto-freertos",
+    "href": "freertos.html#projeto-freertos",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "7.2 Projeto FreeRTOS",
+    "text": "7.2 Projeto FreeRTOS",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "freertos.html#ferramentas-e-recursos",
+    "href": "freertos.html#ferramentas-e-recursos",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "7.3 Ferramentas e Recursos",
+    "text": "7.3 Ferramentas e Recursos",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "freertos.html#programação",
+    "href": "freertos.html#programação",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "7.4 Programação",
+    "text": "7.4 Programação\nSugiro apresentar o conteúdo com exemplos de tarefas e outros temas relacionados a Sistemas Operacionais. Filas, semáforos, comunicação entre tarefas…",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "freertos.html#sec-llvm-consid-finais",
+    "href": "freertos.html#sec-llvm-consid-finais",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "7.5 Considerações Finais",
+    "text": "7.5 Considerações Finais",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "pthreads.html#sec-pthreads-consid-finais",
+    "href": "pthreads.html#sec-pthreads-consid-finais",
+    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+    "section": "2.6 Considerações Finais",
+    "text": "2.6 Considerações Finais",
+    "crumbs": [
+      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
     ]
   }
 ]

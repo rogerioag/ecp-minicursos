@@ -1,3 +1,28 @@
 # Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS
 
-Resumo sobre o Minicurso, falando de FreeRTOS e assuntos abordados.
+Este minicurso tem como objetivo apresentar os principais conceitos de programação para sistemas embarcados utilizando o FreeRTOS no ESP32. Ao longo das aulas, os participantes irão explorar recursos fundamentais do sistema operacional em tempo real e, ao final, aplicar os conhecimentos adquiridos no desenvolvimento de um projeto prático e funcional.
+
+## Conteúdo abordado
+
+Durante o curso, serão abordados os seguintes tópicos:
+* **Co-rotinas**
+* **Tasks** (Tarefas)
+* **Semáforos e Mutex**
+* **Task Notifications**
+* **Filas** (Queues)
+* **Timers**
+* **Grupos de Eventos** (Event Groups)
+* **Interrupções** (Interruptions)
+
+## Projeto final
+
+O projeto final consiste na criação de uma **dashboard web interativa**, hospedada diretamente no ESP32, com os seguintes recursos:
+* Leitura de **entradas analógicas e digitais**
+* Exibição do estado atual das **saídas digitais**
+* Leitura de **temperatura e umidade via sensor DHT11**
+* Controle das **saídas digitais** pela interface web
+* Transmissão de dados em **tempo real via WebSocket**
+
+O ESP32 atuará como **servidor web** e também como **servidor WebSocket**, eliminando a necessidade de servidores externos.
+
+Além disso, a **configuração das credenciais de rede Wi-Fi** será realizada via comandos enviados pela **interface serial**.

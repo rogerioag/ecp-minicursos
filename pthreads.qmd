@@ -18,7 +18,12 @@
 
 ## Modelo de Programação e Execução
 
-```{C caption=Teste label=teste}
+A Figura \ref{teste}
+
+![The San Juan Mountains are beautiful \label{teste}](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
+
+
+```C
 int main(){
 
 

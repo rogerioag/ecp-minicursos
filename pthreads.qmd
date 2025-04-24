@@ -4,10 +4,11 @@
 <williamwallace@alunos.utfpr.edu.br>
 
 > __Resumo:__
-> Texto do Resumo **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
-**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+> Texto do Resumo {{< lipsum 2 >}}
 
 ## Introdução {#sec-pthreads-intro}
+
+{{< lipsum 2 >}}
 
 ## Padrão POSIX
 
@@ -16,6 +17,16 @@
 ## Bibliotecas e Implementações
 
 ## Modelo de Programação e Execução
-...
+
+```{C caption=Teste label=teste}
+int main(){
+
+
+}
+```
+
+:::{.callout-note}
+Nota
+:::
 
 ## Considerações Finais {#sec-pthreads-consid-finais}

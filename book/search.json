@@ -44,7 +44,7 @@
     "href": "pthreads.html",
     "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "",
-    "text": "2.1 Introdução\n– William W. T. Rodrigues  williamwallace@alunos.utfpr.edu.br",
+    "text": "2.1 Introdução\n– William W. T. Rodrigues  williamwallace@alunos.utfpr.edu.br\nNulla eget cursus ipsum. Vivamus porttitor leo diam, sed volutpat lectus facilisis sit amet. Maecenas et pulvinar metus. Ut at dignissim tellus. In in tincidunt elit. Etiam vulputate lobortis arcu, vel faucibus leo lobortis ac. Aliquam erat volutpat. In interdum orci ac est euismod euismod. Nunc eleifend tristique risus, at lacinia odio commodo in. Sed aliquet ligula odio, sed tempor neque ultricies sit amet.\nEtiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.",
     "crumbs": [
       "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
@@ -88,7 +88,7 @@
     "href": "pthreads.html#modelo-de-programação-e-execução",
     "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "2.5 Modelo de Programação e Execução",
-    "text": "2.5 Modelo de Programação e Execução\n…",
+    "text": "2.5 Modelo de Programação e Execução\n```{.C .caption Teste .label teste} int main(){\n} ```\n\n\n\n\n\n\nNote\n\n\n\nNota",
     "crumbs": [
       "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
@@ -110,7 +110,7 @@
     "href": "openmp.html",
     "title": "3  Introdução à Programação Paralela com OpenMP",
     "section": "",
-    "text": "3.1 Introdução\nTexto do Minicurso OpenMP.",
+    "text": "3.1 Introdução\n– Paulo H. P. da Silva  phps6200@gmail.com\nTexto do Minicurso OpenMP.",
     "crumbs": [
       "opemp-resumo.qmd",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introdução à Programação Paralela com OpenMP</span>"

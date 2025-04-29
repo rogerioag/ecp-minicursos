@@ -186,7 +186,7 @@
     "href": "simd.html",
     "title": "4  Introdução à Programação Paralela: Vetorização",
     "section": "",
-    "text": "4.1 Introdução\nTexto do Minicurso de Vetorização.",
+    "text": "4.1 Introdução\n– Guilherme A. Lopes  guiguigui098@gmail.com\nTexto do Minicurso de Vetorização.",
     "crumbs": [
       "Minicurso: Introdução à Programação Paralela: Vetorização",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
@@ -316,7 +316,7 @@
     "href": "llvm.html",
     "title": "6  LLVM",
     "section": "",
-    "text": "6.1 Introdução\nTexto do Minicurso sobre LLVM.",
+    "text": "6.1 Introdução\n– João Victor Briganti de Oliveira  joliveira.2022@alunos.utfpr.edu.br\nTexto do Minicurso sobre LLVM.",
     "crumbs": [
       "Minicurso: LLVM",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>LLVM</span>"
@@ -516,6 +516,17 @@
     "crumbs": [
       "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
+    ]
+  },
+  {
+    "objectID": "freertos.html#sec-freertos-consid-finais",
+    "href": "freertos.html#sec-freertos-consid-finais",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "7.5 Considerações Finais",
+    "text": "7.5 Considerações Finais",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
     ]
   }
 ]

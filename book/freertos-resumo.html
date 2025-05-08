@@ -274,8 +274,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#conteúdo-abordado" id="toc-conteúdo-abordado" class="nav-link active" data-scroll-target="#conteúdo-abordado">Conteúdo abordado</a></li>
+  <li><a href="#projeto-final" id="toc-projeto-final" class="nav-link" data-scroll-target="#projeto-final">Projeto final</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/freertos-resumo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -299,9 +306,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Resumo sobre o Minicurso, falando de FreeRTOS e assuntos abordados.</p>
+<p>Este minicurso tem como objetivo apresentar os principais conceitos de programação para sistemas embarcados utilizando o FreeRTOS no ESP32. Ao longo das aulas, os participantes irão explorar recursos fundamentais do sistema operacional em tempo real e, ao final, aplicar os conhecimentos adquiridos no desenvolvimento de um projeto prático e funcional.</p>
+<section id="conteúdo-abordado" class="level2">
+<h2 class="anchored" data-anchor-id="conteúdo-abordado">Conteúdo abordado</h2>
+<p>Durante o curso, serão abordados os seguintes tópicos: * <strong>Co-rotinas</strong> * <strong>Tasks</strong> (Tarefas) * <strong>Semáforos e Mutex</strong> * <strong>Task Notifications</strong> * <strong>Filas</strong> (Queues) * <strong>Timers</strong> * <strong>Grupos de Eventos</strong> (Event Groups) * <strong>Interrupções</strong> (Interruptions)</p>
+</section>
+<section id="projeto-final" class="level2">
+<h2 class="anchored" data-anchor-id="projeto-final">Projeto final</h2>
+<p>O projeto final consiste na criação de uma <strong>dashboard web interativa</strong>, hospedada diretamente no ESP32, com os seguintes recursos: * Leitura de <strong>entradas analógicas e digitais</strong> * Exibição do estado atual das <strong>saídas digitais</strong> * Leitura de <strong>temperatura e umidade via sensor DHT11</strong> * Controle das <strong>saídas digitais</strong> pela interface web * Transmissão de dados em <strong>tempo real via WebSocket</strong></p>
+<p>O ESP32 atuará como <strong>servidor web</strong> e também como <strong>servidor WebSocket</strong>, eliminando a necessidade de servidores externos.</p>
+<p>Além disso, a <strong>configuração das credenciais de rede Wi-Fi</strong> será realizada via comandos enviados pela <strong>interface serial</strong>.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -738,4 +755,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/freertos-resumo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/freertos-resumo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

@@ -13,6 +13,41 @@ Texto do Minicurso de Vetorização.
 
 ## Vetorização
 
+## Suporte do Hardware
+
+__Intel AVX__
+
+AVX, ou Advanced Vector Extensions, são extensões de vetor SIMD (Single Instruction, Multiple Data) de 256 bits para processadores Intel e AMD que usam a arquitetura x86. Estas extensões permitem que os processadores executem operações matemáticas mais complexas e intensivas em dados de forma mais eficiente, acelerando o desempenho em aplicações que lidam com grandes conjuntos de dados, como processamento de imagem, vídeo, IA, entre outras.
+Em resumo:
+
+O quê:
+Extensões de vetor SIMD que permitem processar múltiplos dados com uma única instrução.
+
+Para quê:
+Acelerar operações em aplicações que lidam com grandes conjuntos de dados.
+Como:
+Adicionam novas instruções e registadores, permitindo processar mais dados por ciclo de clock.
+Exemplos de uso:
+Processamento de imagem, vídeo, IA, análise de dados, simulações científicas.
+AVX2 e AVX-512:
+AVX2 expande o suporte para 256 bits e AVX-512 para 512 bits, com novas instruções e funcionalidades.
+
+Mais Detalhes:
+
+AVX:
+Foi introduzida pela Intel em 2011, com a microarquitetura Sandy Bridge.
+
+AVX2:
+Introduzida em 2013, com a microarquitetura Haswell, expande as operações para 256 bits.
+AVX-512:
+Introduzida em 2016, com o coprocessador Knights Landing, e em 2017, com processadores Skylake, expande as operações para 512 bits, com novas instruções e uma nova codificação de prefixo EVEX.
+Benefícios:
+Aceleração do desempenho, maior eficiência em cálculos intensivos, suporte para uma gama mais ampla de aplicações.
+Como verificar o suporte AVX:
+É possível verificar as especificações do processador no site da Intel ou da AMD para verificar se suporta AVX, AVX2 ou AVX-512.
+
+
+
 ## Intrisics do GCC
 
 ## Suporte do OpenMP?

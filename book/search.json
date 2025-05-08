@@ -447,7 +447,7 @@
     "href": "freertos-resumo.html",
     "title": "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
     "section": "",
-    "text": "Resumo sobre o Minicurso, falando de FreeRTOS e assuntos abordados.",
+    "text": "Conteúdo abordado\nEste minicurso tem como objetivo apresentar os principais conceitos de programação para sistemas embarcados utilizando o FreeRTOS no ESP32. Ao longo das aulas, os participantes irão explorar recursos fundamentais do sistema operacional em tempo real e, ao final, aplicar os conhecimentos adquiridos no desenvolvimento de um projeto prático e funcional.\nDurante o curso, serão abordados os seguintes tópicos: * Co-rotinas * Tasks (Tarefas) * Semáforos e Mutex * Task Notifications * Filas (Queues) * Timers * Grupos de Eventos (Event Groups) * Interrupções (Interruptions)",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS"
     ]
@@ -527,6 +527,16 @@
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "freertos-resumo.html#projeto-final",
+    "href": "freertos-resumo.html#projeto-final",
+    "title": "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "Projeto final",
+    "text": "Projeto final\nO projeto final consiste na criação de uma dashboard web interativa, hospedada diretamente no ESP32, com os seguintes recursos: * Leitura de entradas analógicas e digitais * Exibição do estado atual das saídas digitais * Leitura de temperatura e umidade via sensor DHT11 * Controle das saídas digitais pela interface web * Transmissão de dados em tempo real via WebSocket\nO ESP32 atuará como servidor web e também como servidor WebSocket, eliminando a necessidade de servidores externos.\nAlém disso, a configuração das credenciais de rede Wi-Fi será realizada via comandos enviados pela interface serial.",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS"
     ]
   }
 ]

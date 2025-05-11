@@ -1,24 +1,125 @@
+---
+bibliography: references.bib
+---
+
 # Introdução à Programação para Sistemas Embarcados com FreeRTOS
 
--- Luiz Gustavo Takeda <br>
+-- Luiz Takeda <br>
 <luiztakeda@alunos.utfpr.edu.br>
 
 > __Resumo:__
 > Texto resumo
 
-
-Texto do Minicurso sobre LLVM.
-
 ## Introdução {#sec-freertos-intro}
+
+Explicar o objetivo e conteudo abordado.
+
+Fazer um nivelamento de conhecimento
+
+ - Oque é um sistema operacional de tempo real e diferença entre um "convencional"
+ - Oque é o freeRTOS
+ - Oque é esp32 e esp-idf
+ - Explicar a necessidade de um sistema de tempo real em um sistema embarcado
 
 ## Projeto FreeRTOS
 
+Explicar os exemplos trabalhados para cada conteúdo abordado
+
+- **Co-rotinas**
+- **Tarefas** (Tasks)
+- **Semáforos e Mutex**
+- **Notificações de Tarefas** (Task Notifications)
+- **Filas** (Queues)
+- **Timers**
+- **Grupos de Eventos** (Event Groups)
+- **Interrupções** (Interruptions)
+
+Descrever oque será eloborado com mais robustes utilizando oque foi aprendido, para o projeto final da dashboard.
+
 ## Ferramentas e Recursos
+
+Descrever ferramentas como hardware e dev tools
+
+Citar os recursos utilziados como fundamento, a documentação do esp-idf e freeRTOS
+
+A base teórica do minicurso será fundamentada na documentação oficial do FreeRTOS [@freertosdoc] e na documentação do ESP-IDF [@espidfdoc], que servirão como referências para o conteúdo abordado.
 
 ## Programação
 
-Sugiro apresentar o conteúdo com exemplos de tarefas e outros temas relacionados a Sistemas Operacionais. Filas, semáforos, comunicação entre tarefas...
+Explicar o funcionamento base do freeRTOS
+
+### Co-rotinas
+
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+
+### Tarefas (Tasks)
+
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+
+### Semáforos e Mutex
+ 
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+ 
+### Notificações de Tarefas (Task Notifications)
+
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+
+### Filas (Queues)
+
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+
+### Timers
+
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+
+### Grupos de Eventos (Event Groups)
+
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+
+### Interrupções (Interruptions)
+
+ - Explicar oque é tarefas
+ - Utilidade
+ - Exemplo
+ - Paralelo com algo de um SO "Padrão"
+
+## Projeto final
+
+### Estrutura
+
+Apresentar a organização do código e suas partes
+
+### Execução
+
+Desmontração do projeto em execução
+
+### Pontos de melhorias
+
+Exibir pontos de melhorias como segurança
 
 ## Considerações Finais {#sec-freertos-consid-finais}
 
+
+## Referências
 

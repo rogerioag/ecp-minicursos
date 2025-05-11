@@ -423,7 +423,7 @@
     "href": "freertos.html",
     "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
     "section": "",
-    "text": "7.1 Introdução\n– Luiz Gustavo Takeda  luiztakeda@alunos.utfpr.edu.br\nTexto do Minicurso sobre LLVM.",
+    "text": "7.1 Introdução\n– Luiz Takeda  luiztakeda@alunos.utfpr.edu.br\nExplicar o objetivo e conteudo abordado.\nFazer um nivelamento de conhecimento",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
@@ -434,7 +434,7 @@
     "href": "freertos.html#projeto-freertos",
     "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
     "section": "7.2 Projeto FreeRTOS",
-    "text": "7.2 Projeto FreeRTOS",
+    "text": "7.2 Projeto FreeRTOS\nExplicar os exemplos trabalhados para cada conteúdo abordado\n\nCo-rotinas\nTarefas (Tasks)\nSemáforos e Mutex\nNotificações de Tarefas (Task Notifications)\nFilas (Queues)\nTimers\nGrupos de Eventos (Event Groups)\nInterrupções (Interruptions)\n\nDescrever oque será eloborado com mais robustes utilizando oque foi aprendido, para o projeto final da dashboard.",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
@@ -445,7 +445,7 @@
     "href": "freertos.html#ferramentas-e-recursos",
     "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
     "section": "7.3 Ferramentas e Recursos",
-    "text": "7.3 Ferramentas e Recursos",
+    "text": "7.3 Ferramentas e Recursos\nDescrever ferramentas como hardware e dev tools\nCitar os recursos utilziados como fundamento, a documentação do esp-idf e freeRTOS\nA base teórica do minicurso será fundamentada na documentação oficial do FreeRTOS (Richard Barry 2025) e na documentação do ESP-IDF (Espressif-Systems 2025), que servirão como referências para o conteúdo abordado.",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
@@ -456,7 +456,7 @@
     "href": "freertos.html#programação",
     "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
     "section": "7.4 Programação",
-    "text": "7.4 Programação\nSugiro apresentar o conteúdo com exemplos de tarefas e outros temas relacionados a Sistemas Operacionais. Filas, semáforos, comunicação entre tarefas…",
+    "text": "7.4 Programação\nExplicar o funcionamento base do freeRTOS\n\n7.4.1 Co-rotinas\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”\n\n\n\n7.4.2 Tarefas (Tasks)\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”\n\n\n\n7.4.3 Semáforos e Mutex\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”\n\n\n\n7.4.4 Notificações de Tarefas (Task Notifications)\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”\n\n\n\n7.4.5 Filas (Queues)\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”\n\n\n\n7.4.6 Timers\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”\n\n\n\n7.4.7 Grupos de Eventos (Event Groups)\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”\n\n\n\n7.4.8 Interrupções (Interruptions)\n\nExplicar oque é tarefas\nUtilidade\nExemplo\nParalelo com algo de um SO “Padrão”",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
@@ -466,8 +466,8 @@
     "objectID": "freertos.html#sec-freertos-consid-finais",
     "href": "freertos.html#sec-freertos-consid-finais",
     "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
-    "section": "7.5 Considerações Finais",
-    "text": "7.5 Considerações Finais",
+    "section": "7.6 Considerações Finais",
+    "text": "7.6 Considerações Finais",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
@@ -501,6 +501,39 @@
     "text": "Referências\n\n\n\n\nEspressif-Systems. 2025. ESP-IDF Programming Guide. https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html.\n\n\nRichard Barry, The FreeRTOS Team. 2025. Mastering the FreeRTOS™ Real Time Kernel. https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book.",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS"
+    ]
+  },
+  {
+    "objectID": "freertos.html#projeto-final",
+    "href": "freertos.html#projeto-final",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "7.5 Projeto final",
+    "text": "7.5 Projeto final\n\n7.5.1 Estrutura\nApresentar a organização do código e suas partes\n\n\n7.5.2 Execução\nDesmontração do projeto em execução\n\n\n7.5.3 Pontos de melhorias\nExibir pontos de melhorias como segurança",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "freertos.html#referências",
+    "href": "freertos.html#referências",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "7.7 Referências",
+    "text": "7.7 Referências\n\n\n\n\nEspressif-Systems. 2025. ESP-IDF Programming Guide. https://docs.espressif.com/projects/esp-idf/en/latest/esp32/index.html.\n\n\nRichard Barry, The FreeRTOS Team. 2025. Mastering the FreeRTOS™ Real Time Kernel. https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book.",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
+    ]
+  },
+  {
+    "objectID": "freertos.html#sec-freertos-intro",
+    "href": "freertos.html#sec-freertos-intro",
+    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "",
+    "text": "Oque é um sistema operacional de tempo real e diferença entre um “convencional”\nOque é o freeRTOS\nOque é esp32 e esp-idf\nExplicar a necessidade de um sistema de tempo real em um sistema embarcado",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
     ]
   }
 ]

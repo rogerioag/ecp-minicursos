@@ -1,0 +1,4 @@
+# Minicurso: Introdução à Computação Quântica usando `Qiskit`
+
+
+Resumo do Minicurso sobre Computação Quântica {{< lipsum 2 >}}

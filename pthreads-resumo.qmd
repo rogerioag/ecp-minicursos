@@ -1,3 +1,3 @@
 # Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.
 
-Resumo de Pthreads.
+Resumo do minicurso sobre Pthreads.. {{< lipsum 2 >}}

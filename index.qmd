@@ -9,18 +9,17 @@ Este livro reune o material dos Minicursos preparados e ministrados no contexto 
 
 ## Contribuidores
 
-| Nome | E-mail | Categoria                          | Minicurso/Tema |
-| ---- | ------------- | ------- | --------- |
+| Nome | E-mail | Categoria | Minicurso/Tema |
+| ------------- | ------------- | ------- | ------- |
 | Rogério Aparecido Gonçalves | rogerioag@utfpr.edu.br             | Docente | Coordenador      |
 | Joao Fabrício Filho        | joaof@utfpr.edu.br                 | Docente | Vice-Coordenador |
 | Guilherme A. Lopes          | guiguigui098@gmail.com             | Aluno   | Vetorização |
 | Paulo H. P. da Silva        | phps6200@gmail.com                 | Aluno   | OpenMP |
-| William W. T. Rodrigues     | williamwallace@alunos.utfpr.edu.br | Aluno   | Pthreads |
+| William W. T. Rodrigues     | williamwallace@alunos.utfpr.edu.br | Aluno   | Pthreads; Qiskit |
 | Gabriela P. Sereniski       | gabsereniski@gmail.com             | Aluno   | Cluster |
-| Gabriel M. L. Pereira       | gabrielmlobato@gmail.com           | Aluno   | IA |
+| Gabriel M. L. Pereira       | gabrielmlobato@gmail.com           | Aluno   | IA/pyTorch |
 | João Victor Briganti de Oliveira       | joliveira.2022@alunos.utfpr.edu.br           | Aluno   | LLVM |
 | Luiz Gustavo Takeda | luiztakeda@alunos.utfpr.edu.br | Aluno | FreeRTOS |
-
 
 <!--
 ::: {.callout-note appearance="simple"}

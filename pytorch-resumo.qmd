@@ -1,0 +1,3 @@
+# Minicurso: Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs
+
+Resumo sobre o minicurso sobre PyTorch {{< lipsum 2 >}}

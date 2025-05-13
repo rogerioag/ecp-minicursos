@@ -1,11 +1,10 @@
-# LLVM
+# Introdução à Infraestrutura de Compilação do LLVM
 
 -- João Victor Briganti de Oliveira  <br>
 <joliveira.2022@alunos.utfpr.edu.br>
 
 > __Resumo:__
-> Texto do Resumo **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
-**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+> Resumo do minicurso sobre LLVM. {{< lipsum 2 >}}
 
 
 Texto do Minicurso sobre LLVM.

@@ -1,0 +1,18 @@
+# Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs
+
+-- Gabriel M. L. Pereira <br>
+<gabrielmlobato@gmail.com>
+
+> __Resumo:__
+> Texto do Resumo  {{< lipsum 2 >}}
+
+## Introdução {#sec-pytorch-intro}
+
+## Ferramentas
+
+## Bibliotecas e Implementações
+
+## Modelo de Programação e Execução
+...
+
+## Considerações Finais {#sec-pytorch-consid-finais}

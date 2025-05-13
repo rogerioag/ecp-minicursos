@@ -20,14 +20,36 @@ Como produção de recursos educacionais para serem disponibilizados, pretendemo
 | Minicurso | Responsável |
 | ---- | ---- |
 | Introdução à Computação Paralela e Programação Multithreading usando Pthreads | Willian Wallace |
-| Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação | Paulo Henrique |
+| Introdução à Programação Paralela com `OpenMP` | Paulo Henrique |
 | Uso das Diretivas de Compilação do padrão OpenACC | em aberto |
 | Introdução  à  Computação Paralela em Sistemas Heterogêneos: Programação para GPUs com a Plataforma CUDA | em aberto |
-| Infraestrutura de Compilação do LLVM | Briganti |
+| Introdução à Infraestrutura de Compilação do LLVM | João Victor Briganti |
 | Introdução à Computação Heterogênea com OpenCL | em aberto |
-| Introdução ao uso de pyTorch para Computação em GPUs para Implementação de Modelos de Aprendizagem Profunda | em aberto |
+| Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs | Gabriel Lobato |
 | Introdução ao uso de TensorFlow para Computação em GPUs para Implementação de Modelos de Aprendizagem Profunda | em aberto |
 | Introdução à Modernização de Código | em aberto |
 | Introdução à Computação Heterogênea com a Linguagem Julia | em aberto |
 | Suporte a Aceleradores em Linguagens de Programação Modernas | em aberto |
 | Introdução à Programação para Sistemas Embarcados com FreeRTOS | Luiz Gustavo Takeda |
+| Introdução à Computação Quântica usando `Qiskit` | Willian Wallace |
+
+
+## Desenvolvimento
+
+## Orientações Gerais
+
+### Figuras
+
+As figuras utilizadas em cada um dos materiais devem ser colocadas dentro do diretório `images/<nome-do-minicurso>`.
+
+### Código dos Exemplos
+
+O código dos exemplos apresentados no material deve estar na pasta `src/<nome-do-minicurso>`, por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_  devem estar no diretório `src/pthreads`, podendo cada exemplo estar em um subdiretório dentro de `src/pthreads`.
+
+### Reuniões
+
+As reuniões tem acontecido online via [`Google Meet`](https://meet.google.com/ixf-iznf-eye).
+
+#### Reunião (12/05/2025 - Tarde)
+
+* Falamos sobre a estrutura do projeto e das ferramentas ([quarto](www.quarto.org) e markdown) a serem utilizadas. [__Presentes:__ Willian, Gabriel, Paulo e Guilherme]. William sugeriu incluirmos um Minicurso de Computação Quântica com [`Qiskit`](https://www.ibm.com/quantum/qiskit).

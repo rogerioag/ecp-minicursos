@@ -4,7 +4,7 @@
 <williamwallace@alunos.utfpr.edu.br>
 
 > __Resumo:__
-> Texto do Resumo {{< lipsum 2 >}}
+> Texto do Resumo  {{< lipsum 2 >}}
 
 ## Introdução {#sec-pthreads-intro}
 
@@ -18,9 +18,9 @@
 
 ## Modelo de Programação e Execução
 
-A Figura \ref{teste}
+A @fig-pthreads
 
-![The San Juan Mountains are beautiful \label{teste}](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
+![Pthreads](images/pthreads/pthreads.png "Pthreads"){#fig-pthreads fig-alt="Pthreads"}
 
 
 ```C

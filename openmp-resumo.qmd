@@ -1,2 +1,3 @@
 # Minicurso: Introdução à Programação Paralela com OpenMP
-Resumo de OpenMP.
+
+Resumo sobre o Minicurso de  OpenMP. {{< lipsum 2 >}}

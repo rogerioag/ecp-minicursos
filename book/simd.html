@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ia-resumo.html" rel="next">
+<link href="./pytorch-resumo.html" rel="next">
 <link href="./simd-resumo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -203,8 +203,8 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./ia-resumo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Minicurso: IA</span></a>
+            <a href="./pytorch-resumo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Minicurso: Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -212,8 +212,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ia.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">IA</span></span></a>
+  <a href="./pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs</span></span></a>
   </div>
 </li>
       </ul>
@@ -221,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./llvm-resumo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Minicurso: LLVM</span></a>
+ <span class="menu-text">Minicurso: Introdução à Infraestrutura de Compilação do LLVM</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -230,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llvm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">LLVM</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introdução à Infraestrutura de Compilação do LLVM</span></span></a>
   </div>
 </li>
       </ul>
@@ -254,13 +254,30 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+            <a href="./quantica-resumo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Minicurso: Introdução à Computação Quântica usando `Qiskit`</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quantica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução à Computação Quântica usando <code>Qiskit</code></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./a1.html" class="sidebar-item-text sidebar-link">
@@ -281,9 +298,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#sec-vet-intro" id="toc-sec-vet-intro" class="nav-link active" data-scroll-target="#sec-vet-intro"><span class="header-section-number">4.1</span> Introdução</a></li>
   <li><a href="#vetorização" id="toc-vetorização" class="nav-link" data-scroll-target="#vetorização"><span class="header-section-number">4.2</span> Vetorização</a></li>
-  <li><a href="#intrisics-do-gcc" id="toc-intrisics-do-gcc" class="nav-link" data-scroll-target="#intrisics-do-gcc"><span class="header-section-number">4.3</span> Intrisics do GCC</a></li>
-  <li><a href="#suporte-do-openmp" id="toc-suporte-do-openmp" class="nav-link" data-scroll-target="#suporte-do-openmp"><span class="header-section-number">4.4</span> Suporte do OpenMP?</a></li>
-  <li><a href="#sec-vet-consid-finais" id="toc-sec-vet-consid-finais" class="nav-link" data-scroll-target="#sec-vet-consid-finais"><span class="header-section-number">4.5</span> Considerações Finais</a></li>
+  <li><a href="#suporte-do-hardware" id="toc-suporte-do-hardware" class="nav-link" data-scroll-target="#suporte-do-hardware"><span class="header-section-number">4.3</span> Suporte do Hardware</a></li>
+  <li><a href="#intrisics-do-gcc" id="toc-intrisics-do-gcc" class="nav-link" data-scroll-target="#intrisics-do-gcc"><span class="header-section-number">4.4</span> Intrisics do GCC</a></li>
+  <li><a href="#suporte-do-openmp" id="toc-suporte-do-openmp" class="nav-link" data-scroll-target="#suporte-do-openmp"><span class="header-section-number">4.5</span> Suporte do OpenMP?</a></li>
+  <li><a href="#sec-vet-consid-finais" id="toc-sec-vet-consid-finais" class="nav-link" data-scroll-target="#sec-vet-consid-finais"><span class="header-section-number">4.6</span> Considerações Finais</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/rogerioag/ecp-minicursos/edit/master/simd.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -311,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
 
 <p>– Guilherme A. Lopes <br> <a href="mailto:guiguigui098@gmail.com" class="email">guiguigui098@gmail.com</a></p>
 <blockquote class="blockquote">
-<p><strong>Resumo:</strong> Texto do Resumo <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.</p>
+<p><strong>Resumo:</strong> Texto do Resumo Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat. Ut ut condimentum augue, nec eleifend nisl. Sed facilisis egestas odio ac pretium. Pellentesque consequat magna sed venenatis sagittis. Vivamus feugiat lobortis magna vitae accumsan. Pellentesque euismod malesuada hendrerit. Ut non mauris non arcu condimentum sodales vitae vitae dolor. Nullam dapibus, velit eget lacinia rutrum, ipsum justo malesuada odio, et lobortis sapien magna vel lacus. Nulla purus neque, hendrerit non malesuada eget, mattis vel erat. Suspendisse potenti.</p>
 </blockquote>
 <p>Texto do Minicurso de Vetorização.</p>
 <section id="sec-vet-intro" class="level2" data-number="4.1">
@@ -320,15 +338,25 @@ ul.task-list li input[type="checkbox"] {
 <section id="vetorização" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="vetorização"><span class="header-section-number">4.2</span> Vetorização</h2>
 </section>
-<section id="intrisics-do-gcc" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="intrisics-do-gcc"><span class="header-section-number">4.3</span> Intrisics do GCC</h2>
+<section id="suporte-do-hardware" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="suporte-do-hardware"><span class="header-section-number">4.3</span> Suporte do Hardware</h2>
+<p><strong>Intel AVX</strong></p>
+<p>AVX, ou Advanced Vector Extensions, são extensões de vetor SIMD (Single Instruction, Multiple Data) de 256 bits para processadores Intel e AMD que usam a arquitetura x86. Estas extensões permitem que os processadores executem operações matemáticas mais complexas e intensivas em dados de forma mais eficiente, acelerando o desempenho em aplicações que lidam com grandes conjuntos de dados, como processamento de imagem, vídeo, IA, entre outras. Em resumo:</p>
+<p>O quê: Extensões de vetor SIMD que permitem processar múltiplos dados com uma única instrução.</p>
+<p>Para quê: Acelerar operações em aplicações que lidam com grandes conjuntos de dados. Como: Adicionam novas instruções e registadores, permitindo processar mais dados por ciclo de clock. Exemplos de uso: Processamento de imagem, vídeo, IA, análise de dados, simulações científicas. AVX2 e AVX-512: AVX2 expande o suporte para 256 bits e AVX-512 para 512 bits, com novas instruções e funcionalidades.</p>
+<p>Mais Detalhes:</p>
+<p>AVX: Foi introduzida pela Intel em 2011, com a microarquitetura Sandy Bridge.</p>
+<p>AVX2: Introduzida em 2013, com a microarquitetura Haswell, expande as operações para 256 bits. AVX-512: Introduzida em 2016, com o coprocessador Knights Landing, e em 2017, com processadores Skylake, expande as operações para 512 bits, com novas instruções e uma nova codificação de prefixo EVEX. Benefícios: Aceleração do desempenho, maior eficiência em cálculos intensivos, suporte para uma gama mais ampla de aplicações. Como verificar o suporte AVX: É possível verificar as especificações do processador no site da Intel ou da AMD para verificar se suporta AVX, AVX2 ou AVX-512.</p>
 </section>
-<section id="suporte-do-openmp" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="suporte-do-openmp"><span class="header-section-number">4.4</span> Suporte do OpenMP?</h2>
+<section id="intrisics-do-gcc" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="intrisics-do-gcc"><span class="header-section-number">4.4</span> Intrisics do GCC</h2>
+</section>
+<section id="suporte-do-openmp" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="suporte-do-openmp"><span class="header-section-number">4.5</span> Suporte do OpenMP?</h2>
 <p>…</p>
 </section>
-<section id="sec-vet-consid-finais" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="sec-vet-consid-finais"><span class="header-section-number">4.5</span> Considerações Finais</h2>
+<section id="sec-vet-consid-finais" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="sec-vet-consid-finais"><span class="header-section-number">4.6</span> Considerações Finais</h2>
 
 
 </section>
@@ -758,8 +786,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ia-resumo.html" class="pagination-link" aria-label="Minicurso: IA">
-        <span class="nav-page-text">Minicurso: IA</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./pytorch-resumo.html" class="pagination-link" aria-label="Minicurso: Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs">
+        <span class="nav-page-text">Minicurso: Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

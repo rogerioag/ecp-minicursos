@@ -4,8 +4,7 @@
 <phps6200@gmail.com>
 
 > __Resumo:__
-> Texto do Resumo **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
-**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+> Resumo sobre o minicurso de OpenMP. {{< lipsum 2 >}}
 
 Texto do Minicurso OpenMP.
 

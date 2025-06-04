@@ -24,6 +24,8 @@ book:
     - part: simd-resumo.qmd
       chapters:
         - simd.qmd
+      bibliography:
+        - main: references.bib
     - part: pytorch-resumo.qmd
       chapters:
         - pytorch.qmd
@@ -45,4 +47,6 @@ format:
     cover-image: images/cover.png
     code-link: true
 
-
+filters:
+  - multibib
+validate-yaml: false

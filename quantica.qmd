@@ -18,3 +18,5 @@
 ## Exemplos de Aplicações
 
 ## Considerações Finais {#sec-quant-consid-finais}
+
+## Referências

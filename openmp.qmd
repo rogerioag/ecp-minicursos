@@ -21,3 +21,5 @@ Texto do Minicurso OpenMP.
 ...
 
 ## Considerações Finais {#sec-openmp-consid-finais}
+
+## Referências

@@ -92,9 +92,9 @@ No entanto, a responsabilidade pelo agendamento e pela distribuição das thread
 ## Bibliotecas e Implementações
 
 
-## Exemplos práticos com Pthreads
+## Exemplos Práticos com Pthreads
 
-Nesta seção, apresentamos exemplos simples e didáticos para ilustrar o uso da biblioteca Pthreads em C.
+Nesta seção, apresentamos exemplos simples e didáticos para ilustrar o uso da biblioteca `Pthreads` em C.
 
 ### Exemplo 1 – Hello World com threads
 
@@ -105,10 +105,10 @@ Nesta seção, apresentamos exemplos simples e didáticos para ilustrar o uso da
 
 void *thread(void *vargp);
 
-int main() 
+int main()
 {
     pthread_t tid;
-    printf("Hello World da thread principal!\n");
+    printf("Thread[%lu]: Hello World da thread principal!\n", (long int) pthread_self());
     pthread_create(&tid, NULL, thread, NULL);
     pthread_join(tid, NULL);
     pthread_exit(NULL);
@@ -116,9 +116,21 @@ int main()
 
 void *thread(void *vargp)
 {
-    printf("Hello World da thread criada pela thread principal!\n"); 
+    printf("Thread[%lu]: Hello World da thread criada pela thread principal!\n", (long int) pthread_self());
     pthread_exit(NULL);
 }
+```
+
+O exemplo pode ser compilado utilizando o `Makefile` disponibilizado:
+
+
+```bash
+$ make
+gcc hello-world.c -o hello-world.exe
+$ ./hello-world.exe
+Thread[139899883358016]: Hello World da thread principal!
+Thread[139899883353792]: Hello World da thread criada pela thread principal!
+$
 ```
 
 ---

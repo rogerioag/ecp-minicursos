@@ -5,7 +5,6 @@
 
 > __Resumo:__
 >  Este minicurso visa introduzir os conceitos fundamentais da computação paralela e da programação com threads utilizando a biblioteca Pthreads, padrão POSIX. Serão apresentados os princípios de execução concorrente, criação e gerenciamento de threads, sincronização com mutexes, e boas práticas para evitar condições de corrida e deadlocks.
-  {{< lipsum 2 >}}
 
 ## Introdução {#sec-pthreads-intro}
 
@@ -16,8 +15,6 @@ Em sistemas com múltiplos núcleos de processamento, as threads podem ser execu
 Sistemas operacionais modernos oferecem diferentes formas de suporte a threads. O Solaris adota um modelo híbrido com lightweight processes (LWPs), que atuam como intermediários entre threads de usuário e o kernel. O Windows 2000 utiliza um modelo com mapeamento direto entre threads de usuário e do kernel. Já o Linux trata threads como tarefas (tasks), criando-as por meio da chamada de sistema clone, que permite diferentes níveis de compartilhamento entre threads.
 
 A programação com múltiplas threads oferece benefícios como economia de recursos, melhor aproveitamento dos processadores disponíveis e maior interatividade nas aplicações, sendo uma abordagem essencial para o desenvolvimento de sistemas concorrentes e responsivos.
-
-{{< lipsum 2 >}}
 
 ## Padrão POSIX
 
@@ -98,6 +95,7 @@ Nesta seção, apresentamos exemplos simples e didáticos para ilustrar o uso da
 
 ### Exemplo 1 – Hello World com threads
 
+
 ```C
 #include <pthread.h>
 #include <stdlib.h>
@@ -119,6 +117,18 @@ void *thread(void *vargp)
     printf("Thread[%lu]: Hello World da thread criada pela thread principal!\n", (long int) pthread_self());
     pthread_exit(NULL);
 }
+```
+
+Preparamos um `Makefile` para facilitar a compilação dos exemplos.
+
+```makefile
+all:	compile
+
+compile:	hello-world.c
+	gcc -lpthread hello-world.c -o hello-world.exe
+
+clean:
+	rm *.exe
 ```
 
 O exemplo pode ser compilado utilizando o `Makefile` disponibilizado:

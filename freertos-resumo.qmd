@@ -6,7 +6,7 @@ bibliography: references.bib
 
 Este minicurso tem como objetivo apresentar os conceitos fundamentais da programação para sistemas embarcados, utilizando o FreeRTOS no ESP32. Ao longo das aulas, os participantes terão a oportunidade de explorar os principais recursos do sistema operacional em tempo real e, ao final, aplicar os conhecimentos adquiridos no desenvolvimento de um projeto prático e funcional.
 
-A base teórica do minicurso será fundamentada na documentação oficial do FreeRTOS [@freertosdoc] e na documentação do ESP-IDF [@espidfdoc], que servirão como referências para o conteúdo abordado.
+A base teórica do minicurso será fundamentada na documentação oficial do FreeRTOS [@freertosdoc], na documentação do ESP-IDF [@espidfdoc] e no livro Sistemas Operacionais:conceitos e Mecanismos [@so-maziero], que servirão como referências para o conteúdo abordado.
 
 ## Conteúdo abordado
 

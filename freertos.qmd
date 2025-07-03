@@ -8,18 +8,58 @@ bibliography: references.bib
 <luiztakeda@alunos.utfpr.edu.br>
 
 > __Resumo:__
-> Texto resumo
+> Este minicurso tem como objetivo apresentar os conceitos fundamentais da programação para sistemas embarcados, utilizando o FreeRTOS no ESP32. Ao longo das aulas, os participantes terão a oportunidade de explorar os principais recursos do sistema operacional em tempo real e, ao final, aplicar os conhecimentos adquiridos no desenvolvimento de um projeto prático e funcional.
 
 ## Introdução {#sec-freertos-intro}
 
-Explicar o objetivo e conteudo abordado.
+Com o crescimento da __*Edge Computing*__ e da __*Internet of Things*__ (*IOT*), os programas embarcados tornaram-se cada vez mais complexos. 
+Esses sistemas precisam lidar com múltiplos dados e tomar decisões em tempo real, exigindo que os desenvolvedores projetem arquiteturas capazes de responder e agir diante de diversos eventos assíncronos de forma eficiente.
 
-Fazer um nivelamento de conhecimento
+Para atender a essa nova realidade, surgiu um tipo de sistema operacional enxuto, projetado especialmente para dispositivos com recursos computacionais limitados. 
+Esses sistemas facilitam a organização do código, promovem a modularidade e otimizam o uso do hardware disponível. 
+Assim nasceram os __*Real-Time Operating Systems*__ (*RTOS*), que permitem lidar com múltiplas tarefas concorrentes e atender às exigências de processamento em tempo real.
 
- - Oque é um sistema operacional de tempo real e diferença entre um "convencional"
- - Oque é o freeRTOS
- - Oque é esp32 e esp-idf
- - Explicar a necessidade de um sistema de tempo real em um sistema embarcado
+### O que é RTOS?
+
+Os *Real-Time Operating System (RTOS)* são sistemas operacionais nos quais o fator **tempo** é essencial para o cumprimento de suas funções.
+Ao contrário da ideia comum, um sistema operacional de tempo real não precisa ser extremamente rápido, mas sim ser **previsível**, ou seja, deve garantir que determinadas tarefas sejam executadas dentro de prazos conhecidos e controláveis [@so-maziero].
+
+Existem dois tipos principais de RTOS: 
+ 
+ - __*Hard*__: O tempo de resposta é crítico, e o não cumprimento pode causar efeitos catastróficos no sistema controlado, com possíveis consequências humanas, econômicas ou ambientais. Um exemplo seria o controle de marcapasso ou de um sistema de freios automotivo.
+ - __*Soft*__: O descumprimento do tempo de resposta é tolerado, ainda que perceptível. Isso pode degradar o desempenho do sistema, mas sem consequências graves. Exemplos incluem tocadores de mídia ou sistemas de climatização residenciais.
+
+### Porque usar FreeRTOS?
+
+O FreeRTOS é um dos diversos sistemas operacionais de tempo real disponíveis, podendo ser configurado para atuar como um sistema *hard* ou *soft real-time*, dependendo das exigências do projeto [@freertosdoc].
+
+Alguns dos benefícios de utilizar o FreeRTOS:
+
+- **Código aberto (Open Source)**: Distribuído sob a licença MIT, o FreeRTOS pode ser utilizado livremente em projetos comerciais e acadêmicos sem custo.
+- **Manutenibilidade e extensibilidade**: Por abstrair detalhes de temporização e possuir baixa interdependência entre módulos, alterações em uma parte do sistema têm pouco impacto no restante da aplicação. Além disso, é fácil adicionar novos módulos.
+- **Modularidade**: Cada tarefa (*task*) é independente das demais, com responsabilidades bem definidas. Isso favorece organização e clareza no desenvolvimento.
+- **Desenvolvimento em equipe**: Com interfaces bem definidas entre os módulos, diferentes desenvolvedores podem trabalhar de forma paralela e independente.
+- **Facilidade de teste**: A independência entre tarefas permite testar partes do sistema isoladamente, o que melhora a confiabilidade do código.
+- **Reutilização de código**: A modularidade e as abstrações do FreeRTOS facilitam o reaproveitamento de componentes já desenvolvidos em outros projetos.
+- **Eficiência aprimorada**: Aplicações podem ser orientadas a eventos, evitando o uso de técnicas ineficientes como *polling*, o que economiza recursos computacionais.
+
+### O que é ESP32 e ESP-IDF
+
+O **ESP32** é um *System on Chip* (SoC) desenvolvido pela Espressif Systems, que reúne os principais componentes necessários para a criação de dispositivos IoT [@espidfdoc].
+
+Alguns dos seus recursos incluem:
+
+- Conectividade Wi-Fi (2.4 GHz)
+- Bluetooth (clássico e BLE)
+- Dois núcleos de alta performance Xtensa® 32-bit LX6
+- Co-processador de baixo consumo
+- Diversos periféricos integrados (GPIO, ADC, DAC, PWM, SPI, I2C, UART, etc.)
+
+Para o desenvolvimento de firmware, a Espressif disponibiliza o *framework* **ESP-IDF** (*Espressif IoT Development Framework*), que oferece um conjunto robusto de APIs para lidar com funcionalidades como Wi-Fi, Bluetooth, sockets TCP/IP, gerenciamento de tarefas e muito mais.
+
+O ESP-IDF é construído sobre o **FreeRTOS**, permitindo o desenvolvimento de aplicações multitarefa com suporte a tempo real, tornando o ESP32 uma plataforma poderosa e acessível para projetos embarcados modernos.
+
+Ao longo deste minicurso, exploraremos os principais conceitos do FreeRTOS aplicados ao ESP32, com foco em multitarefa, sincronização e comunicação entre tarefas. A abordagem será teórico-prática, culminando no desenvolvimento de um projeto funcional que integra sensores, interface web e comunicação em tempo real.
 
 ## Projeto FreeRTOS
 

@@ -38,8 +38,15 @@ book:
     - part: quantica-resumo.qmd
       chapters: 
         - quantica.qmd
+    - references.qmd
   appendices:
     - a1.qmd
+
+citeproc: true
+bibliography: references.bib
+bibliographystyle: apa
+# csl: https://www.zotero.org/styles/apa-with-abstract
+
 
 format:
   html: 

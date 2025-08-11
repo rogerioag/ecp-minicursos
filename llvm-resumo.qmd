@@ -1,3 +1,3 @@
 # Minicurso: Introdução à Infraestrutura de Compilação do LLVM
 
-Resumo sobre LLVM. {{< lipsum 2 >}}
+Este minicurso tem como objetivo introduzir o LLVM, abordando desde a instalação e configuração da ferramenta até sua utilização prática. Ao longo do conteúdo, exploraremos a criação de um JIT (Just-In-Time compiler) e a implementação de passes, além de apresentar, de forma breve, conceitos técnicos fundamentais de compiladores. A proposta é oferecer uma visão prática e aplicada, permitindo que o participante compreenda o funcionamento básico do LLVM e saiba como utilizá-lo em seus próprios projetos.

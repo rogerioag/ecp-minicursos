@@ -4,18 +4,956 @@
 <williamwallace@alunos.utfpr.edu.br>
 
 > __Resumo:__
-> Texto do Resumo {{< lipsum 2 >}}
+> Este minicurso apresenta uma introdução abrangente à computação quântica, explorando seus fundamentos teóricos, arquiteturas físicas de qubits, algoritmos relevantes e aplicações práticas. Utilizando o framework Qiskit da IBM, o curso combina conceitos da mecânica quântica com exemplos de programação, permitindo ao leitor construir e simular circuitos quânticos reais. 
 
 
 ## Introdução {#sec-quant-intro}
 
-## Computação Quântica
+A computação quântica é um paradigma de processamento de informação baseado diretamente nos princípios da **mecânica quântica**, ramo da física que descreve o comportamento da matéria e da energia em escalas extremamente pequenas, como átomos, elétrons e fótons.  
+Assim como a física quântica introduziu conceitos contraintuitivos — como superposição, entrelaçamento e dualidade onda-partícula — a computação quântica aproveita esses fenômenos para processar informações de maneiras que não têm equivalente direto no mundo clássico.
 
-## Ferramentas
+Nos computadores tradicionais, a unidade básica de informação é o **bit**, que só pode assumir um de dois valores: **0** ou **1**. Já na computação quântica, a unidade é o **qubit** (*quantum bit*), que pode existir não apenas nos estados clássicos \(|0\rangle\) ou \(|1\rangle\), mas também em qualquer combinação linear deles, chamada **superposição**. Isso significa que um qubit pode representar 0 e 1 **ao mesmo tempo**, com diferentes amplitudes de probabilidade.
 
-## Modelo de Programação
+Fisicamente, um qubit não é apenas um conceito abstrato: ele precisa ser implementado em um sistema físico real capaz de apresentar comportamento quântico. Entre as implementações mais comuns estão:  
+- **Qubits supercondutores** – correntes elétricas oscilando em circuitos supercondutores a temperaturas próximas do zero absoluto (usados pela IBM e Google).  
+- **Qubits de íons aprisionados** – íons individuais suspensos no vácuo e manipulados com feixes de laser (IonQ, Honeywell).  
+- **Qubits fotônicos** – fótons individuais, codificando informação em sua polarização ou caminho (Xanadu, PsiQuantum).  
+- **Qubits de spin** – baseados no spin de elétrons aprisionados em semicondutores ou defeitos em diamantes (NV centers).  
+
+Independentemente da implementação física, todos compartilham as mesmas propriedades fundamentais:  
+- **Superposição** – capacidade de estar em múltiplos estados ao mesmo tempo.  
+- **Entrelaçamento** – correlação profunda entre qubits que persiste mesmo quando estão fisicamente separados.  
+- **Interferência** – manipulação das amplitudes de probabilidade para reforçar resultados corretos e cancelar resultados incorretos.  
+
+Essa diferença fundamental se traduz no **espaço de estados** disponível: enquanto um processador clássico com \(n\) bits só pode representar um estado por vez, um processador quântico com \(n\) qubits pode manipular simultaneamente \(2^n\) estados, explorando um paralelismo exponencial que pode oferecer vantagens significativas para certos problemas, como simulação de sistemas quânticos, criptografia e otimização complexa.
+
+
+### Breve História e Estado Atual da Tecnologia
+
+A ideia de um computador quântico foi formalmente proposta na década de 1980 por **Richard Feynman** e **Yuri Manin**, ao observarem que simular sistemas quânticos usando computadores clássicos é extremamente ineficiente, pois a quantidade de recursos necessários cresce exponencialmente com o tamanho do sistema. Eles sugeriram que apenas máquinas que também obedecessem às leis da mecânica quântica poderiam realizar tais simulações de forma eficiente.
+
+Nos anos 1990, o campo ganhou força com descobertas marcantes:  
+- **Algoritmo de Shor (1994)** – criado por *Peter Shor*, mostrou que um computador quântico poderia fatorar números grandes de forma exponencialmente mais rápida do que os melhores algoritmos clássicos conhecidos, ameaçando a criptografia RSA.  
+- **Algoritmo de Grover (1996)** – desenvolvido por *Lov Grover*, ofereceu uma aceleração quadrática na busca não estruturada, com impacto potencial em diversas áreas.
+
+Hoje, a tecnologia vive a chamada **era NISQ** (*Noisy Intermediate-Scale Quantum*), termo cunhado por John Preskill em 2018. Nessa fase:  
+- Os processadores possuem **dezenas a poucos centenas de qubits**.  
+- Os qubits são ruidosos, com tempos de coerência limitados.  
+- Os circuitos só podem ter profundidade restrita antes que o ruído degrade os resultados.  
+
+Mesmo assim, grandes avanços foram alcançados:  
+- Empresas como **IBM, Google, Rigetti, IonQ e Xanadu** oferecem acesso a computadores quânticos reais via nuvem, permitindo que pesquisadores e desenvolvedores experimentem com algoritmos quânticos sem possuir o hardware.  
+- Em 2019, o Google anunciou ter atingido a chamada **supremacia quântica**, realizando uma tarefa específica em seu processador *Sycamore* de 53 qubits que, segundo a empresa, levaria milhares de anos para um supercomputador clássico resolver.  
+- A IBM e outras empresas trabalham na escalabilidade, prevendo processadores com **mais de 1.000 qubits** nos próximos anos.
+
+Embora um **computador quântico universal e tolerante a falhas** ainda esteja distante, já é possível explorar aplicações práticas em otimização, simulação de materiais e química quântica, além de pesquisa fundamental. O campo está em rápida evolução, com constantes melhorias na fidelidade dos qubits, técnicas de correção de erros e novos modelos de arquitetura.
+
+### Tipos de Computadores Quânticos
+
+A computação quântica pode ser implementada de diferentes maneiras, cada uma explorando fenômenos quânticos específicos para armazenar e manipular informação. As principais arquiteturas são:
+
+#### 1. Supercondutores
+Os computadores quânticos supercondutores utilizam circuitos feitos de materiais que apresentam **supercondutividade** — ou seja, resistência elétrica nula — quando resfriados a temperaturas próximas do **zero absoluto** (cerca de 15–20 milikelvin, obtidos com refrigeradores de diluição).  
+O qubit é implementado como um circuito ressonante que pode oscilar entre dois estados de energia, controlados por micro-ondas.  
+- **Vantagens:** Escalabilidade relativamente alta e integração com tecnologias de fabricação já consolidadas na indústria de semicondutores.  
+- **Desafios:** Requerem temperaturas extremamente baixas e possuem tempos de coerência relativamente curtos.  
+- **Exemplos:** IBM (*IBM Quantum*), Google (*Sycamore*), Rigetti Computing.
+
+#### 2. Íons Aprisionados
+Nessa abordagem, **átomos carregados (íons)** são aprisionados em campos eletromagnéticos gerados por armadilhas de Paul ou Penning. Cada íon representa um qubit e seus estados quânticos são manipulados com **pulsos de laser** altamente precisos. O entrelaçamento é obtido via interações vibracionais compartilhadas entre os íons.  
+- **Vantagens:** Tempos de coerência muito longos e alta fidelidade nas operações.  
+- **Desafios:** Aumentar o número de íons em uma mesma armadilha e manter o controle preciso se torna difícil com a escalabilidade.  
+- **Exemplos:** IonQ, Honeywell Quantum Solutions (agora Quantinuum).
+
+#### 3. Fotônicos
+Nesta arquitetura, **fótons** (partículas de luz) são usados como qubits, geralmente codificando informação em propriedades como **polarização**, **modo espacial** ou **tempo de chegada**. A manipulação é feita por meio de divisores de feixe, moduladores de fase e detectores fotossensíveis.  
+- **Vantagens:** Operam à temperatura ambiente, com baixíssimo ruído e facilidade de transmissão por fibras ópticas (ideal para comunicação quântica).  
+- **Desafios:** Dificuldade em criar interações fortes entre fótons, o que complica a implementação de portas lógicas universais.  
+- **Exemplos:** Xanadu (fotônica baseada em luz comprimida), PsiQuantum.
+
+#### 4. Spin em Pontos Quânticos
+Essa abordagem utiliza **elétrons confinados** em nanodispositivos semicondutores chamados **pontos quânticos**. O qubit é representado pelo **spin** do elétron (para cima ou para baixo), manipulado por campos magnéticos ou elétricos.  
+- **Vantagens:** Compatibilidade com técnicas de fabricação de chips de silício e potencial de integração em larga escala.  
+- **Desafios:** Manter o isolamento contra ruído magnético e elétrico, e alcançar tempos de coerência suficientemente longos.  
+- **Exemplos:** Pesquisas da Intel e da Universidade de New South Wales.
+
+#### 5. Centros de Vacância de Nitrogênio em Diamante (NV Centers)
+Aqui, utiliza-se um **defeito na rede cristalina do diamante** em que um átomo de nitrogênio substitui um de carbono e há uma lacuna (vacância) adjacente. O spin do elétron associado a esse defeito é usado como qubit, controlado por micro-ondas e luz laser.  
+- **Vantagens:** Operam em temperatura ambiente e têm longos tempos de coerência, especialmente em diamantes isotopicamente puros.  
+- **Desafios:** Dificuldade em escalar para muitos qubits interconectados e no controle preciso de múltiplos defeitos.  
+- **Exemplos:** Pesquisa da Element Six, QuTech.
+
+---
+
+Cada tecnologia apresenta um **equilíbrio diferente entre fidelidade, tempo de coerência, velocidade de operação e escalabilidade**. Atualmente, não existe consenso sobre qual será a arquitetura dominante no futuro — é possível que diferentes tipos coexistam, cada um otimizando aplicações específicas.
+
+
+### Aplicações Reais e Promissoras
+
+Mesmo na **era NISQ** (*Noisy Intermediate-Scale Quantum*), na qual os processadores quânticos possuem limitações de escala e estão sujeitos a ruídos, a computação quântica já apresenta potencial para transformar diversas áreas. Algumas das aplicações mais relevantes incluem:
+
+#### 1. Simulação Quântica
+A mecânica quântica descreve naturalmente o comportamento de moléculas, átomos e partículas. Computadores clássicos têm dificuldade em simular sistemas quânticos complexos devido ao crescimento exponencial do espaço de estados. Já os computadores quânticos podem **modelar moléculas e reações químicas de forma nativa**, permitindo avanços na descoberta de novos medicamentos, catalisadores e materiais com propriedades únicas.
+
+#### 2. Otimização
+Muitos problemas do mundo real, como **roteirização de transporte**, **alocação de recursos** e **planejamento de produção**, são combinatórios e difíceis de resolver com eficiência por métodos clássicos. Algoritmos quânticos, como o **QAOA (Quantum Approximate Optimization Algorithm)**, podem encontrar soluções aproximadas com maior rapidez, tornando-se úteis para logística, telecomunicações e engenharia.
+
+#### 3. Criptografia
+A computação quântica tem impacto duplo na segurança digital:
+- **Ameaça**: Algoritmos como o de **Shor** podem fatorar grandes números exponencialmente mais rápido que os melhores métodos clássicos, comprometendo sistemas como RSA e ECC.
+- **Defesa**: Desenvolve-se a **criptografia quântica**, como a **Distribuição Quântica de Chaves (QKD)**, que utiliza as leis da física quântica para garantir segurança incondicional.
+
+#### 4. Aprendizado de Máquina Quântico (Quantum Machine Learning – QML)
+Algoritmos quânticos podem acelerar partes do **treinamento e da inferência** de modelos de machine learning, explorando a capacidade de representar e manipular grandes vetores de forma mais eficiente. Isso pode beneficiar áreas como processamento de imagens, análise de dados e reconhecimento de padrões.
+
+#### 5. Análise Financeira
+Mercados financeiros são sistemas complexos e probabilísticos. Computadores quânticos podem ajudar a **modelar risco**, **prever tendências de mercado** e otimizar carteiras de investimento, possibilitando estratégias mais robustas e rápidas de avaliação de cenários.
+
+
+### Limitações e Desafios Atuais
+
+Apesar do imenso potencial da computação quântica, existem barreiras técnicas e científicas que ainda precisam ser superadas para que essa tecnologia alcance seu uso pleno. Entre os principais desafios, destacam-se:
+
+#### 1. Tempo de Coerência
+Os qubits mantêm seu estado quântico apenas por um intervalo de tempo limitado, chamado **tempo de coerência**. Passado esse período, efeitos como **descoerência** e **interações com o ambiente** fazem com que a informação quântica se perca. Essa limitação exige que os cálculos sejam concluídos rapidamente ou que técnicas de preservação do estado sejam aplicadas.
+
+#### 2. Escalabilidade
+Construir sistemas com **milhares ou milhões de qubits estáveis** é um enorme desafio de engenharia. O aumento no número de qubits requer um controle preciso de cada unidade e de suas interações, mantendo ao mesmo tempo a integridade dos dados e reduzindo o impacto do ruído.
+
+#### 3. Ruído e Erros
+Operações quânticas ainda são imprecisas devido a **erros de porta**, **erros de leitura** e **ruídos ambientais**. Esses problemas afetam a fidelidade dos resultados, tornando essencial o uso de **correção de erros quânticos** — que, por sua vez, aumenta a demanda de qubits físicos para representar um único qubit lógico.
+
+#### 4. Infraestrutura
+A maior parte das arquiteturas quânticas exige **condições extremas de operação**, como resfriamento criogênico próximo ao zero absoluto para qubits supercondutores, ou sistemas complexos de lasers e vácuo para íons aprisionados. Essa infraestrutura é cara, ocupa muito espaço e demanda manutenção altamente especializada.
+
+#### 5. Algoritmos Limitados
+Embora existam algoritmos quânticos promissores, como os de **Shor** e **Grover**, ainda são poucos os métodos que demonstram **vantagem quântica prática** sobre algoritmos clássicos em problemas do mundo real. Pesquisas continuam na busca por novos algoritmos capazes de explorar plenamente o potencial dos processadores quânticos.
+
+
+## Conceitos Fundamentais
+
+### Qubits
+
+O qubit (*quantum bit*) é a unidade fundamental de informação na computação quântica, análogo ao bit da computação clássica.  
+Enquanto um bit clássico só pode assumir dois valores possíveis, `0` ou `1`, um qubit pode estar em uma **superposição** desses estados, representando simultaneamente `0` e `1` com determinadas probabilidades.
+
+Matematicamente, um qubit é descrito como um vetor no espaço de Hilbert bidimensional:
+
+$$
+|\psi\rangle = \alpha |0\rangle + \beta |1\rangle
+$$
+
+Onde:
+- $\alpha$ e $\beta$ são números complexos conhecidos como amplitudes de probabilidade.
+- $|0\rangle$ e $|1\rangle$ são os **estados base** (análogos a 0 e 1 clássicos).
+- A **normalização** exige que:
+$$
+|\alpha|^2 + |\beta|^2 = 1
+$$
+
+O ato de **medir** um qubit faz com que ele colapse para `|0⟩` com probabilidade $|\alpha|^2$ ou para `|1⟩` com probabilidade $|\beta|^2$.
+
+#### Representação no Esfera de Bloch
+Todo qubit puro pode ser representado na **Esfera de Bloch** por dois ângulos $(\theta, \phi)$:
+
+$$
+|\psi\rangle = \cos\left(\frac{\theta}{2}\right)|0\rangle + e^{i\phi} \sin\left(\frac{\theta}{2}\right)|1\rangle
+$$
+
+- $\theta$ controla a proporção entre os estados `|0⟩` e `|1⟩`.
+- $\phi$ determina a fase relativa entre eles.
+- Essa representação é útil para visualizar operações quânticas como rotações e portas lógicas.
+
+#### Natureza Física dos Qubits
+Qubits não são apenas abstrações matemáticas — eles são implementados fisicamente de várias formas:
+- **Fótons**, utilizando polarização ou caminho óptico.
+- **Elétrons**, aproveitando o spin ou carga.
+- **Estados de corrente** em circuitos supercondutores.
+- **Íons aprisionados**, manipulados por lasers.
+
+Cada tecnologia apresenta vantagens e limitações em termos de **tempo de coerência**, **facilidade de manipulação** e **taxa de erro**.
+
+Em resumo, enquanto os bits clássicos representam informação de forma discreta e estática, os qubits permitem **superposição** e **entrelaçamento**, proporcionando um espaço de estados exponencialmente maior e habilitando algoritmos com vantagens significativas sobre os métodos clássicos.
+
+### Portas Quânticas
+
+As portas quânticas são os blocos fundamentais que permitem manipular o estado dos qubits durante o processamento quântico. Elas são análogas às portas lógicas na computação clássica (como AND, OR, NOT), mas operam em estados quânticos que podem estar em superposição e entrelaçamento.
+
+Diferentemente das portas clássicas, as portas quânticas são representadas por **matrizes unitárias** que atuam sobre o vetor de estado do(s) qubit(s). Essa operação é reversível, preservando a normalização do estado.
+
+---
+
+### Propriedades Importantes das Portas Quânticas
+
+- **Unitariedade:** Toda porta quântica é representada por uma matriz unitária \(U\), o que garante reversibilidade e preservação da normalização:  
+  \[
+  U^\dagger U = U U^\dagger = I
+  \]
+- **Reversibilidade:** Diferente das portas clássicas que podem ser irreversíveis, as operações quânticas podem ser invertidas.
+- **Composição:** Portas quânticas podem ser compostas para formar circuitos complexos que realizam algoritmos completos.
+
+---
+
+#### Portas de Um Qubit
+
+##### 1. Porta Hadamard (H)
+
+- **Função:** Cria superposição ao transformar os estados base \( |0\rangle \) e \( |1\rangle \) em combinações iguais.  
+- **Operação:**  
+  \[
+  H|0\rangle = \frac{|0\rangle + |1\rangle}{\sqrt{2}}, \quad H|1\rangle = \frac{|0\rangle - |1\rangle}{\sqrt{2}}
+  \]
+- **Matriz:**
+  \[
+  H = \frac{1}{\sqrt{2}}
+  \begin{bmatrix}
+  1 & 1 \\
+  1 & -1
+  \end{bmatrix}
+  \]
+- **Uso comum:** Preparar qubits para criar estados em superposição.
+
+---
+
+##### 2. Porta Pauli-X (NOT quântico)
+
+- **Função:** Equivale à porta NOT clássica, invertendo os estados \(|0\rangle \leftrightarrow |1\rangle\).  
+- **Operação:**  
+  \[
+  X|0\rangle = |1\rangle, \quad X|1\rangle = |0\rangle
+  \]
+- **Matriz:**
+  \[
+  X =
+  \begin{bmatrix}
+  0 & 1 \\
+  1 & 0
+  \end{bmatrix}
+  \]
+- **Uso comum:** Flips simples de estado quântico.
+
+---
+
+##### 3. Porta Pauli-Y
+
+- **Função:** Realiza uma rotação combinada com inversão e mudança de fase.  
+- **Matriz:**
+  \[
+  Y =
+  \begin{bmatrix}
+  0 & -i \\
+  i & 0
+  \end{bmatrix}
+  \]
+
+---
+
+##### 4. Porta Pauli-Z
+
+- **Função:** Aplica uma mudança de fase, deixando \(|0\rangle\) inalterado e invertendo o sinal de \(|1\rangle\).  
+- **Operação:**  
+  \[
+  Z|0\rangle = |0\rangle, \quad Z|1\rangle = -|1\rangle
+  \]
+- **Matriz:**
+  \[
+  Z =
+  \begin{bmatrix}
+  1 & 0 \\
+  0 & -1
+  \end{bmatrix}
+  \]
+- **Uso comum:** Portas de fase e correções.
+
+---
+
+##### 5. Porta de Fase (S e T)
+
+- **Função:** Aplicam mudanças graduais de fase ao estado \(|1\rangle\).  
+- **Matriz S:**
+  \[
+  S =
+  \begin{bmatrix}
+  1 & 0 \\
+  0 & i
+  \end{bmatrix}
+  \]
+- **Matriz T:**
+  \[
+  T =
+  \begin{bmatrix}
+  1 & 0 \\
+  0 & e^{i\pi/4}
+  \end{bmatrix}
+  \]
+- **Uso comum:** Construção de circuitos universais e correção de erros.
+
+---
+
+##### 6. Porta de Rotação \(R_x, R_y, R_z\)
+
+- **Função:** Rotaciona o vetor de estado do qubit ao redor dos eixos X, Y ou Z da esfera de Bloch por um ângulo \(\theta\).  
+- **Exemplo \(R_z(\theta)\):**  
+  \[
+  R_z(\theta) = 
+  \begin{bmatrix}
+  e^{-i\theta/2} & 0 \\
+  0 & e^{i\theta/2}
+  \end{bmatrix}
+  \]
+- **Uso comum:** Ajustes finos de fase e manipulações de estado.
+
+---
+
+#### Portas de Dois ou Mais Qubits
+
+##### 1. Porta CNOT (Controlled-NOT)
+
+- **Função:** Porta fundamental para criar entrelaçamento; inverte o estado do qubit alvo se o qubit controle estiver em \(|1\rangle\).  
+- **Operação:**
+  \[
+  |c, t\rangle \rightarrow |c, t \oplus c\rangle
+  \]
+  onde \(c\) é o qubit controle e \(t\) o qubit alvo.  
+- **Matriz (base computacional \( \{|00\rangle, |01\rangle, |10\rangle, |11\rangle\} \)):**
+  \[
+  \text{CNOT} = 
+  \begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 0 & 1 \\
+  0 & 0 & 1 & 0
+  \end{bmatrix}
+  \]
+- **Uso comum:** Criar estados entrelaçados e construir circuitos universais.
+
+---
+
+##### 2. Porta Toffoli (CCNOT)
+
+- **Função:** Porta de controle duplo; inverte o alvo somente se ambos os controles estiverem em \(|1\rangle\).  
+- **Uso comum:** Construção de portas universais reversíveis.
+
+---
+
+##### 3. Porta SWAP
+
+- **Função:** Troca o estado de dois qubits.  
+- **Uso comum:** Permutação de qubits em hardware com restrições de conectividade.
+
+---
+
+### Portas Universais
+
+Um conjunto de portas é dito **universal** se qualquer operação quântica (unidade) puder ser aproximada arbitrariamente bem por uma sequência dessas portas. Exemplos incluem:  
+- **Portas de um qubit:** \(H, T, S, R_x, R_y, R_z\)  
+- **Portas de dois qubits:** CNOT
+
+Com essas portas, é possível construir qualquer circuito quântico.
+
+
+## Simulador Qiskit (IBM)
+
+O Qiskit é um framework open-source desenvolvido pela IBM para programar computadores quânticos e simuladores quânticos. Ele permite criar, manipular e executar circuitos quânticos, seja em hardware real ou em simuladores clássicos que reproduzem o comportamento quântico.
+
+Nesta seção, apresentaremos exemplos simples de uso do Qiskit para demonstrar a construção de circuitos básicos, aplicação de portas quânticas e visualização dos circuitos.
+
+---
+
+### Exemplo 1: Aplicando uma porta Hadamard
+
+A porta Hadamard cria uma superposição, transformando o estado base \(|0\rangle\) em \(\frac{|0\rangle + |1\rangle}{\sqrt{2}}\).
+
+```python
+from qiskit import QuantumCircuit, Aer, execute
+
+# Criar um circuito com 1 qubit e 1 bit clássico para medição
+qc = QuantumCircuit(1, 1)
+
+# Aplicar a porta Hadamard no qubit 0
+qc.h(0)
+
+# Medir o qubit no bit clássico 0
+qc.measure(0, 0)
+
+# Executar o circuito no simulador Qasm
+simulator = Aer.get_backend('qasm_simulator')
+job = execute(qc, simulator, shots=1024)
+result = job.result()
+counts = result.get_counts(qc)
+
+print("Resultado da medição:", counts)
+
+# Desenhar o circuito no terminal
+print(qc.draw())
+```
+
+### Exemplo 2: Pauli-X seguido de Hadamard
+```python
+from qiskit import QuantumCircuit, Aer, execute
+
+qc2 = QuantumCircuit(1, 1)
+qc2.x(0)    # Porta Pauli-X (NOT quântico)
+qc2.h(0)    # Porta Hadamard
+qc2.measure(0, 0)
+
+simulator = Aer.get_backend('qasm_simulator')
+job2 = execute(qc2, simulator, shots=1024)
+result2 = job2.result()
+counts2 = result2.get_counts(qc2)
+
+print("Resultado da medição:", counts2)
+print(qc2.draw())
+```
+
+### Exemplo 3: Circuito com CNOT
+```python
+from qiskit import QuantumCircuit
+from qiskit.visualization import circuit_drawer
+
+qc3 = QuantumCircuit(2, 2)
+qc3.h(0)      # Hadamard no qubit 0
+qc3.cx(0, 1)  # CNOT: qubit 0 controla qubit 1
+qc3.measure([0,1], [0,1])
+
+# Exibe o circuito colorido no Jupyter Notebook
+circuit_drawer(qc3, output='mpl')
+```
+
+## Medição e Colapso
+
+Na computação quântica, a **medição** é o processo pelo qual extraímos informação de um qubit. Diferente da computação clássica, onde o estado é sempre definido como 0 ou 1, o qubit pode estar em uma **superposição** desses estados, representado por:
+
+\[
+|\psi\rangle = \alpha|0\rangle + \beta|1\rangle
+\]
+
+Quando realizamos uma medição no qubit, o estado **colapsa** para um dos estados base clássicos, \( |0\rangle \) ou \( |1\rangle \), com probabilidades determinadas pelas amplitudes:
+
+- Probabilidade de medir \( |0\rangle \): \( |\alpha|^2 \)
+- Probabilidade de medir \( |1\rangle \): \( |\beta|^2 \)
+
+Este fenômeno é conhecido como **colapso da função de onda** e é fundamental para a computação quântica, pois define a transição do mundo quântico probabilístico para o mundo clássico determinístico.
+
+---
+
+### Implicações da Medição
+
+- **Colapso irreversível:** Após a medição, o estado do qubit deixa de estar em superposição e fica fixo no estado medido.
+- **Destruição da superposição:** A medição destrói a informação contida na superposição, portanto, medir cedo demais em um circuito pode impedir o funcionamento correto de algoritmos quânticos.
+- **Medidas em múltiplos qubits:** Quando qubits estão entrelaçados, medir um deles instantaneamente define o estado dos outros, independente da distância, refletindo o fenômeno do entrelaçamento.
+
+---
+
+### Medição no Qiskit
+
+No Qiskit, a medição é realizada conectando os qubits aos bits clássicos correspondentes para armazenar o resultado da medição. Por exemplo:
+
+```python
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(1, 1)
+qc.h(0)           # Cria superposição
+qc.measure(0, 0)  # Mede o qubit 0 e armazena no bit clássico 0
+print(qc.draw())
+```
+
+Após a medição, ao executar o circuito no simulador, obtemos um resultado clássico (0 ou 1) com probabilidades aproximadas conforme a superposição criada.
+
 
 ## Exemplos de Aplicações
+
+### Teleporte Quântico
+
+O teleporte quântico é um dos protocolos mais incríveis da computação quântica. Ele permite transferir o estado quântico de uma partícula (um qubit) de um local para outro, **sem que o qubit original seja enviado fisicamente**. É como se a informação quântica "saltasse" de um ponto para o outro — uma ideia que desafia nossa intuição clássica.
+
+O protocolo usa duas ferramentas fundamentais da mecânica quântica:
+
+- **Entrelaçamento (entanglement):** dois qubits são preparados de forma que seus estados fiquem interligados, mesmo que estejam separados no espaço.  
+- **Medidas e operações condicionais:** ao medir um dos qubits entrelaçados e usar o resultado para manipular o outro qubit, conseguimos "reconstruir" o estado original.
+
+---
+
+#### Como funciona o protocolo de teleporte?
+
+Suponha que Alice quer enviar para Bob um qubit desconhecido — ou seja, o estado quântico de um qubit que ela não sabe exatamente como é, mas quer transferir para ele.
+
+1. Alice e Bob compartilham um par de qubits entrelaçados. Alice fica com um deles, Bob com o outro.  
+2. Alice faz uma operação conjunta (chamada de **medida Bell**) entre o qubit que deseja enviar e o qubit dela do par entrelaçado. Essa operação resulta em dois bits clássicos, que Alice envia para Bob por um canal clássico.  
+3. Com esses dois bits, Bob aplica portas quânticas específicas no seu qubit (que estava entrelaçado com o de Alice), e assim recupera exatamente o estado original do qubit que Alice queria enviar.
+
+> **Importante:** depois do teleporte, o qubit original de Alice deixa de existir, preservando o princípio da não clonagem.
+
+---
+
+#### Código
+```python
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, transpile
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_bloch_multivector, plot_histogram, array_to_latex
+from qiskit_aer import AerSimulator
+
+import numpy as np
+import warnings
+from IPython.display import display
+warnings.filterwarnings("ignore", category=UserWarning)
+
+# --- Criação dos registradores quânticos e clássicos ---
+alice = QuantumRegister(2, 'alice')
+bob = QuantumRegister(1, 'bob')
+cr_alice = ClassicalRegister(2, 'c_alice')
+cr_bob = ClassicalRegister(1, 'c_bob')
+
+qc = QuantumCircuit(alice, bob, cr_alice, cr_bob)
+
+# --- Inicialização do estado a ser teleportado ---
+qc.ry(np.pi/4, alice[0])  # Estado a ser teleportado (exemplo genérico)
+qc.barrier()
+
+# --- Preparação do par entrelaçado (Bell state) entre Alice[1] e Bob[0] ---
+qc.h(alice[1])
+qc.cx(alice[1], bob[0])
+qc.barrier()
+
+# --- Medidas de Alice ---
+qc.cx(alice[0], alice[1])
+qc.h(alice[0])
+qc.barrier()
+
+qc.measure(alice, cr_alice)
+qc.barrier()
+
+# --- Correções condicionais no qubit de Bob ---
+qc.cx(alice[1], bob[0])
+qc.cz(alice[0], bob[0])
+qc.barrier()
+
+qc.measure(bob, cr_bob)
+
+# --- Desenho do circuito ---
+display(qc.draw(output='mpl'))
+
+# --- Execução da simulação no backend de QASM ---
+simulator = AerSimulator()
+compiled = transpile(qc, simulator)
+shots = 10000
+result = simulator.run(compiled, shots=shots).result()
+counts = result.get_counts()
+
+# --- Exibição dos resultados ---
+print("Contagem dos resultados (medidas de Alice e Bob):")
+print(counts)
+
+plot_histogram(counts)
+
+# --- Simulação do estado vetorial ---
+qc_statevector = qc.remove_final_measurements(inplace=False)
+compiled_sv = transpile(qc_statevector, simulator)
+result_sv = simulator.run(compiled_sv).result()
+statevector = result_sv.get_statevector()
+
+print("\nEstado vetorial final do sistema:")
+array_to_latex(statevector, prefix="|\\psi\\rangle = ")
+
+# --- Visualização da esfera de Bloch do qubit de Bob após o teletransporte ---
+plot_bloch_multivector(statevector)
+
+```
+
+
+---
+
+### Quantum Key Distribution (QKD)
+
+A Distribuição Quântica de Chaves (QKD) é um protocolo fundamental para a segurança da informação baseado nas propriedades da mecânica quântica. Diferente dos métodos clássicos de criptografia, a QKD permite que duas partes (normalmente chamadas Alice e Bob) compartilhem uma chave secreta com segurança garantida pela física quântica, e não apenas por complexidade computacional.
+
+---
+
+#### Como funciona a QKD?
+
+O protocolo mais conhecido é o **BB84**, que utiliza os seguintes princípios:
+
+- **Estados quânticos não clonáveis:** qualquer tentativa de um terceiro (Eve) de interceptar os qubits altera o estado deles, o que pode ser detectado pelas partes.  
+- **Bases de medição:** Alice prepara qubits em bases aleatórias (por exemplo, a base computacional {|0⟩, |1⟩} ou a base Hadamard {|+⟩, |−⟩}).  
+- Bob mede cada qubit recebendo usando também bases aleatórias.  
+- Depois, Alice e Bob comunicam via canal clássico quais bases usaram, descartando os resultados onde as bases não coincidiram.  
+- O resultado é uma chave compartilhada, que é idêntica para Alice e Bob e segura contra espionagem.
+
+---
+
+#### Código
+
+```python
+from random import getrandbits
+from qiskit import QuantumCircuit, transpile
+from qiskit_aer import AerSimulator
+
+KEY_LENGTH = 500
+
+def Alice_encode(length):
+    alice_bitstring = ""
+    alice_bases = ""
+    for _ in range(length):
+        alice_bitstring += str(getrandbits(1))  # bits 0 ou 1
+        alice_bases += str(getrandbits(1))      # bases 0 (Z) ou 1 (X)
+    return alice_bitstring, alice_bases
+
+def Bob_meas(length):
+    bob_bases = ""
+    for _ in range(length):
+        bob_bases += str(getrandbits(1))        # bases 0 (Z) ou 1 (X)
+    return bob_bases
+
+def encode(alice_bitstring, alice_basis):
+    encoded_qubits = []
+    for i in range(len(alice_bitstring)):
+        qc = QuantumCircuit(1,1)
+        # Codificação conforme base e bit
+        if alice_basis[i] == '0':  # base Z
+            if alice_bitstring[i] == '1':
+                qc.x(0)
+        else:  # base X
+            if alice_bitstring[i] == '0':
+                qc.h(0)
+            else:
+                qc.x(0)
+                qc.h(0)
+        encoded_qubits.append(qc)
+    return encoded_qubits
+
+def measure(bob_bases, encoded_qubits, simulator):
+    bob_bitstring = ''
+    for i in range(len(encoded_qubits)):
+        qc = encoded_qubits[i].copy()
+        # Medida na base escolhida
+        if bob_bases[i] == '0':
+            pass  # base Z, medida padrão
+        else:
+            qc.h(0)  # base X, aplica H antes da medida
+        qc.measure(0, 0)
+
+        # Transpilar e executar
+        compiled = transpile(qc, simulator)
+        result = simulator.run(compiled, shots=1).result()
+        counts = result.get_counts()
+        measured_bit = max(counts, key=counts.get)
+        bob_bitstring += measured_bit
+    return bob_bitstring
+
+def bob_compare_bases(alice_basis, bob_basis):
+    return [i for i in range(len(alice_basis)) if alice_basis[i] == bob_basis[i]]
+
+def construct_key_from_indices(bitstring, indices):
+    return ''.join(bitstring[i] for i in indices)
+
+# Rodando protocolo
+
+alice_bitstring, alice_basis = Alice_encode(KEY_LENGTH)
+bob_basis = Bob_meas(KEY_LENGTH)
+encoded_qubits = encode(alice_bitstring, alice_basis)
+
+simulator = AerSimulator()
+bob_bitstring = measure(bob_basis, encoded_qubits, simulator)
+
+agreeing_indices = bob_compare_bases(alice_basis, bob_basis)
+
+alice_key = construct_key_from_indices(alice_bitstring, agreeing_indices)
+bob_key = construct_key_from_indices(bob_bitstring, agreeing_indices)
+
+print('----------------------------------------------------------')
+print(f'Dos {KEY_LENGTH} bits iniciais, {len(alice_key)} foram aproveitados para chave compartilhada.')
+print('----------------------------------------------------------')
+print(f"Alice's key (primeiros 100 bits): {alice_key[:100]}")
+print(f"Bob's key   (primeiros 100 bits): {bob_key[:100]}")
+print("Chaves são iguais? ", alice_key == bob_key)
+
+```
+
+### Adder Quântico com QFT
+
+O Adder Quântico utiliza a Transformada Quântica de Fourier (QFT) para realizar a soma de dois números binários representados por qubits.
+
+---
+
+#### Como funciona?
+
+- Cada número a ser somado é representado em um registrador de qubits.  
+- Aplica-se a QFT para transformar o estado dos qubits para o domínio da frequência, onde a soma pode ser feita por operações de fase.  
+- Após a adição no domínio da frequência, aplica-se a Transformada Quântica de Fourier Inversa (IQFT) para retornar ao domínio computacional, obtendo o resultado da soma.  
+- Por fim, os qubits são medidos para revelar o valor da soma.
+
+---
+
+#### Benefícios
+
+- A operação é feita em paralelo e pode ser mais eficiente em circuitos quânticos.  
+- Demonstra um uso prático da QFT, fundamental em muitos algoritmos quânticos.
+
+---
+
+#### Código
+
+```python
+import numpy as np
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, transpile
+from qiskit.circuit.library import QFT, DraperQFTAdder
+from qiskit.visualization import plot_histogram
+from qiskit_aer import AerSimulator
+
+# --- Exemplo 1: Soma usando DraperQFTAdder ---
+
+a = 8
+b = 5
+n = len(format(a + b, '0b'))  # número de qubits necessários para soma
+
+na = len(format(a, '0b'))
+nb = len(format(b, '0' + str(n) + 'b'))
+
+qa = QuantumRegister(na, 'a')
+qb = QuantumRegister(nb, 'b')
+cr = ClassicalRegister(nb, 'c')
+qc = QuantumCircuit(qa, qb, cr)
+
+# Inicializar registradores com os números a e b (em binário, invertido)
+a_bin = format(a, '0b')[::-1]
+b_bin = format(b, '0b')[::-1]
+
+for i, bit in enumerate(a_bin):
+    if bit == '1':
+        qc.x(qa[i])
+for i, bit in enumerate(b_bin):
+    if bit == '1':
+        qc.x(qb[i])
+
+# Adder via Draper QFT
+qc.append(DraperQFTAdder(n), qc.qubits)
+
+# Medir resultado
+qc.measure(qb, cr)
+
+# Executar no simulador
+simulator = AerSimulator()
+compiled = transpile(qc, simulator)
+result = simulator.run(compiled, shots=10000).result().get_counts()
+soma_bin = max(result, key=result.get)  # pega o resultado com maior frequência
+
+print(f"O resultado da soma é {soma_bin} (binário) = {int(soma_bin, 2)} (decimal)")
+
+plot_histogram(result, figsize=(4,3))
+
+
+# --- Exemplo 2: QFT simples ---
+
+n = 4
+qr = QuantumRegister(n, 'q')
+qc = QuantumCircuit(qr)
+
+for i in range(n-1, -1, -1):
+    qc.h(i)
+    for j in range(i-1, -1, -1):
+        qc.cp(np.pi/(2**(i-j)), i, j)
+    qc.barrier()
+
+# Swap qubits para inverter ordem
+for i in range(n//2):
+    qc.swap(i, n - i - 1)
+
+qc.draw('mpl', scale=0.9, style='iqx')
+
+
+# --- Exemplo 3: Circuito com QFT seguido de IQFT ---
+
+def qft(n):
+    qc = QuantumCircuit(n)
+    for i in range(n-1, -1, -1):
+        qc.h(i)
+        for j in range(i-1, -1, -1):
+            qc.cp(np.pi/(2**(i-j)), i, j)
+    return qc.to_gate(label='QFT')
+
+def iqft(n):
+    qc = QuantumCircuit(n)
+    qc.append(qft(n), range(n))
+    qc = qc.inverse()
+    return qc.to_gate(label='IQFT')
+
+n = 3
+qc = QuantumCircuit(n)
+qc.append(qft(n), range(n))
+qc.append(iqft(n), range(n))
+qc.draw('mpl', style='iqx', scale=0.9)
+
+
+# --- Exemplo 4: Soma via QFT personalizada (mais detalhada) ---
+
+ints = [3, 5]
+qubits_qft = len(format(sum(ints), '0b'))
+qubits_x = len(format(max(ints), '0b'))
+
+qr_data_int = QuantumRegister(qubits_x, "data_x")
+qr_data_qft = QuantumRegister(qubits_qft, "qft")
+cr1 = ClassicalRegister(qubits_qft, 'c_qft')
+
+qc = QuantumCircuit(qr_data_int, qr_data_qft, cr1)
+qc.append(qft(qubits_qft), qr_data_qft)
+
+for x in ints:
+    k = format(x, '0b')[::-1]
+    for i, bit in enumerate(k):
+        if bit == '1':
+            qc.x(qr_data_int[i])
+
+    for j in range(len(qr_data_int)):
+        for i in range(j, len(qr_data_qft)):
+            qc.cp(2*np.pi / 2**(i + 1 - j), qr_data_int[j], qr_data_qft[i])
+        qc.barrier()
+
+    for i, bit in enumerate(k):
+        if bit == '1':
+            qc.x(qr_data_int[i])
+    qc.barrier()
+
+qc.append(iqft(qubits_qft), qr_data_qft)
+qc.measure(qr_data_qft, cr1)
+
+compiled = transpile(qc, simulator)
+result = simulator.run(compiled, shots=10000).result().get_counts()
+
+print(f"\nSoma dos números {ints} via QFT é aproximadamente:")
+plot_histogram(result, figsize=(8, 4))
+
+```
+
+---
+
+
+### Quantum Phase Estimation (QPE)
+
+Quantum Phase Estimation (QPE) é um dos algoritmos mais importantes da computação quântica, usado para estimar o valor do autovalor (fase) de um operador unitário.
+
+---
+
+#### O que é QPE?
+
+- O algoritmo QPE estima a fase \(\theta\) em um autovetor \(|u\rangle\) de um operador unitário \(U\), tal que:
+  
+  \[
+  U|u\rangle = e^{2\pi i \theta} |u\rangle
+  \]
+
+- A fase \(\theta\) é um número real entre 0 e 1, e a estimativa dessa fase é crucial para algoritmos como o de Shor e simulações quânticas.
+
+---
+
+#### Como funciona?
+
+- Usa-se um registrador de qubits para armazenar a estimativa da fase.  
+- Inicializa-se os qubits com portas Hadamard para criar superposição.  
+- Aplica-se o operador controlado \(U^{2^j}\) para diferentes potências.  
+- Aplica-se a Transformada Quântica de Fourier Inversa (IQFT) para extrair a informação da fase.  
+- Mede-se o registrador para obter a estimativa binária da fase.
+
+---
+
+#### Código
+
+```python
+import numpy as np
+from scipy.linalg import expm
+from qiskit import QuantumCircuit
+from qiskit.circuit.library import UnitaryGate
+from qiskit_aer import AerSimulator
+from qiskit import transpile
+from qiskit.visualization import plot_histogram
+from IPython.display import display
+
+# Número de qubits para o registrador de fase (controle)
+n = 10
+
+# Matriz identidade 2x2
+Id = np.eye(2)
+
+# Definindo o ângulo theta da fase que queremos estimar
+theta = 0.15
+
+# Construindo a porta unitária U = exp(2*pi*i*theta*I)
+U_matrix = expm(2 * 1j * np.pi * theta * Id)
+U_gate = UnitaryGate(U_matrix, label='U')
+
+# Criando a porta controlada-U
+controlled_U = U_gate.control(1)  # substitui add_control
+
+print('Expected phase (theta):', theta)
+
+# Função para construir o circuito QPE
+def qpe(n, controlled_u):
+    # Registradores: n qubits de controle + 1 alvo
+    qc = QuantumCircuit(n + 1, n)
+    
+    # Aplicar Hadamard a todos os qubits de controle
+    for i in range(n):
+        qc.h(i)
+    # Preparar o qubit alvo no estado |1>
+    qc.x(n)
+    
+    # Aplicar os controlled-U^(2^i) nos qubits de controle
+    for i in range(n):
+        for _ in range(2**i):
+            qc.append(controlled_u, [i, n])
+    
+    # Aplicar inversa da QFT nos qubits de controle
+    qft_circ = qft(QuantumCircuit(n), n)
+    invqft_circ = qft_circ.inverse()
+    qc.append(invqft_circ, qc.qubits[:n])
+    
+    # Medir os qubits de controle
+    qc.measure(range(n), range(n))
+    
+    return qc
+
+# Função para construir o circuito da QFT
+def qft(qc, n):
+    for i in range(n):
+        qc.h(n - i - 1)
+        for j in range(n - i - 1):
+            qc.cp(np.pi / (2 ** (n - i - j - 1)), n - i - 1, j)
+        qc.barrier()
+    # Swap para inverter ordem dos qubits
+    for i in range(n // 2):
+        qc.swap(i, n - i - 1)
+    return qc
+
+# Construindo circuito QPE
+qc = qpe(n, controlled_U)
+
+# Mostrar circuito
+display(qc.draw('mpl'))
+
+# Executar em simulador
+simulator = AerSimulator()
+compiled = transpile(qc, simulator)
+shots = 10000
+result = simulator.run(compiled, shots=shots).result().get_counts()
+
+# Ordenar resultados por probabilidade
+states = sorted([[result[i] / shots, i] for i in result], reverse=True)
+res = [int(i[1], 2) for i in states]
+
+# Análise do resultado
+if len(res) > 1 and states[1][0] > 0.1:
+    print('The phase is between:', res[0] / 2 ** n, res[1] / 2 ** n)
+else:
+    print('The phase is:', res[0] / 2 ** n)
+
+print('Measured integers:', res[:2])
+
+# Plotar histograma dos resultados
+plot_histogram(result, figsize=(12, 6))
+
+```
+
+---
+
 
 ## Considerações Finais {#sec-quant-consid-finais}
 

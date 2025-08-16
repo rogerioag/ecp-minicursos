@@ -1,3 +1,3 @@
 # Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.
 
-Resumo do minicurso sobre Pthreads.. {{< lipsum 2 >}}
+Este minicurso visa introduzir os conceitos fundamentais da computação paralela e da programação com threads utilizando a biblioteca Pthreads, padrão POSIX. Serão apresentados os princípios de execução concorrente, criação e gerenciamento de threads, sincronização com mutexes, e boas práticas para evitar condições de corrida e deadlocks.

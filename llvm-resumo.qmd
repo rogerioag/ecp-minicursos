@@ -1,3 +1,0 @@
-# Minicurso: LLVM
-
-Resumo sobre LLVM.

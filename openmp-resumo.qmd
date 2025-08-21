@@ -1,2 +1,0 @@
-# Minicurso: Introdução à Programação Paralela com OpenMP
-Resumo de OpenMP.

@@ -16,3 +16,5 @@
 ...
 
 ## Considerações Finais {#sec-pytorch-consid-finais}
+
+## Referências

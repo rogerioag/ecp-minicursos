@@ -120,6 +120,11 @@ Exibir pontos de melhorias como segurança
 
 ## Considerações Finais {#sec-freertos-consid-finais}
 
+@knuth1984
+
 
 ## Referências
+
+::: {#refs}
+:::
 

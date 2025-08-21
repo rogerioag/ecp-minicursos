@@ -58,4 +58,7 @@ Como verificar o suporte AVX:
 
 ## Considerações Finais {#sec-vet-consid-finais}
 
+## Referências
 
+::: {#refs}
+:::

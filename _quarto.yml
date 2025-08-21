@@ -24,7 +24,13 @@ book:
     - part: simd-resumo.qmd
       chapters:
         - simd.qmd
+<<<<<<< HEAD
     - part: ia-resumo.qmd
+=======
+      bibliography:
+        - main: references.bib
+    - part: pytorch-resumo.qmd
+>>>>>>> bac88ac (Updating local)
       chapters:
         - ia.qmd
     - part: llvm-resumo.qmd
@@ -42,4 +48,6 @@ format:
     cover-image: cover.png
     code-link: true
 
-
+filters:
+  - multibib
+validate-yaml: false

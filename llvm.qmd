@@ -22,4 +22,4 @@ Texto do Minicurso sobre LLVM.
 
 ## Considerações Finais {#sec-llvm-consid-finais}
 
-
+## Referências

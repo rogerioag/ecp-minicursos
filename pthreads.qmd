@@ -35,3 +35,5 @@ Nota
 :::
 
 ## Considerações Finais {#sec-pthreads-consid-finais}
+
+## Referências

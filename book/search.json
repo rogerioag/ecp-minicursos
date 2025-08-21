@@ -10,6 +10,16 @@
     ]
   },
   {
+    "objectID": "index.html#contribuidores",
+    "href": "index.html#contribuidores",
+    "title": "Escola de Computação Paralela: Minicursos e Tutoriais",
+    "section": "Contribuidores",
+    "text": "Contribuidores\n\n\n\n\n\n\n\n\n\nNome\nE-mail\nCategoria\nMinicurso/Tema\n\n\n\n\nRogério Aparecido Gonçalves\nrogerioag@utfpr.edu.br\nDocente\nCoordenador\n\n\nJoao Fabrício Filho\njoaof@utfpr.edu.br\nDocente\nVice-Coordenador\n\n\nGuilherme A. Lopes\nguiguigui098@gmail.com\nAluno\nVetorização\n\n\nPaulo H. P. da Silva\nphps6200@gmail.com\nAluno\nOpenMP\n\n\nWilliam W. T. Rodrigues\nwilliamwallace@alunos.utfpr.edu.br\nAluno\nPthreads\n\n\nGabriela P. Sereniski\ngabsereniski@gmail.com\nAluno\nCluster\n\n\nGabriel M. L. Pereira\ngabrielmlobato@gmail.com\nAluno\nIA\n\n\nJoão Victor Briganti de Oliveira\njoliveira.2022@alunos.utfpr.edu.br\nAluno\nLLVM\n\n\nLuiz Gustavo Takeda\nluiztakeda@alunos.utfpr.edu.br\nAluno\nFreeRTOS",
+    "crumbs": [
+      "Bem-vindo"
+    ]
+  },
+  {
     "objectID": "index.html#licença",
     "href": "index.html#licença",
     "title": "Escola de Computação Paralela: Minicursos e Tutoriais",
@@ -44,7 +54,7 @@
     "href": "pthreads.html",
     "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "",
-    "text": "2.1 Introdução\n– William W. T. Rodrigues  williamwallace@alunos.utfpr.edu.br\nEtiam congue quam eget velit convallis, eu sagittis orci vestibulum. Vestibulum at massa turpis. Curabitur ornare ex sed purus vulputate, vitae porta augue rhoncus. Phasellus auctor suscipit purus, vel ultricies nunc. Nunc eleifend nulla ac purus volutpat, id fringilla felis aliquet. Duis vitae porttitor nibh, in rhoncus risus. Vestibulum a est vitae est tristique vehicula. Proin mollis justo id est tempus hendrerit. Praesent suscipit placerat congue. Aliquam eu elit gravida, consequat augue non, ultricies sapien. Nunc ultricies viverra ante, sit amet vehicula ante volutpat id. Etiam tempus purus vitae tellus mollis viverra. Donec at ornare mauris. Aliquam sodales hendrerit ornare. Suspendisse accumsan lacinia sapien, sit amet imperdiet dui molestie ut.\nEtiam non efficitur urna, quis elementum nisi. Mauris posuere a augue vel gravida. Praesent luctus erat et ex iaculis interdum. Nulla vestibulum quam ac nunc consequat vulputate. Nullam iaculis lobortis sem sit amet fringilla. Aliquam semper, metus ut blandit semper, nulla velit fermentum sapien, fermentum ultrices dolor sapien sed leo. Vestibulum molestie faucibus magna, at feugiat nulla ullamcorper a. Aliquam erat volutpat. Praesent scelerisque magna a justo maximus, sit amet suscipit mauris tempor. Nulla nec dolor eget ipsum pellentesque lobortis a in ipsum. Morbi turpis turpis, fringilla a eleifend maximus, viverra nec neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+    "text": "2.1 Introdução\n– William W. T. Rodrigues  williamwallace@alunos.utfpr.edu.br\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti.",
     "crumbs": [
       "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
@@ -95,8 +105,8 @@
     ]
   },
   {
-    "objectID": "pthreads.html#sec-openmp-consid-finais",
-    "href": "pthreads.html#sec-openmp-consid-finais",
+    "objectID": "pthreads.html#sec-pthreads-consid-finais",
+    "href": "pthreads.html#sec-pthreads-consid-finais",
     "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
     "section": "2.6 Considerações Finais",
     "text": "2.6 Considerações Finais",
@@ -176,7 +186,7 @@
     "href": "simd-resumo.html",
     "title": "Minicurso: Introdução à Programação Paralela: Vetorização",
     "section": "",
-    "text": "Resumo sobre vetorização.",
+    "text": "A evolução do hardware é algo imprescindível para a computação. A cada ano, os avanços nessa área têm possibilitado a execução de aplicações cada vez mais complexas, contribuindo significativamente para o desenvolvimento da computação como um todo.\nO ponto alto no aumento do desempenho da computação paralela foi a implementação da arquitetura multi-core, que permitiu a execução de múltiplas tarefas simultaneamente por um único processador. No entanto, para aproveitar esse potencial, é necessário adaptar o software, de modo que ele seja capaz de utilizar o hardware de forma eficiente.\nAs técnicas de vetorização também são fundamentais para a computação paralela. Por meio das instruções SIMD (Single Instruction, Multiple Data), é possível realizar operações simultâneas em diversas regiões da memória, o que aumenta consideravelmente o desempenho das aplicações.",
     "crumbs": [
       "Minicurso: Introdução à Programação Paralela: Vetorização"
     ]
@@ -197,7 +207,18 @@
     "href": "simd.html#vetorização",
     "title": "4  Introdução à Programação Paralela: Vetorização",
     "section": "4.2 Vetorização",
-    "text": "4.2 Vetorização",
+    "text": "4.2 Vetorização\nA vetorização é extremamente importante nos dias de hoje. Embora os compiladores abstraiam muitos aspectos do funcionamento do hardware, é possível instruí-los a utilizar instruções SIMD (Single Instruction, Multiple Data) para obter ganhos de desempenho em operações matriciais.\nO objetivo deste minicurso é ensinar os estudantes a utilizarem operações de vetorização para obter ganhos significativos de desempenho em software. A vetorização é muito aplicada atualmente em diversar áreas: aplicações científicas, análise financeira, inteligência artificial (IA)/aprendizado profundo, modelagem, análise 3D, processamento de imagem e áudio/vídeo, criptografia e compressão de dados.",
+    "crumbs": [
+      "Minicurso: Introdução à Programação Paralela: Vetorização",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
+    ]
+  },
+  {
+    "objectID": "simd.html#suporte-do-hardware",
+    "href": "simd.html#suporte-do-hardware",
+    "title": "4  Introdução à Programação Paralela: Vetorização",
+    "section": "4.3 Suporte do Hardware",
+    "text": "4.3 Suporte do Hardware\nIntel AVX\nAVX, ou Advanced Vector Extensions, são extensões de vetor SIMD (Single Instruction, Multiple Data) de 256 bits para processadores Intel e AMD que usam a arquitetura x86. Estas extensões permitem que os processadores executem operações matemáticas mais complexas e intensivas em dados de forma mais eficiente, acelerando o desempenho em aplicações que lidam com grandes conjuntos de dados, como processamento de imagem, vídeo, IA, entre outras. Em resumo:\nO quê: Extensões de vetor SIMD que permitem processar múltiplos dados com uma única instrução.\nPara quê: Acelerar operações em aplicações que lidam com grandes conjuntos de dados. Como: Adicionam novas instruções e registadores, permitindo processar mais dados por ciclo de clock. Exemplos de uso: Processamento de imagem, vídeo, IA, análise de dados, simulações científicas. AVX2 e AVX-512: AVX2 expande o suporte para 256 bits e AVX-512 para 512 bits, com novas instruções e funcionalidades.\nMais Detalhes:\nAVX: Foi introduzida pela Intel em 2011, com a microarquitetura Sandy Bridge.\nAVX2: Introduzida em 2013, com a microarquitetura Haswell, expande as operações para 256 bits. AVX-512: Introduzida em 2016, com o coprocessador Knights Landing, e em 2017, com processadores Skylake, expande as operações para 512 bits, com novas instruções e uma nova codificação de prefixo EVEX. Benefícios: Aceleração do desempenho, maior eficiência em cálculos intensivos, suporte para uma gama mais ampla de aplicações. Como verificar o suporte AVX: É possível verificar as especificações do processador no site da Intel ou da AMD para verificar se suporta AVX, AVX2 ou AVX-512.",
     "crumbs": [
       "Minicurso: Introdução à Programação Paralela: Vetorização",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
@@ -207,8 +228,8 @@
     "objectID": "simd.html#intrisics-do-gcc",
     "href": "simd.html#intrisics-do-gcc",
     "title": "4  Introdução à Programação Paralela: Vetorização",
-    "section": "4.3 Intrisics do GCC",
-    "text": "4.3 Intrisics do GCC",
+    "section": "4.4 Intrisics do GCC",
+    "text": "4.4 Intrisics do GCC",
     "crumbs": [
       "Minicurso: Introdução à Programação Paralela: Vetorização",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
@@ -218,8 +239,8 @@
     "objectID": "simd.html#suporte-do-openmp",
     "href": "simd.html#suporte-do-openmp",
     "title": "4  Introdução à Programação Paralela: Vetorização",
-    "section": "4.4 Suporte do OpenMP?",
-    "text": "4.4 Suporte do OpenMP?\n…",
+    "section": "4.5 Suporte do OpenMP?",
+    "text": "4.5 Suporte do OpenMP?\n…",
     "crumbs": [
       "Minicurso: Introdução à Programação Paralela: Vetorização",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
@@ -229,8 +250,8 @@
     "objectID": "simd.html#sec-vet-consid-finais",
     "href": "simd.html#sec-vet-consid-finais",
     "title": "4  Introdução à Programação Paralela: Vetorização",
-    "section": "4.5 Considerações Finais",
-    "text": "4.5 Considerações Finais",
+    "section": "4.6 Considerações Finais",
+    "text": "4.6 Considerações Finais",
     "crumbs": [
       "Minicurso: Introdução à Programação Paralela: Vetorização",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Introdução à Programação Paralela: Vetorização</span>"
@@ -378,76 +399,21 @@
     ]
   },
   {
-    "objectID": "a1-starting.html",
-    "href": "a1-starting.html",
-    "title": "Appendix A — Installing R and RStudio",
-    "section": "",
-    "text": "A.1 How to Download and Install R\nTo get started with R, you need to acquire your own copy. This appendix will show you how to download R as well as RStudio, a software application that makes R easier to use. You’ll go from downloading R to opening your first R session.\nBoth R and RStudio are free and easy to download.\nR is maintained by an international team of developers who make the language available through the web page of The Comprehensive R Archive Network. The top of the web page provides three links for downloading R. Follow the link that describes your operating system: Windows, Mac, or Linux.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Installing R and RStudio</span>"
-    ]
-  },
-  {
-    "objectID": "a1-starting.html#how-to-download-and-install-r",
-    "href": "a1-starting.html#how-to-download-and-install-r",
-    "title": "Appendix A — Installing R and RStudio",
-    "section": "",
-    "text": "A.1.1 Windows\nTo install R on Windows, click the “Download R for Windows” link. Then click the “base” link. Next, click the first link at the top of the new page. This link should say something like “Download R 3.0.3 for Windows,” except the 3.0.3 will be replaced by the most current version of R. The link downloads an installer program, which installs the most up-to-date version of R for Windows. Run this program and step through the installation wizard that appears. The wizard will install R into your program files folders and place a shortcut in your Start menu. Note that you’ll need to have all of the appropriate administration privileges to install new software on your machine.\n\n\nA.1.2 Mac\nTo install R on a Mac, click the “Download R for Mac” link. Next, click on the R-3.0.3 package link (or the package link for the most current release of R). An installer will download to guide you through the installation process, which is very easy. The installer lets you customize your installation, but the defaults will be suitable for most users. I’ve never found a reason to change them. If your computer requires a password before installing new progams, you’ll need it here.\n\n\n\n\n\n\nBinaries Versus Source\n\n\n\nR can be installed from precompiled binaries or built from source on any operating system. For Windows and Mac machines, installing R from binaries is extremely easy. The binary comes preloaded in its own installer. Although you can build R from source on these platforms, the process is much more complicated and won’t provide much benefit for most users. For Linux systems, the opposite is true. Precompiled binaries can be found for some systems, but it is much more common to build R from source files when installing on Linux. The download pages on CRAN’s website provide information about building R from source for the Windows, Mac, and Linux platforms.\n\n\n\n\nA.1.3 Linux\nR comes preinstalled on many Linux systems, but you’ll want the newest version of R if yours is out of date. The CRAN website provides files to build R from source on Debian, Redhat, SUSE, and Ubuntu systems under the link “Download R for Linux.” Click the link and then follow the directory trail to the version of Linux you wish to install on. The exact installation procedure will vary depending on the Linux system you use. CRAN guides the process by grouping each set of source files with documentation or README files that explain how to install on your system.\n\n\n\n\n\n\n32-bit Versus 64-bit\n\n\n\nR comes in both 32-bit and 64-bit versions. Which should you use? In most cases, it won’t matter. Both versions use 32-bit integers, which means they compute numbers to the same numerical precision. The difference occurs in the way each version manages memory. 64-bit R uses 64-bit memory pointers, and 32-bit R uses 32-bit memory pointers. This means 64-bit R has a larger memory space to use (and search through).\nAs a rule of thumb, 32-bit builds of R are faster than 64-bit builds, though not always. On the other hand, 64-bit builds can handle larger files and data sets with fewer memory management problems. In either version, the maximum allowable vector size tops out at around 2 billion elements. If your operating system doesn’t support 64-bit programs, or your RAM is less than 4 GB, 32-bit R is for you. The Windows and Mac installers will automatically install both versions if your system supports 64-bit R.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Installing R and RStudio</span>"
-    ]
-  },
-  {
-    "objectID": "a1-starting.html#using-r",
-    "href": "a1-starting.html#using-r",
-    "title": "Appendix A — Installing R and RStudio",
-    "section": "A.2 Using R",
-    "text": "A.2 Using R\nR isn’t a program that you can open and start using, like Microsoft Word or Internet Explorer. Instead, R is a computer language, like C, C++, or UNIX. You use R by writing commands in the R language and asking your computer to interpret them. In the old days, people ran R code in a UNIX terminal window—as if they were hackers in a movie from the 1980s. Now almost everyone uses R with an application called RStudio, and I recommend that you do, too.\n\n\n\n\n\n\nR and UNIX\n\n\n\nYou can still run R in a UNIX or BASH window by typing the command:\n$ R\nwhich opens an R interpreter. You can then do your work and close the interpreter by running q() when you are finished.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Installing R and RStudio</span>"
-    ]
-  },
-  {
-    "objectID": "a1-starting.html#rstudio",
-    "href": "a1-starting.html#rstudio",
-    "title": "Appendix A — Installing R and RStudio",
-    "section": "A.3 RStudio",
-    "text": "A.3 RStudio\nRStudio is an application like Microsoft Word—except that instead of helping you write in English, RStudio helps you write in R. I use RStudio throughout the book because it makes using R much easier. Also, the RStudio interface looks the same for Windows, Mac OS, and Linux. That will help me match the book to your personal experience.\nYou can download RStudio for free. Just click the “Download RStudio” button and follow the simple instructions that follow. Once you’ve installed RStudio, you can open it like any other program on your computer—usually by clicking an icon on your desktop.\n\n\n\n\n\n\nThe R GUIs\n\n\n\nWindows and Mac users usually do not program from a terminal window, so the Windows and Mac downloads for R come with a simple program that opens a terminal-like window for you to run R code in. This is what opens when you click the R icon on your Windows or Mac computer. These programs do a little more than the basic terminal window, but not much. You may hear people refer to them as the Windows or Mac R GUIs.\n\n\nWhen you open RStudio, a window appears with three panes in it, as in Figure A.1. The largest pane is a console window. This is where you’ll run your R code and see results. The console window is exactly what you’d see if you ran R from a UNIX console or the Windows or Mac GUIs. Everything else you see is unique to RStudio. Hidden in the other panes are a text editor, a graphics window, a debugger, a file manager, and much more. You’ll learn about these panes as they become useful throughout the course of this book.\n\n\n\n\n\n\nFigure A.1: The RStudio IDE for R.\n\n\n\n\n\n\n\n\n\nDo I still need to download R?\n\n\n\nEven if you use RStudio, you’ll still need to download R to your computer. RStudio helps you use the version of R that lives on your computer, but it doesn’t come with a version of R on its own.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Installing R and RStudio</span>"
-    ]
-  },
-  {
-    "objectID": "a1-starting.html#opening-r",
-    "href": "a1-starting.html#opening-r",
-    "title": "Appendix A — Installing R and RStudio",
-    "section": "A.4 Opening R",
-    "text": "A.4 Opening R\nNow that you have both R and RStudio on your computer, you can begin using R by opening the RStudio program. Open RStudio just as you would any program, by clicking on its icon or by typing “RStudio” at the Windows Run prompt.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Installing R and RStudio</span>"
-    ]
-  },
-  {
-    "objectID": "index.html#contribuidores",
-    "href": "index.html#contribuidores",
-    "title": "Escola de Computação Paralela: Minicursos e Tutoriais",
-    "section": "Contribuidores",
-    "text": "Contribuidores\n\n\n\n\n\n\n\n\n\nNome\nE-mail\nCategoria\nMinicurso/Tema\n\n\n\n\nRogério Aparecido Gonçalves\nrogerioag@utfpr.edu.br\nDocente\nCoordenador\n\n\nJoao Fabrício Filho\njoaof@utfpr.edu.br\nDocente\nVice-Coordenador\n\n\nGuilherme A. Lopes\nguiguigui098@gmail.com\nAluno\nVetorização\n\n\nPaulo H. P. da Silva\nphps6200@gmail.com\nAluno\nOpenMP\n\n\nWilliam W. T. Rodrigues\nwilliamwallace@alunos.utfpr.edu.br\nAluno\nPthreads\n\n\nGabriela P. Sereniski\ngabsereniski@gmail.com\nAluno\nCluster\n\n\nGabriel M. L. Pereira\ngabrielmlobato@gmail.com\nAluno\nIA\n\n\nJoão Victor Briganti de Oliveira\njoliveira.2022@alunos.utfpr.edu.br\nAluno\nLLVM\n\n\nLuiz Gustavo Takeda\nluiztakeda@alunos.utfpr.edu.br\nAluno\nFreeRTOS",
-    "crumbs": [
-      "Bem-vindo"
-    ]
-  },
-  {
     "objectID": "freertos-resumo.html",
     "href": "freertos-resumo.html",
     "title": "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
     "section": "",
     "text": "Conteúdo abordado\nEste minicurso tem como objetivo apresentar os principais conceitos de programação para sistemas embarcados utilizando o FreeRTOS no ESP32. Ao longo das aulas, os participantes irão explorar recursos fundamentais do sistema operacional em tempo real e, ao final, aplicar os conhecimentos adquiridos no desenvolvimento de um projeto prático e funcional.\nDurante o curso, serão abordados os seguintes tópicos: * Co-rotinas * Tasks (Tarefas) * Semáforos e Mutex * Task Notifications * Filas (Queues) * Timers * Grupos de Eventos (Event Groups) * Interrupções (Interruptions)",
+    "crumbs": [
+      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS"
+    ]
+  },
+  {
+    "objectID": "freertos-resumo.html#projeto-final",
+    "href": "freertos-resumo.html#projeto-final",
+    "title": "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
+    "section": "Projeto final",
+    "text": "Projeto final\nO projeto final consiste na criação de uma dashboard web interativa, hospedada diretamente no ESP32, com os seguintes recursos: * Leitura de entradas analógicas e digitais * Exibição do estado atual das saídas digitais * Leitura de temperatura e umidade via sensor DHT11 * Controle das saídas digitais pela interface web * Transmissão de dados em tempo real via WebSocket\nO ESP32 atuará como servidor web e também como servidor WebSocket, eliminando a necessidade de servidores externos.\nAlém disso, a configuração das credenciais de rede Wi-Fi será realizada via comandos enviados pela interface serial.",
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS"
     ]
@@ -497,28 +463,6 @@
     ]
   },
   {
-    "objectID": "freertos.html#sec-llvm-consid-finais",
-    "href": "freertos.html#sec-llvm-consid-finais",
-    "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
-    "section": "7.5 Considerações Finais",
-    "text": "7.5 Considerações Finais",
-    "crumbs": [
-      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
-    ]
-  },
-  {
-    "objectID": "pthreads.html#sec-pthreads-consid-finais",
-    "href": "pthreads.html#sec-pthreads-consid-finais",
-    "title": "2  Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
-    "section": "2.6 Considerações Finais",
-    "text": "2.6 Considerações Finais",
-    "crumbs": [
-      "Minicurso: Introdução à Computação Paralela e Programação Multithreading usando Pthreads.",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introdução à Computação Paralela e Programação Multithreading usando Pthreads.</span>"
-    ]
-  },
-  {
     "objectID": "freertos.html#sec-freertos-consid-finais",
     "href": "freertos.html#sec-freertos-consid-finais",
     "title": "7  Introdução à Programação para Sistemas Embarcados com FreeRTOS",
@@ -527,16 +471,6 @@
     "crumbs": [
       "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Introdução à Programação para Sistemas Embarcados com FreeRTOS</span>"
-    ]
-  },
-  {
-    "objectID": "freertos-resumo.html#projeto-final",
-    "href": "freertos-resumo.html#projeto-final",
-    "title": "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS",
-    "section": "Projeto final",
-    "text": "Projeto final\nO projeto final consiste na criação de uma dashboard web interativa, hospedada diretamente no ESP32, com os seguintes recursos: * Leitura de entradas analógicas e digitais * Exibição do estado atual das saídas digitais * Leitura de temperatura e umidade via sensor DHT11 * Controle das saídas digitais pela interface web * Transmissão de dados em tempo real via WebSocket\nO ESP32 atuará como servidor web e também como servidor WebSocket, eliminando a necessidade de servidores externos.\nAlém disso, a configuração das credenciais de rede Wi-Fi será realizada via comandos enviados pela interface serial.",
-    "crumbs": [
-      "Minicurso: Introdução à Programação para Sistemas Embarcados com FreeRTOS"
     ]
   }
 ]

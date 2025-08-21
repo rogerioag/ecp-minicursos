@@ -2,66 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/index.html</loc>
-    <lastmod>2025-04-29T00:45:46.668Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/preface.html</loc>
-    <lastmod>2025-04-21T18:58:14.905Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/intro.html</loc>
-    <lastmod>2025-04-02T11:11:33.850Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/pthreads-resumo.html</loc>
-    <lastmod>2025-04-21T19:56:05.828Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/pthreads.html</loc>
-    <lastmod>2025-04-24T02:21:16.963Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/openmp.html</loc>
-    <lastmod>2025-04-24T01:58:10.257Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/simd-resumo.html</loc>
-    <lastmod>2025-04-21T20:34:49.504Z</lastmod>
+    <lastmod>2025-07-29T02:18:45.527Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/simd.html</loc>
-    <lastmod>2025-04-24T01:58:54.323Z</lastmod>
+    <lastmod>2025-08-04T23:14:20.734Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/ia-resumo.html</loc>
-    <lastmod>2025-04-21T19:22:44.947Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.673Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/ia.html</loc>
-    <lastmod>2025-04-24T01:55:08.781Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.673Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/llvm-resumo.html</loc>
-    <lastmod>2025-04-21T18:47:38.987Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/llvm.html</loc>
-    <lastmod>2025-04-24T01:57:05.080Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rogerioag.github.io/ecp-minicursos/a1-starting.html</loc>
-    <lastmod>2025-03-28T23:37:43.412Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rogerioag.github.io/ecp-minicursos/a1.html</loc>
-    <lastmod>2025-04-21T20:31:25.963Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.874Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/freertos-resumo.html</loc>
-    <lastmod>2025-04-29T00:45:35.976Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.673Z</lastmod>
   </url>
   <url>
     <loc>https://rogerioag.github.io/ecp-minicursos/freertos.html</loc>
-    <lastmod>2025-04-24T02:00:33.189Z</lastmod>
+    <lastmod>2025-05-12T18:11:25.673Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rogerioag.github.io/ecp-minicursos/a1.html</loc>
+    <lastmod>2025-05-12T18:11:25.455Z</lastmod>
   </url>
 </urlset>

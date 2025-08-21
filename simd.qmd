@@ -1,17 +1,19 @@
-# Introdução à Programação Paralela: Vetorização
+c# Introdução à Programação Paralela: Vetorização
 
 -- Guilherme A. Lopes <br>
 <guiguigui098@gmail.com>
 
 > __Resumo:__
-> Texto do Resumo **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
-**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.
+Neste minicurso, exploraremos técnicas de vetorização e sua importância para o desenvolvimento de software de alto desempenho. Abordaremos desde conceitos básicos até a implementação prática de operações SIMD (Single Instruction, Multiple Data), demonstrando como otimizar o processamento de dados em paralelo. O foco será na utilização eficiente das extensões vetoriais modernas, como AVX e SSE, disponíveis nos processadores atuais, usando immutible.h.
 
 Texto do Minicurso de Vetorização.
 
 ##  Introdução {#sec-vet-intro}
 
 ## Vetorização
+
+A vetorização é extremamente importante nos dias de hoje. Embora os compiladores abstraiam muitos aspectos do funcionamento do hardware, é possível instruí-los a utilizar instruções SIMD (Single Instruction, Multiple Data) para obter ganhos de desempenho em operações matriciais.
+O objetivo deste minicurso é ensinar os estudantes a utilizarem operações de vetorização para obter ganhos significativos de desempenho em software. A vetorização é muito aplicada atualmente em diversar áreas: aplicações  científicas, análise financeira, inteligência artificial (IA)/aprendizado profundo, modelagem, análise 3D, processamento de imagem e áudio/vídeo, criptografia e compressão de dados.
 
 ## Suporte do Hardware
 

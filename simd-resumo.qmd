@@ -6,12 +6,8 @@ O ponto alto no aumento do desempenho da computação paralela foi a implementa�
 
 As técnicas de vetorização também são fundamentais para a computação paralela. Por meio das instruções SIMD (Single Instruction, Multiple Data), é possível realizar operações simultâneas em diversas regiões da memória, o que aumenta consideravelmente o desempenho das aplicações.
 
-# Por quê estudar Vetorização ?
-
-A vetorização é extremamente importante nos dias de hoje. Embora os compiladores abstraiam muitos aspectos do funcionamento do hardware, é possível instruí-los a utilizar instruções SIMD (Single Instruction, Multiple Data) para obter ganhos de desempenho em operações matriciais.
 
 
-O objetivo deste minicurso é ensinar os estudantes a utilizarem operações de vetorização para obter ganhos significativos de desempenho em software.
 
 
 

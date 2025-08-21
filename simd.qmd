@@ -53,9 +53,33 @@ Como verificar o suporte AVX:
 ## Intrisics do GCC
 
 ## Suporte do OpenMP?
+A Vetorização também pode ser implementada usando por meio de deretiva de compilação " #pragma omp parallel for", como mostrado no exemplo abaixo:
 
-...
+```{cpp}
+#include <iostream>
+#include <vector>
+#include <omp.h>
 
+int main() {
+    std::vector<int> arr = {0,1,2,3,4,5,6,7,8,9};
+    int sum = 0;
+
+    #pragma omp parallel for reduction(+:sum)
+    for(size_t i = 0; i < arr.size(); i++) {
+        sum += arr[i];
+        std::cout << "Thread " << omp_get_thread_num() 
+                  << " processou arr[" << i << "] = " << arr[i] << "\n";
+    }
+
+    std::cout << "Soma total: " << sum << std::endl;
+    return 0;
+}
+
+
+Usar immutable.h traz algumas vatagens comparado ao OpenMP,dentre elas a segurança das threads, 
+visto que os dados trabalhados são imutaveis, evitando inconsistência em condição de disputa. Ao mesmo tempo ao meu ver
+reduz a complexidade do codigo fonte. Permitindo trabalhar de forma clara com aspectos mais baixo nível do hardaware, permitindo um melhor aproveitando dos recursos computacionais
+ 
 ## Considerações Finais {#sec-vet-consid-finais}
 
 ## Referências

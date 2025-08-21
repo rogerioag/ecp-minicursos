@@ -54,6 +54,6 @@ format:
     cover-image: images/cover.png
     code-link: true
 
-filters:
-  - multibib
+#filters:
+ # - multibib
 validate-yaml: false

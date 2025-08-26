@@ -4,22 +4,448 @@
 <phps6200@gmail.com>
 
 > __Resumo:__
-> Resumo sobre o minicurso de OpenMP. {{< lipsum 2 >}}
-
-Texto do Minicurso OpenMP.
+> Este mini-curso apresenta, os conceitos fundamentais e avançados da programação paralela com OpenMP, uma API amplamente utilizada para explorar o potencial de processadores multicore em ambientes de memória compartilhada. O conteúdo abrange desde a introdução ao modelo `fork–join`, controle de `threads`, escopo de variáveis e paralelização de laços, até tópicos mais avançados como scheduling, redução, sincronização e tarefas. Cada seção é acompanhada de exemplos comentados em C/C++, exercícios práticos e dicas de boas práticas. 
 
 ## Introdução {#sec-openmp-intro}
 
-## Padrão OpenMP
+Nas últimas décadas, a evolução da computação deixou de se concentrar apenas no aumento da frequência dos processadores e passou a investir na multiplicação de núcleos de processamento. Hoje, mesmo computadores pessoais e notebooks comuns contam com múltiplos cores, e servidores e supercomputadores chegam a ter dezenas ou centenas de núcleos trabalhando em conjunto. Essa mudança de paradigma exige que os programas sejam capazes de executar tarefas em paralelo, aproveitando ao máximo os recursos de hardware disponíveis.
 
-## Bibliotecas e Implementações
+O OpenMP (Open Multi-Processing) surge como uma solução prática e padronizada para explorar o paralelismo em sistemas de memória compartilhada. Trata-se de uma API amplamente utilizada, que permite adicionar paralelismo a programas escritos em C, C++ e Fortran de forma incremental, sem a necessidade de reescrever completamente o código. Seu modelo de programação é baseado no conceito `fork–join`, facilitando a adaptação de códigos sequenciais, permitindo ganhos de desempenho significativos com alterações relativamente pequenas.
 
-## Compiladores
+O aprendizado do OpenMP é progressivo, sendo possível começar paralelizando apenas um laço de repetição e, avançar para outras técnicas, como scheduling dinâmico, tarefas independentes (tasks) e vetorização (SIMD).
+
+## Padrão OpenMP, compiladores, bibliotecas e Implementações
+
+
+A abordagem do OpenMP é de mais alto nível, com uso de diretivas de compilação: instruções inseridas no código-fonte para indicar regiões paralelas. Funcionam como anotações que  indicam seções paralelas do código sem a necessidade de reescrever toda a aplicação, permitindo testes e ajustes graduais. São implementadas usando-se as diretivas de pré-processamento #pragma, em C/C++, e sentinelas !$, no Fortran.
+
+O modelo de programação do OpenMP trabalha em sistemas de memória compartilhada e é baseado no conceito `fork–join`: o programa inicia com uma única thread (master), que cria múltiplas `threads` para executar regiões paralelas (fork) explicitamente ou implicitamente. e, ao final, sincroniza todas elas (join).
+
+O padrão OpenMP é suportado por praticamente todos os compiladores atuais:
+GCC (GNU Compiler Collection): suporte a OpenMP via -fopenmp; LLVM/Clang: suporte moderno com mais otimizações; Intel oneAPI / ICC: otimizações específicas para processadores Intel. IBM XL C/C++ e Fortran: suporte em sistemas de alto desempenho.
+
+
+A utilização da biblioteca de OpenMP com a flag -fopenmp para C/C++ permite o acesso às seguintes funções: 
+
+
+
+- `int omp_get_thread_num()`: retorna o identificador da thread.
+- `void omp_set_num_threads(int num_threads)`: indica o número de threads a executar na região paralela.
+- `int omp_get_num_threads()`: retorna o número de threads que estão executando no momento.
+
+
+Para a execução dos exemplos posteriores (construidos em C), será utilizado o compilador GCC com a flag `-fopenmp`, para facilitar as execuções, um exemplo de arquivo `makefile` é disponibilizado, onde name é a variável que define o nome do arquivo .c:
+
+
+
+```makefile
+name=example
+
+all:
+	gcc -fopenmp ${name}.c -o ${name}.exe
+
+clean:
+	rm -rf *.o ${name}.exe
+```
 
 ## Diretivas de Compilação
 
-...
+As diretivas são instruções especiais que informam ao compilador como paralelizar o código. São formadas por construtores e cláusulas, os quais podem definir o escopo de variáveis, regras de concorrência e algoritmos de escalonamento utilizado. Cada construtor possui diferentes cláusulas.
+
+
+ As principais diretivas são:
+
+`#pragma omp parallel`: cria uma região paralela. Podendo conter cláusulas que definem o escopo de variáveis ou mesmo o número de `threads` para essa região.
+
+Exemplo de utilização do construtor `parallel` com as funções da biblioteca omp, em uma região sem paralelismo, com paralelismo e paralilismo com número de `threads` definida: 
+
+```C
+#include <omp.h>
+#include <stdio.h>
+
+int main()
+{
+  int i;
+  int omp_np;  /* Número de Processadores. */
+  int omp_nt;  /* Número de threads OpenMP. */
+  int omp_tid; /* Id da Thread OpenMP. */
+
+  /* Teste 1 (Sem utilização de paralelismo) */
+  printf("Teste 1 --------------------------------------------\n");
+  /* Traz os parâmetros do OpenMP utilizando as funções. */
+  omp_np = omp_get_num_procs();   /* Traz o número de processadores. */
+  omp_nt = omp_get_num_threads(); /* Traz o número de threads. */
+  omp_tid = omp_get_thread_num(); /* Traz o id da thread OpenMP. */
+  printf("Thread_id: %d #Processadores: %d #OpenMP Threads: %d\n", omp_tid, omp_np, omp_nt);
+
+  /* Teste 2 (Com utilização de paralelismo) */
+  printf("Teste 2 --------------------------------------------\n");
+#pragma omp parallel
+  {
+    omp_np = omp_get_num_procs();   /* Traz o número de processadores. */
+    omp_nt = omp_get_num_threads(); /* Traz o número de threads. */
+    omp_tid = omp_get_thread_num(); /* Traz o id da thread OpenMP.*/
+    printf("Thread_id: %d #Processadores: %d #OpenMP Threads: %d\n", omp_tid, omp_np, omp_nt);
+  }
+
+  /* Teste 3 (Com utilização de paralelismo e controle do número de threads) */
+  printf("Teste 3 --------------------------------------------\n");
+#pragma omp parallel num_threads(8)
+  {
+    omp_np = omp_get_num_procs();   /* Traz o número de processadores. */
+    omp_nt = omp_get_num_threads(); /* Traz o número de threads. */
+    omp_tid = omp_get_thread_num(); /* Traz o id da thread OpenMP. */
+    printf("Thread_id: %d #Processadores: %d #OpenMP Threads: %d\n", omp_tid, omp_np, omp_nt);
+  }
+  return 0;
+}
+```
+
+
+`#pragma omp for`: distribui iterações de um laço entre `threads`. Ao adentrar uma região paralela, o construtor for é utilizado para distribuir o trabalho entre as `threads`. Pode ser utilizado em combinação com o construtor `parallel`.
+
+Exemplo de código com utilização do construtor `for`: 
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+int main()
+{
+  int id, i;
+
+  printf("Thread_id: %d: Antes da regiao paralela\n", omp_get_thread_num());
+
+#pragma omp parallel num_threads(4)
+  {
+    // Todas as threads executam o código a partir deste ponto.
+    // Obter ID da thread
+    id = omp_get_thread_num();
+
+#pragma omp for
+    for (i = 0; i < 16; i++)
+    {
+      printf("Thread_id: %d: Trabalhando na iteracao %d do loop...\n", id, i);
+    }
+  }
+
+  printf("Thread_id: %d: Depois da região paralela...\n", omp_get_thread_num());
+
+  return 0;
+}
+
+```
+Exemplo de código com `parallel` e `for` combinados: 
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+int main()
+{
+  int id, i;
+
+  printf("Thread_id: %d: Antes da regiao paralela\n", omp_get_thread_num());
+
+#pragma omp parallel for num_threads(4)
+  for (i = 0; i < 16; i++)
+  {
+    printf("Thread_id: %d: Trabalhando na iteracao %d do loop...\n", omp_get_thread_num(), i);
+  }
+
+  printf("Thread_id: %d: Depois da regiao paralela...\n", omp_get_thread_num());
+
+  return 0;
+}
+
+```
+
+Além disso, o construtor for pode ter seu algoritmo de escalonamento especificado pela cláusula `schedule`. Os dois algoritimos principais são o `static`, dividindo igualmente a carga de trabalho entre todas as `threads` e o `dynamic`, que define um `chunk`, uma quantidade de iterações para as `threads` executarem, diferente da `static`, quando uma `thread` termina de executar uma `chunk`, ele pode requisitar outra, portanto não necessariamente todas as `threads` realizaram o mesmo trabalho. O valor padrão do algoritimo é o `static`. 
+
+Exemplo utilizando o algoritimo `dynamic`:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+int main()
+{
+  int id, i;
+
+  printf("Thread_id: %d: Antes da regiao paralela\n", omp_get_thread_num());
+
+#pragma omp parallel for num_threads(4) schedule(dynamic, 2)
+  for (i = 0; i < 16; i++)
+  {
+    printf("Thread_id: %d: Trabalhando na iteracao %d do loop...\n", omp_get_thread_num(), i);
+  }
+
+  printf("Thread_id: %d: Depois da regiao paralela...\n", omp_get_thread_num());
+
+  return 0;
+}
+```
+
+`#pragma omp sections`: divide o trabalho em blocos independentes, ou seja, trabalhos não iterativos.
+
+Exemplo de código com o construtor `sections`:
+
+ 
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+int main(int argc, char *argv[])
+{
+
+  int id;
+
+  fprintf(stdout, "Thread_id: %d: Antes da Regio Paralela.\n", omp_get_thread_num());
+
+#pragma omp parallel num_threads(3)
+  {
+    id = omp_get_thread_num();
+#pragma omp sections
+    {
+#pragma omp section
+      fprintf(stdout, "Thread_id: %d - Executando o bloco de codigo 1.\n", id);
+
+#pragma omp section
+      fprintf(stdout, "Thread_id: %d - Executando o bloco de codigo 2.\n", id);
+
+#pragma omp section
+      fprintf(stdout, "Thread_id: %d - Executando o bloco de codigo 3.\n", id);
+    }
+  }
+
+  fprintf(stdout, "Thread_id: %d - Depois da Regio Paralela.\n", omp_get_thread_num());
+
+  return 0;
+}
+
+```
+
+O construtor `sections` possui uma cláusula chamada `reduction`, que é utilizada para indicar uma operação a ser realizada sob todas as cópias de uma variável definida dentro do código de cada `thread`, o exemplo a seguir indica a redução da variável `sum`, que deve ser somada ao fim da execução das `threads`:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+int main()
+{
+  int i, id;
+  int sum = 0;
+
+  fprintf(stdout, "Thread_id: %d Antes da Regiao Paralela.\n", omp_get_thread_num());
+
+#pragma omp parallel num_threads(2)
+  {
+    id = omp_get_thread_num();
+#pragma omp sections reduction(+ : sum)
+    {
+#pragma omp section
+      {
+        fprintf(stdout, "   Thread_id: %d - Executando o bloco de codigo 1.\n", id);
+        for (i = 0; i < 2048; i++)
+        {
+          sum += i;
+        }
+      }
+
+#pragma omp section
+      {
+        fprintf(stdout, "   Thread_id: %d - Executando o bloco de codigo 2.\n", id);
+        for (i = 0; i < 2048; i++)
+        {
+          sum += i;
+        }
+      }
+    }
+  }
+
+  fprintf(stdout, "Thread_id: %d Depois da Regiao Paralela.\n", omp_get_thread_num());
+  fprintf(stdout, "Thread_id: %d sum: %d\n", omp_get_thread_num(), sum);
+
+  return 0;
+}
+
+```
+
+`#pragma omp task`, `#pragma omp taskwait` e `#pragma omp single`:  O construtor `task` cria tarefas explícitas para as `threads` executarem, possui semelhanças com o construtor `sections`, contudo o `sections` é uma divisão estática de blocos, dependente da finalização da `section` em si para continuar. Uma `task` possui uma execução dinâmica, sendo o número de tarefas definido no tempo de execução, sendo mais flexível. O construtor `taskwait` age como uma barreira de espera para as threads que criaram as `tasks`, fazendo com que elas esperem a execução das `tasks` antes de continuar as suas próprias execuções. O construtor `single` pode ser utilizado para criar apenas uma tarefa, caso não seja utilizado, todas as `threads` da região paralela irão criar uma nova `task`, o que pode não ser o comportamento desejado.
+
+Exemplo de código utilizando os construtores `task` e `single`: 
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+int main()
+{
+  int id;
+  int x = 50;
+
+  fprintf(stdout, "Thread_id: %d Antes da Regiao Paralela.\n", omp_get_thread_num());
+
+#pragma omp parallel num_threads(4) firstprivate(x) private(id)
+  {
+    id = omp_get_thread_num();
+    fprintf(stdout, "  Thread_id: %d, Todas as threads executam.\n", id);
+
+#pragma omp single
+    {
+      fprintf(stdout, "  Thread_id: %d, Antes de criar tasks.\n", id);
+#pragma omp task if (x > 10)
+      {
+        fprintf(stdout, "    Thread_id: %d, Trabalhando na task 1.\n", omp_get_thread_num());
+      }
+
+#pragma omp task if (x > 20)
+      {
+        fprintf(stdout, "    Thread_id: %d, Trabalhando na task 2.\n", omp_get_thread_num());
+      }
+
+      fprintf(stdout, "    Thread_id: %d, Antes do taskwait.\n", id);
+#pragma omp taskwait
+      fprintf(stdout, "    Thread_id: %d, Depois do taskwait.\n", id);
+
+#pragma omp task
+      {
+        fprintf(stdout, "    Thread_id: %d, Trabalhando na task 3.\n", omp_get_thread_num());
+      }
+    }
+  }
+
+  fprintf(stdout, "Thread_id: %d, Depois da Regiao Paralela.\n", omp_get_thread_num());
+
+  return 0;
+}
+
+```
+
+`#pragma omp taskloop`: Permite distribuir as iterações de um ou mais laços aninhados para tarefas, sendo escalonadas para serem executadas.  Com esse construtor é possível determinar o número de `threads` que serão criadas para a execução do laço com a cláusula `num_tasks()` e determinar o tamanho do subconjunto de iterações que cada `thread` irá executar através da cláusula `grainsize()`.
+
+Exemplo de código com o construtor `taskloop`:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+void function()
+{
+  int i, j;
+  fprintf(stdout, "Thread_id: %d - taskloop...\n", omp_get_thread_num());
+#pragma omp taskloop num_tasks(8) grainsize(2)
+  for (i = 0; i < 16; i++)
+  {
+    for (j = 0; j < i; j++)
+    {
+      fprintf(stdout, "Thread_id: %d - Trabalhando na iteracao (%d,%d).\n", omp_get_thread_num(), i, j);
+    }
+  }
+}
+
+int main()
+{
+
+  fprintf(stdout, "Thread_id: %d - Antes da Regiao Paralela.\n", omp_get_thread_num());
+
+#pragma omp parallel num_threads(4)
+  {
+#pragma omp single
+    {
+      fprintf(stdout, "  Thread_id: %d - Antes das tasks.\n", omp_get_thread_num());
+#pragma omp taskgroup
+      {
+#pragma omp task
+        {
+          fprintf(stdout, "Thread_id: %d - Trabalhando em uma outra task independente.\n", omp_get_thread_num());
+        }
+
+#pragma omp task
+        {
+          fprintf(stdout, "Thread_id: %d - Trabalhando na task function().\n", omp_get_thread_num());
+          function();
+        }
+      }
+    }
+  }
+
+  fprintf(stdout, "Thread_id: %d - Depois da Regiao Paralela.\n", omp_get_thread_num());
+
+  return 0;
+}
+
+```
+
+`#pragma omp simd`: pode ser aplicado a um laço diretamente indicando que múltiplas iterações do laço podem ser executadas concorrentemente usando instruções `SIMD` (`Single Instruction Multiple Data`), como em multiplicação de vetores, onde a mesma instrução é aplicada em todas as posições dos vetores. Podendo ser combinado com os construtores `for` e `taskloop`.
+
+Exemplo de código com construtor `simd`: 
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+// Tamanho dos vetores.
+#define N 1048576
+
+// Entrada e saída.
+double v_a[N];
+double v_b[N];
+double v_s[N];
+
+void init_array()
+{
+  fprintf(stdout, "Inicializando os arrays.\n");
+  int i;
+  // Initialize vectors on host.
+  for (i = 0; i < N; i++)
+  {
+    v_a[i] = 0.5;
+    v_b[i] = 0.5;
+  }
+}
+
+int main(int argc, char **argv)
+{
+  int i;
+  double res;
+
+  /* Inicialização  dos vetores. */
+  init_array();
+
+  fprintf(stdout, "Thread_id: %d - Antes do simd.\n", (long int)omp_get_thread_num());
+#pragma omp simd
+  for (i = 0; i < N; i++)
+  {
+    res += v_a[i] * v_b[i];
+    v_s[i] += v_a[i] * v_b[i];
+  }
+
+  fprintf(stdout, "Thread_id: %d - Depois do simd.\n", (long int)omp_get_thread_num());
+
+  fprintf(stdout, "Thread_id: %d - resultado: %g\n", (long int)omp_get_thread_num(), res);
+
+  return 0;
+}
+
+```
 
 ## Considerações Finais {#sec-openmp-consid-finais}
+O OpenMP permite identificar oportunidades de paralelismo, dividir o trabalho de forma equilibrada, sincronizar apenas quando necessário e medir continuamente o impacto das mudanças dentro do código. Sendo flexível e portátil, ele permite que você comece paralelizando um único laço e avançando para arquiteturas mais complexas, ajustando `scheduling`, explorando tarefas independentes e combinando paralelismo com outras técnicas de otimização.
+
+O próximo passo é continuar testando diferentes configurações, medindo resultados, identificando gargalos e refinando o código. A prática constante e a análise crítica são as chaves para dominar o OpenMP e, mais amplamente, a programação paralela.
+
 
 ## Referências
+
+1.OpenMP Architecture Review Board. OpenMP Application Programming Interface. Disponível em: <https://www.openmp.org>.
+
+2.Capítulo 3: Introdução à Programação Paralela com OpenMP: Além das Diretivas de Compilação. Disponível em: <https://www.researchgate.net/publication/320775430_Capitulo_3_Introducao_a_Programacao_Paralela_com_OpenMP_Alem_das_Diretivas_de_Compilacao>.

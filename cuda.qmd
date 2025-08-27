@@ -1,0 +1,23 @@
+# Introdução à Computação Paralela em Sistemas: Heterogêneos: Programação para  GPUs com a Plataforma CUDA
+
+-- Guilherme Saides Serbai e Sergio Murilo Cardoso Valentini<br>
+guilhermeserbai6@gmail.com> e <sergiovalentini@alunos.utfpr.edu.br>
+
+> __Resumo:__
+> Texto do Resumo  {{< lipsum 2 >}}
+
+## Introdução {#sec-cuda-intro}
+
+## Ferramentas
+
+## Bibliotecas e Implementações
+
+## Modelo de Programação e Execução
+...
+
+## Considerações Finais {#sec-cuda-consid-finais}
+
+## Referências
+
+::: {#refs}
+:::

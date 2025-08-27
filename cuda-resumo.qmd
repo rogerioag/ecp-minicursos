@@ -1,0 +1,3 @@
+# Minicurso: Introdução à Computação Paralela em Sistemas: Heterogêneos: Programação para  GPUs com a Plataforma CUDA
+
+Resumo do minicurso sobre CUDA {{< lipsum 2 >}}

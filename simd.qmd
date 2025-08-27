@@ -1,19 +1,22 @@
-c# Introdução à Programação Paralela: Vetorização
+# Introdução à Programação Paralela: Vetorização
 
 -- Guilherme A. Lopes <br>
 <guiguigui098@gmail.com>
 
 > _Resumo:_
-Neste minicurso, exploraremos técnicas de vetorização e sua importância para o desenvolvimento de software de alto desempenho. Abordaremos desde conceitos básicos até a implementação prática de operações SIMD (Single Instruction, Multiple Data), demonstrando como otimizar o processamento de dados em paralelo. O foco será na utilização eficiente das extensões vetoriais modernas, como AVX e SSE, disponíveis nos processadores atuais, usando immutible.h.
+Neste minicurso, exploraremos técnicas de vetorização e sua importância para o desenvolvimento de software de alto desempenho. Abordaremos desde conceitos básicos até a implementação prática de operações `SIMD` _(Single Instruction, Multiple Data)_, demonstrando como otimizar o processamento de dados em paralelo. O foco será na utilização eficiente das extensões vetoriais modernas, como `AVX` e `SSE`, disponíveis nos processadores atuais, usando `immutible.h`.
 
-Texto do Minicurso de Vetorização.
+~~Texto do Minicurso de Vetorização.~~
 
 ##  Introdução {#sec-vet-intro}
 
+\todo{Texto Introdutório? Se seu texto for iniciar pela seção Vetorização, tire o título da seção Vetorização e deixe o titulo introdução}
+
+
 ## Vetorização
 
-A vetorização é extremamente importante nos dias de hoje. Embora os compiladores abstraiam muitos aspectos do funcionamento do hardware, é possível instruí-los a utilizar instruções SIMD (Single Instruction, Multiple Data) para obter ganhos de desempenho em operações matriciais.
-O objetivo deste minicurso é ensinar os estudantes a utilizarem operações de vetorização para obter ganhos significativos de desempenho em software. A vetorização é muito aplicada atualmente em diversar áreas: aplicações  científicas, análise financeira, inteligência artificial (IA)/aprendizado profundo, modelagem, análise 3D, processamento de imagem e áudio/vídeo, criptografia e compressão de dados.
+A vetorização é extremamente importante nos dias de hoje. Embora os compiladores abstraiam muitos aspectos do funcionamento do hardware, é possível instruí-los a utilizar instruções `SIMD` (Single Instruction, Multiple Data) para obter ganhos de desempenho em operações matriciais.
+O objetivo deste minicurso é ensinar os estudantes a utilizarem operações de vetorização para obter ganhos significativos de desempenho em software. A vetorização é muito aplicada atualmente em diversar áreas: aplicações científicas, análise financeira, Inteligência Artificial (IA)/aprendizado profundo, modelagem, análise 3D, Processamento de Imagens e áudio/vídeo, criptografia e compressão de dados.
 
 ## Suporte do Hardware
 

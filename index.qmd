@@ -20,6 +20,8 @@ Este livro reune o material dos Minicursos preparados e ministrados no contexto 
 | Gabriel M. L. Pereira       | gabrielmlobato@gmail.com           | Aluno   | IA/pyTorch |
 | João Victor Briganti de Oliveira       | joliveira.2022@alunos.utfpr.edu.br           | Aluno   | LLVM |
 | Luiz Gustavo Takeda | luiztakeda@alunos.utfpr.edu.br | Aluno | FreeRTOS |
+| Guilherme Saides Serbai | guilhermeserbai6@gmail.com | Aluno | GPUS/CUDA |
+| Sergio Murilo Cardoso Valentini | sergiovalentini@alunos.utfpr.edu.br | Aluno | GPUS/CUDA |
 
 <!--
 ::: {.callout-note appearance="simple"}

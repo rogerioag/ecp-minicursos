@@ -1,7 +1,7 @@
 # Minicurso: Introdução à Programação Paralela: Vetorização
 
-A evolução do hardware é algo imprescindível para a computação. A cada ano, os avanços nessa área têm possibilitado a execução de aplicações cada vez mais complexas, contribuindo significativamente para o desenvolvimento da computação como um todo.
+A evolução do _hardware_ é algo imprescindível para a Computação. A cada ano, os avanços nessa área têm possibilitado a execução de aplicações cada vez mais complexas, contribuindo significativamente para o desenvolvimento da computação como um todo.
 
-O ponto alto no aumento do desempenho da computação paralela foi a implementação da arquitetura multi-core, que permitiu a execução de múltiplas tarefas simultaneamente por um único processador. No entanto, para aproveitar esse potencial, é necessário adaptar o software, de modo que ele seja capaz de utilizar o hardware de forma eficiente.
+O ponto alto no aumento do desempenho da computação paralela foi a implementação da arquitetura multicore, que permitiu a execução de múltiplas tarefas simultaneamente por um único processador. No entanto, para aproveitar esse potencial, é necessário adaptar o _software_, de modo que ele seja capaz de utilizar o _hardware_ de forma eficiente.
 
-As técnicas de vetorização também são fundamentais para a computação paralela. Por meio das instruções SIMD (Single Instruction, Multiple Data), é possível realizar operações simultâneas em diversas regiões da memória, o que aumenta consideravelmente o desempenho das aplicações.
+As técnicas de vetorização também são fundamentais para a computação paralela. Por meio das instruções `SIMD` _(Single Instruction, Multiple Data)_ é possível realizar operações ~~simultâneas~~ em múltiplos operandos ~~diversas regiões da memória~~, o que aumenta consideravelmente o desempenho das aplicações.

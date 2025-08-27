@@ -6,7 +6,6 @@ __Projeto de Extensão:__ Escola de Computação Paralela (ECP 2024)
 
 __Registro UTFPR:__ 10503
 
-
 ## Objetivo
 
 O objetivo principal do projeto é preparar e ministrar minicursos sobre temas relacionados a Computação Paralela. Com o intuito de capacitar os participantes (membros da comunidade externa, profissionais e alunos dos cursos da UTFPR) para o desenvolvimento de aplicações paralelas e trabalharem com temas atuais de pesquisa na área. Proporcionando uma formação complementar em temas de Computação Paralela, bem como o estudo de tecnologias e de linguagens de programação voltadas à Computação Paralela e de Alto Desempenho em Sistemas Heterogêneos. Além de preparar os participantes para comporem equipes de competição para maratonas e desafios de computação paralela e colaborar na divulgação científica dos temas relacionados à Computação.
@@ -22,7 +21,7 @@ Como produção de recursos educacionais para serem disponibilizados, pretendemo
 | Introdução à Computação Paralela e Programação Multithreading usando Pthreads | Willian Wallace |
 | Introdução à Programação Paralela com `OpenMP` | Paulo Henrique |
 | Uso das Diretivas de Compilação do padrão OpenACC | em aberto |
-| Introdução  à  Computação Paralela em Sistemas Heterogêneos: Programação para GPUs com a Plataforma CUDA | em aberto |
+| Introdução  à  Computação Paralela em Sistemas Heterogêneos: Programação para GPUs com a Plataforma CUDA | Guilherme Saides Serbai e Sergio Murilo Cardoso Valentini |
 | Introdução à Infraestrutura de Compilação do LLVM | João Victor Briganti |
 | Introdução à Computação Heterogênea com OpenCL | em aberto |
 | Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs | Gabriel Lobato |
@@ -45,6 +44,12 @@ As figuras utilizadas em cada um dos materiais devem ser colocadas dentro do dir
 ### Código dos Exemplos
 
 O código dos exemplos apresentados no material deve estar na pasta `src/<nome-do-minicurso>`, por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_  devem estar no diretório `src/pthreads`, podendo cada exemplo estar em um subdiretório dentro de `src/pthreads`.
+
+### Markdown
+
+Utilizem os recursos do Markdown, em específico do quarto markdown <https://quarto.org/docs/authoring/markdown-basics.html>
+
+Deem uma olhada no site <quarto.org>
 
 ### Reuniões
 

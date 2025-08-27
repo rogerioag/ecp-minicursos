@@ -173,7 +173,7 @@ $$
 - Essa representação é útil para visualizar operações quânticas como rotações e portas lógicas.
 
 #### Natureza Física dos Qubits
-Qubits não são apenas abstrações matemáticas — eles são implementados fisicamente de várias formas:
+Qubits não são apenas abstrações matemáticas, eles são implementados fisicamente de várias formas:
 - Fótons, utilizando polarização ou caminho óptico.
 - Elétrons, aproveitando o spin ou carga.
 - Estados de corrente em circuitos supercondutores.
@@ -477,7 +477,7 @@ Após a medição, ao executar o circuito no simulador, obtemos um resultado cl�
 
 ### Teleporte Quântico
 
-O teleporte quântico é um dos protocolos mais incríveis da computação quântica. Ele permite transferir o estado quântico de uma partícula (um qubit) de um local para outro, sem que o qubit original seja enviado fisicamente. É como se a informação quântica "saltasse" de um ponto para o outro — uma ideia que desafia nossa intuição clássica.
+O teleporte quântico é um dos protocolos mais incríveis da computação quântica. Ele permite transferir o estado quântico de uma partícula (um qubit) de um local para outro, sem que o qubit original seja enviado fisicamente. É como se a informação quântica "saltasse" de um ponto para o outro, uma ideia que desafia nossa intuição clássica.
 
 O protocolo usa duas ferramentas fundamentais da mecânica quântica:
 
@@ -488,7 +488,7 @@ O protocolo usa duas ferramentas fundamentais da mecânica quântica:
 
 #### Como funciona o protocolo de teleporte?
 
-Suponha que Alice quer enviar para Bob um qubit desconhecido — ou seja, o estado quântico de um qubit que ela não sabe exatamente como é, mas quer transferir para ele.
+Suponha que Alice quer enviar para Bob um qubit desconhecido, ou seja, o estado quântico de um qubit que ela não sabe exatamente como é, mas quer transferir para ele.
 
 1. Alice e Bob compartilham um par de qubits entrelaçados. Alice fica com um deles, Bob com o outro.  
 2. Alice faz uma operação conjunta (chamada de medida Bell) entre o qubit que deseja enviar e o qubit dela do par entrelaçado. Essa operação resulta em dois bits clássicos, que Alice envia para Bob por um canal clássico.  

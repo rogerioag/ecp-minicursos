@@ -6,6 +6,8 @@ __Projeto de Extensão:__ Escola de Computação Paralela (ECP 2024)
 
 __Registro UTFPR:__ 10503
 
+[Texto do Projeto](docs/projeto_extensao_escola_de_computacao_paralela_ecp_utfpr_2024.pdf)
+
 ## Objetivo
 
 O objetivo principal do projeto é preparar e ministrar minicursos sobre temas relacionados a Computação Paralela. Com o intuito de capacitar os participantes (membros da comunidade externa, profissionais e alunos dos cursos da UTFPR) para o desenvolvimento de aplicações paralelas e trabalharem com temas atuais de pesquisa na área. Proporcionando uma formação complementar em temas de Computação Paralela, bem como o estudo de tecnologias e de linguagens de programação voltadas à Computação Paralela e de Alto Desempenho em Sistemas Heterogêneos. Além de preparar os participantes para comporem equipes de competição para maratonas e desafios de computação paralela e colaborar na divulgação científica dos temas relacionados à Computação.

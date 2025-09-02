@@ -878,11 +878,7 @@ Aqui registramos os dois passos, o primeiro deles é o `print<reach-int>` que é
 
 ## Considerações Finais {#sec-llvm-consid-finais}
 
-Ao longo deste minicurso, procurei abordar o máximo possível de conceitos, exemplos e práticas para que você pudesse ter uma visão ampla do LLVM, desde sua instalação até a criação de um JIT e a implementação de passes. A intenção foi criar uma base sólida que ajude a reduzir aquela sensação de estar completamente perdido ao se deparar com a ferramenta em um projeto real ou em um estudo mais avançado. Ainda assim, o LLVM é vasto e cheio de detalhes que só podem ser explorados a fundo com estudo contínuo e prática. Por isso, tenha sempre em mente que a documentação oficial e os recursos da comunidade são seus melhores amigos.
-
-## Referências
-
-@brainfuckAnotherBrainfuck
+Ao longo deste minicurso, procurei abordar o máximo possível de conceitos, exemplos e práticas para que você pudesse ter uma visão ampla do LLVM, desde sua instalação até a criação de um JIT e a implementação de passes. A intenção foi criar uma base sólida que ajude a reduzir aquela sensação de estar completamente perdido ao se deparar com a ferramenta em um projeto real ou em um estudo mais avançado. Ainda assim, o LLVM é vasto e cheio de detalhes que só podem ser explorados a fundo com estudo contínuo e prática. Por isso, tenha sempre em mente que a documentação oficial e os recursos da comunidade são seus melhores amigos. @brainfuckAnotherBrainfuck
 @llvmLLVMLlvmModule
 @llvmLLVMLlvmLLVMContext
 @llvmLLVMIncludellvmIRDerivedTypesh
@@ -900,3 +896,10 @@ Ao longo deste minicurso, procurei abordar o máximo possível de conceitos, exe
 @llvmUsingPass
 @cornellLLVMGrad
 @githubGitHubBanachspacellvmtutor
+
+
+## Referências
+
+::: {#refs}
+:::
+

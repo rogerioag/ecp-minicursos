@@ -1,5 +1,5 @@
 *_cache/
 /.quarto/
 rsconnect
-.book/
+book/
 *.exe

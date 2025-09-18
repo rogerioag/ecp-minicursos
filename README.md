@@ -33,19 +33,27 @@ Como produção de recursos educacionais para serem disponibilizados, pretendemo
 | Suporte a Aceleradores em Linguagens de Programação Modernas | em aberto |
 | Introdução à Programação para Sistemas Embarcados com FreeRTOS | Luiz Gustavo Takeda |
 | Introdução à Computação Quântica usando `Qiskit` | Willian Wallace |
+| Introdução à Compilação Distribuída | Gustavo Reino |
 
 
 ## Desenvolvimento
 
 ## Orientações Gerais
 
+Cada minicurso tem dois arquivos principais:
+
+- <nome-do-minicurso>-resumo.qmd
+- <nome-do-minicurso>.qmd
+
+Por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_ terá os arquivos `pthreads-resumo.qmd` e o `pthreads.qmd`, o primeiro contem um resumo do minicurso e o segundo o texto completo do minicurso.
+
 ### Figuras
 
-As figuras utilizadas em cada um dos materiais devem ser colocadas dentro do diretório `images/<nome-do-minicurso>`.
+As figuras utilizadas em cada um dos materiais devem ser colocadas dentro do diretório `images/<nome-do-minicurso>`. No minicurso tomado como exemplo, teremos o diretório `images/pthreds`.
 
 ### Código dos Exemplos
 
-O código dos exemplos apresentados no material deve estar na pasta `src/<nome-do-minicurso>`, por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_  devem estar no diretório `src/pthreads`, podendo cada exemplo estar em um subdiretório dentro de `src/pthreads`.
+O código dos exemplos apresentados no material deve estar na pasta `src/<nome-do-minicurso>`, por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_ devem estar no diretório `src/pthreads`, podendo cada exemplo estar em um subdiretório dentro de `src/pthreads`.
 
 ### Markdown
 

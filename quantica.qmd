@@ -25,7 +25,7 @@ Independentemente da implementação física, todos compartilham as mesmas propr
 - Entrelaçamento – correlação profunda entre qubits que persiste mesmo quando estão fisicamente separados.  
 - Interferência – manipulação das amplitudes de probabilidade para reforçar resultados corretos e cancelar resultados incorretos.  
 
-Essa diferença fundamental se traduz no espaço de estados disponível: enquanto um processador clássico com \(n\) bits só pode representar um estado por vez, um processador quântico com \(n\) qubits pode manipular simultaneamente \(2^n\) estados, explorando um paralelismo exponencial que pode oferecer vantagens significativas para certos problemas, como simulação de sistemas quânticos, criptografia e otimização complexa.
+Essa diferença fundamental se traduz no espaço de estados disponível: enquanto um processador clássico com \(n\) bits só pode representar um estado por vez, um processador quântico com \(n\) _qubits_ pode manipular simultaneamente \(2^n\) estados, explorando um paralelismo exponencial que pode oferecer vantagens significativas para certos problemas, como simulação de sistemas quânticos, criptografia e otimização complexa.
 
 
 ### Breve História e Estado Atual da Tecnologia

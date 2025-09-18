@@ -16,7 +16,6 @@ O aprendizado do OpenMP é progressivo, sendo possível começar paralelizando a
 
 ## Padrão OpenMP, compiladores, bibliotecas e Implementações
 
-
 A abordagem do OpenMP é de mais alto nível, com uso de diretivas de compilação: instruções inseridas no código-fonte para indicar regiões paralelas. Funcionam como anotações que  indicam seções paralelas do código sem a necessidade de reescrever toda a aplicação, permitindo testes e ajustes graduais. São implementadas usando-se as diretivas de pré-processamento #pragma, em C/C++, e sentinelas !$, no Fortran.
 
 O modelo de programação do OpenMP trabalha em sistemas de memória compartilhada e é baseado no conceito `fork–join`: o programa inicia com uma única thread (master), que cria múltiplas `threads` para executar regiões paralelas (fork) explicitamente ou implicitamente. e, ao final, sincroniza todas elas (join).

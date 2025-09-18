@@ -39,6 +39,9 @@ book:
     - part: quantica-resumo.qmd
       chapters:
         - quantica.qmd
+    - part: comp-dist-resumo.qmd
+      chapters:
+        - comp-dist.qmd
     - references.qmd
   appendices:
     - a1.qmd

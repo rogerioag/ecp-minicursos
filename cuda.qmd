@@ -10,6 +10,8 @@ guilhermeserbai6@gmail.com> e <sergiovalentini@alunos.utfpr.edu.br>
 
 ## Ferramentas
 
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
 ## Bibliotecas e Implementações
 
 ## Modelo de Programação e Execução

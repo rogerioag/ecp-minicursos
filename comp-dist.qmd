@@ -1,0 +1,44 @@
+# Introdução à Compilação Distribuída
+
+-- Gustavo Alexandre de Assis Reino<br>
+<gustavoreino@alunos.utfpr.edu.br>
+
+> __Resumo:__
+> Texto do Resumo  {{< lipsum 2 >}}
+
+## Introdução {#sec-comp-dist-intro}
+
+## Problema
+
+## Compilação de Projetos
+
+>> Falar dos projetos selecionados
+
+>> Colocar uma tabela dos tempos de execução sem paralelização de tarefas.
+
+## Compilando em Paralelo com `make` e `ninja`
+
+>> Colocar exemplos com as Opções: `make -j4` e `ninja` ...
+
+>> Colocar uma tabelas e gráficos com os tempos de execução com mais tarefas, abordagem em uma máquina.
+
+## Ferramentas para Compilação Distribuída
+
+>> Falar das ferramentas e colocar um exemplos.
+
+>> Colocar uma tabelas e gráficos com os tempos das compilações em ambiente distribuído.
+
+Máquinas TitanX, Armagedon e Apollo
+
+Computador do Centro de Computação Científica e Tecnológica da UTFPR-CP (CCCT-CP)
+
+Santos Dummont?
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
+## Considerações Finais {#sec-cuda-consid-finais}
+
+## Referências
+
+::: {#refs}
+:::

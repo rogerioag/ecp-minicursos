@@ -12,16 +12,16 @@ bibliography: references.bib
 
 ## Introdução {#sec-freertos-intro}
 
-Com o crescimento da __*Edge Computing*__ e da __*Internet of Things*__ (*IOT*), os programas embarcados tornaram-se cada vez mais complexos. 
+Com o crescimento da __*Edge Computing*__ e da __*Internet of Things*__ (IOT), os programas embarcados tornaram-se cada vez mais complexos. 
 Esses sistemas precisam lidar com múltiplos dados e tomar decisões em tempo real, exigindo que os desenvolvedores projetem arquiteturas capazes de responder e agir diante de diversos eventos assíncronos de forma eficiente.
 
 Para atender a essa nova realidade, surgiu um tipo de sistema operacional enxuto, projetado especialmente para dispositivos com recursos computacionais limitados. 
 Esses sistemas facilitam a organização do código, promovem a modularidade e otimizam o uso do hardware disponível. 
-Assim nasceram os __*Real-Time Operating Systems*__ (*RTOS*), que permitem lidar com múltiplas tarefas concorrentes e atender às exigências de processamento em tempo real.
+Assim nasceram os __*Real-Time Operating Systems*__ (RTOS), que permitem lidar com múltiplas tarefas concorrentes e atender às exigências de processamento em tempo real.
 
 ### O que é RTOS?
 
-Os *Real-Time Operating System (RTOS)* são sistemas operacionais nos quais o fator **tempo** é essencial para o cumprimento de suas funções.
+Os *Real-Time Operating System* (RTOS) são sistemas operacionais nos quais o fator **tempo** é essencial para o cumprimento de suas funções.
 Ao contrário da ideia comum, um sistema operacional de tempo real não precisa ser extremamente rápido, mas sim ser **previsível**, ou seja, deve garantir que determinadas tarefas sejam executadas dentro de prazos conhecidos e controláveis [@so-maziero].
 
 Existem dois tipos principais de RTOS: 
@@ -61,88 +61,759 @@ O ESP-IDF é construído sobre o **FreeRTOS**, permitindo o desenvolvimento de a
 
 Ao longo deste minicurso, exploraremos os principais conceitos do FreeRTOS aplicados ao ESP32, com foco em multitarefa, sincronização e comunicação entre tarefas. A abordagem será teórico-prática, culminando no desenvolvimento de um projeto funcional que integra sensores, interface web e comunicação em tempo real.
 
-## Projeto FreeRTOS
-
-Explicar os exemplos trabalhados para cada conteúdo abordado
-
-- **Co-rotinas**
-- **Tarefas** (Tasks)
-- **Semáforos e Mutex**
-- **Notificações de Tarefas** (Task Notifications)
-- **Filas** (Queues)
-- **Timers**
-- **Grupos de Eventos** (Event Groups)
-- **Interrupções** (Interruptions)
-
-Descrever oque será eloborado com mais robustes utilizando oque foi aprendido, para o projeto final da dashboard.
-
 ## Ferramentas e Recursos
 
-Descrever ferramentas como hardware e dev tools
+### Software
 
-Citar os recursos utilziados como fundamento, a documentação do esp-idf e freeRTOS
+Para facilitar o desenvolvimento do código será utilizado a extensão **[ESP-IDF](https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/)** para VSCode. 
 
-A base teórica do minicurso será fundamentada na documentação oficial do FreeRTOS [@freertosdoc] e na documentação do ESP-IDF [@espidfdoc], que servirão como referências para o conteúdo abordado.
+<figure style="text-align: center;">
+  <img src="./images/freertos/ESP-IDF Extension.png" 
+       style="max-width: 350px; width: 100%; height: auto;">
+  <figcaption>Extensão ESP-IDF</figcaption>
+</figure>
+
+### Hardware
+
+Os exemplos serão executados no **ESP32 WROOM devkit**.
+
+<figure style="text-align: center;">
+  <img src="./images/freertos/156519c3ae.jpg" 
+       style="max-width: 350px; width: 100%; height: auto;">
+  <figcaption>ESP32 WROOM devkit</figcaption>
+</figure>
+
+### Recursos
+
+Os fundamentos, API e exemplos foram retirados das documentações oficiais FreeRTOS[@freertosdoc] e ESP-IDF[@espidfdoc] respetivamente.
+
+## Conceitos
+
+Alguns conceitos são importantes para compreender melhor o funcionamento do FreeRTOS e sua abordagem à multitarefa.
+
+### _Multitasking_
+
+_Multitasking_ é a capacidade de um sistema operacional executar múltiplas tarefas. Em sistemas operacionais completos (como Linux ou Windows), é implementado através de  **processos** e **_threads_**, com suporte à memória virtual e isolamento de contexto[@freertosdoc].
+
+Já em sistemas de tempo real enxutos, como o FreeRTOS, não há memória virtual, todas as tarefas compartilham o mesmo espaço de endereçamento.Por isso, o termo utilizado é _task_ por não ter a distinção entre processo e _thread_. Cada _task_ possui sua própria pilha e contexto de execução, mas compartilha os mesmos recursos globais do microcontrolador.
+
+### _Multitasking_ Vs _Concurrency_
+
+Um processador convencional de um único núcleo pode executar apenas uma tarefa por vez. No entanto, ao alternar rapidamente entre várias tarefas, o sistema cria a impressão de que elas estão sendo executadas ao mesmo tempo. Esse comportamento é chamado de _multitasking_, e o diagrama abaixo ilustra a diferença entre o que é percebido pelo usuário e o que realmente acontece na CPU[@freertosdoc].
+
+<figure style="text-align: center;">
+  <img src="./images/freertos/TaskExecution.gif" 
+       style="max-width: 400px; width: 100%; height: auto;">
+  <figcaption>Execução de _tasks_</figcaption>
+</figure>
+
+Já o termo concorrência refere-se à ideia de que múltiplas tarefas estão em progresso no mesmo intervalo de tempo. Em um sistema de núcleo único, isso é obtido por meio da alternância entre tarefas (_multitasking_). Em sistemas com múltiplos núcleos, a concorrência pode resultar em paralelismo real, onde tarefas de fato são executadas simultaneamente em diferentes núcleos do processador.
+
+### _Scheduling_
+
+O _Scheduler_ é a parte do _Kernel_ responsável por decidir qual _task_ será executada em cada instante[@freertosdoc].
+
+Durante o tempo de vida de uma tarefa, o núcleo pode interrompê-la e retomá-la diversas vezes, alternando entre as difeentes _tasks_ do sistema de acordo com a regras de escalonamento.
+
+A politica de agendamento (_scheduling policy_) é o algoritimo utilizado pelo _scheduler_ para decidir qual tarefa será executada em cada momento. Em sistemas operacionais tradicionais, essa política geralmente busca distribuir o processador de forma “justa” entre as _tasks_. Já em sistemas de tempo real, como o FreeRTOS, o objetivo principal é atender prazos e prioridades, garantindo previsibilidade no comportamento do sistema.
+
+#### Estados de uma tarefa
+
+Um dos conceitos que tornam possível a utilização do scheduler é que cada _task_ possui um estado. Os principais estados no FreeRTOS são:
+
+- **Em execução (Running)**: a tarefa está sendo executada no momento. Sempre haverá no máximo uma _task_ em execução por núcleo.
+
+- **Pronta (Ready)**: a tarefa está pronta para ser executada, aguardando o processador.
+
+- **Bloqueada (Blocked)**: a tarefa está esperando um evento temporal ou externo. Exemplo: ao chamar vTaskDelay(), a _task_ permanece bloqueada até o tempo expirar. Neste estado, ela não consome processamento.
+
+- **Suspendida (Suspended)**: semelhante ao estado bloqueada, a tarefa não consome CPU, porém não está aguardando nenhum evento ou tempo para sair desse estado. A entrada e saída dele é feita explicitamente com vTaskSuspend() e xTaskResume().
+
+A figura abaixo ilustra um exemplo de transições entre os estados de uma tarefa no FreeRTOS.
+
+<figure style="text-align: center;">
+  <img src="./images/freertos/tskstate.gif" 
+       style="max-width: 400px; width: 100%; height: auto;">
+  <figcaption>Diagrama de transições entre os estados de uma tarefa</figcaption>
+</figure>
+
+### _Real-Time Scheduling_
+
+Sistema de tempo real, realizam _multitasking_ seguindo os mesmo principios porém com objetivos diferentes. Isso é refletido na politica de agendamento, em que um RTOS deve responder a eventos que ocorrem na vida real, no qual o tempo de respota é crucial para desempenhar o seu papel[@freertosdoc].
+
+Para atingir esse objetivo o desenvolvedor deve atribuir uma prioridade para cada tarefa, e as de maior prioridade será executadas sempre que possivel garantindo o tempo de resposta para eventos cruciais.
+
+
+Sistemas de tempo real realizam _multitasking_ seguindo os mesmos princípios dos sistemas operacionais convencionais, mas com objetivos diferentes. A principal diferença está na política de agendamento, já que um RTOS deve responder a eventos do mundo real, onde o tempo de resposta é crucial[@freertosdoc].
+
+Para atingir esse objetivo, o desenvolvedor atribui uma prioridade a cada tarefa. No FreeRTOS, as tarefas de maior prioridade sempre terão preferência de execução, podendo interromper (preempção) as de menor prioridade, garantindo assim que eventos críticos recebam resposta dentro do prazo exigido.
+
+Quando várias tarefas possuem a mesma prioridade, o escalonador pode aplicar round-robin, alternando entre elas de forma justa. Dessa forma, o mecanismo de escalonamento em tempo real combina determinismo e flexibilidade, permitindo que o sistema atenda requisitos críticos sem desperdiçar recursos.
+
+<!-- Exemplo? -->
 
 ## Programação
 
-Explicar o funcionamento base do freeRTOS
-
-### Co-rotinas
-
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
+Agora iremos aprofundar nos conceitos e funcionamento do FreeRTOS.
 
 ### Tarefas (Tasks)
 
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
+<!-- Problema -->
+<!-- Solução -->
 
-### Semáforos e Mutex
- 
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
- 
-### Notificações de Tarefas (Task Notifications)
+Conforme ja apresentado, as _tasks_ são utilizadas para modularizar os componentes de um sistema e torna-los idependentes. Uma aplicação freeRTOS é composta por multiplas task em que cada uma tem sua propria _stack_, ponto de entrada e loop.
 
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
+<!-- Especificações -->
+
+As tarefas são implementadas utilizando uma função, o prototipo é o seguinte:
+
+```C
+void vATaskFunction( void * pvParameters );
+```
+
+Um exemplo da estrutura de uma _task_ implementada:
+
+```C
+void vATaskFunction( void * pvParameters )
+{
+  /*
+  * Variáveis alocadas na pilha podem ser declaradas normalmente dentro de uma função.
+  * Cada instância de uma tarefa criada usando esta função de exemplo terá sua
+  * própria instância separada de lStackVariable alocada na pilha da tarefa.
+  */
+  long lStackVariable = 0;
+
+  /*
+  * Em contraste com variáveis alocadas na pilha, variáveis declaradas com a
+  * palavra-chave `static` são alocadas em um local específico da memória pelo linker.
+  * Isso significa que todas as tarefas que chamarem vATaskFunction compartilharão
+  * a mesma instância de lStaticVariable.
+  */
+  static long lStaticVariable = 0;
+
+  while(1)
+  {
+      /* O código para implementar a funcionalidade da tarefa ficará aqui. */
+  }
+
+  /*
+  * Se a implementação da tarefa algum dia sair do loop acima, então a tarefa
+  * deve ser deletada antes de alcançar o fim da função que a implementa.
+  * Quando NULL é passado como parâmetro para a função da API vTaskDelete(),
+  * isso indica que a tarefa a ser deletada é a própria (a que está chamando).
+  */
+  vTaskDelete( NULL );
+}
+```
+
+Para criar um _task_ utilizamos a função xTaskCreate:
+
+```C
+/**
+ * @brief Cria uma task
+ *
+ * @param pvTaskCode Função que implementa a task
+ * @param pcName Nome utilizado para debug
+ * @param usStackDepth Tamanho da stack em words
+ * @param pvParameters Parametro que será passado para a task
+ * @param uxPriority Prioridade de execução da task
+ * @param pxCreatedTask Ponteiro para o handle da task
+ * @return 
+ */
+BaseType_t xTaskCreate( 
+  TaskFunction_t pvTaskCode,
+  const char * const pcName,
+  configSTACK_DEPTH_TYPE usStackDepth,
+  void * pvParameters,
+  UBaseType_t uxPriority,
+  TaskHandle_t * pxCreatedTask );
+
+``` 
+
+<!-- Exemplo de uso -->
+
+Um exemplo simples é a utilização de uma task para leitura de dados advindos da UART:
+
+```C 
+#include "examples.h"
+#include "driver/uart.h"
+#include "driver/gpio.h"
+#include "string.h"
+#include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "esp_err.h"
+
+//**************************************************
+// Defines
+//**************************************************
+
+#define UART_PORT UART_NUM_2       // Porta UART utilizada (UART2)
+#define UART_BAUD 115200           // Baudrate da UART
+#define UART_TX_PIN GPIO_NUM_17    // Pino de TX
+#define UART_RX_PIN GPIO_NUM_16    // Pino de RX
+#define BUF_SIZE 1024              // Tamanho do buffer de recepção
+
+//**************************************************
+// Globals
+//**************************************************
+
+static const char TAG[] = "task";  // Tag usada para logs
+
+//**************************************************
+// Function Prototypes
+//**************************************************
+
+void uart_initialize();            // Inicialização da UART
+void uart_rx_task(void *pvParameters); // Task para receber dados via UART
+
+//**************************************************
+// Functions
+//**************************************************
+
+esp_err_t examples_task()
+{
+  // Inicializa UART2 com a configuração definida
+  uart_initialize();
+
+  // Cria a task de recepção da UART
+  BaseType_t res = xTaskCreate(
+      uart_rx_task,  // Função da task
+      "uart_rx",     // Nome da task
+      2048,          // Stack em bytes (ajustado para comportar logs e buffer)
+      NULL,          // Parâmetro passado (não usado)
+      1,             // Prioridade (maior que idle)
+      NULL           // Handle da task (não usado aqui)
+  );
+
+  // Verifica se a task foi criada com sucesso
+  if (res != pdTRUE)
+  {
+    ESP_LOGE(TAG, "Fail to create task");
+    return ESP_FAIL;
+  }
+
+  return ESP_OK;
+}
+
+//**************************************************
+// Static Functions
+//**************************************************
+
+void uart_initialize()
+{
+  // Estrutura de configuração da UART
+  const uart_config_t uart_config = {
+      .baud_rate = UART_BAUD,
+      .data_bits = UART_DATA_8_BITS,
+      .parity = UART_PARITY_DISABLE,
+      .stop_bits = UART_STOP_BITS_1,
+      .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+      .source_clk = UART_SCLK_DEFAULT,
+  };
+
+  // Instala driver da UART (buffer de RX em dobro, sem TX buffer, sem fila de eventos)
+  ESP_ERROR_CHECK(uart_driver_install(UART_PORT, BUF_SIZE * 2, 0, 0, NULL, 0));
+
+  // Aplica configuração da UART
+  ESP_ERROR_CHECK(uart_param_config(UART_PORT, &uart_config));
+
+  // Define os pinos de TX/RX da UART2
+  ESP_ERROR_CHECK(uart_set_pin(UART_PORT,
+                               UART_TX_PIN,
+                               UART_RX_PIN,
+                               UART_PIN_NO_CHANGE,
+                               UART_PIN_NO_CHANGE));
+}
+
+void uart_rx_task(void *pvParameters)
+{
+  // Aloca buffer para armazenar dados recebidos
+  uint8_t *data = (uint8_t *)malloc(BUF_SIZE + 1);
+
+  while (1)
+  {
+    // Lê dados recebidos na UART (timeout de 20 ms)
+    int len = uart_read_bytes(UART_PORT, data, BUF_SIZE, pdMS_TO_TICKS(20));
+
+    if (len <= 0)
+    {
+      // Nenhum dado recebido → volta ao início do loop
+      continue;
+    }
+
+    // Garante terminação de string para log
+    data[len] = '\0';
+
+    // Exibe dados recebidos via log
+    ESP_LOGI(TAG, "Read \"%s\"", data);
+
+    // Reenvia (eco) os mesmos dados pela UART
+    uart_write_bytes(UART_PORT, (const char *)data, len);
+  }
+}
+```
+
+<!-- Cuidados -->
+
+
+
+<!-- Comparação com SO padrão -->
+
+
+
+<!-- Rascunho -->
+
+
+
+Para criar a task é utilizado o xtaskcreate, em que vc define qual o tamanho ta stack e a prioridade da task, alem de passar o args para a função.
+
+Exemplo de task para comunicação uart.
+
+Uma task para receber os dados da uart.
+
+Um exemplo em um SO tradicional é a utilização do ptheads semelhança na declaração.
 
 ### Filas (Queues)
 
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
+<!-- Problema -->
 
-### Timers
+<!-- Solução -->
 
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
+<!-- Especificações -->
+
+<!-- Exemplo de uso -->
+
+<!-- Cuidados -->
+
+<!-- Comparação com SO padrão -->
+
+<!-- Rascunho -->
+
+Uma fila é utilizada para entregar pacotes para uma task processar, é um meio de comunicação em que é enviado o dado e caso haja outros a serem processados é enfilerado até todos sejam consumidos.
+
+Vc pode criar uma fila com função, definindo o tamanho de cada item e o tamanho da fila, um exemplo com a uart é enviar dados para serem escritos, assim apenas uma task detem o controle do periferico uart, porem outras tasks podem utilizar ele.
+
+No so padrão tambem temos fila.
+
+### Semáforos e Mutex
+
+<!-- Problema -->
+
+<!-- Solução -->
+
+<!-- Especificações -->
+
+<!-- Exemplo de uso -->
+
+<!-- Cuidados -->
+
+<!-- Comparação com SO padrão -->
+
+<!-- Rascunho -->
+
+Quando estamos compartilhando um recurso entre task é problematico quando duas estão querendo utilizar o mesmo, por exemplo se duas tasks estão utilizando uma linha de transmissão de dados ou manipulação de arquivos em um cartão sd, ambas podem conflitar na hora do uso da SPI.
+
+Para resolver esse problema é utilizado semaforos e mutex, em que é cordenado quem está em posse do recurso ou limitar a quantidade de tasks que podem acessar simultaneamente.
+
+para poder criar um declara um handler e cria ele com a quantidade de elementos que vai deixar passar.
+então utiliada de take e give.
+
+Exemplo com uart 
+
+No SO normanl tambem temos o mesmo conceito e tals
+
+### Notificações de Tarefas (Task Notifications)
+
+<!-- Problema -->
+
+<!-- Solução -->
+
+<!-- Especificações -->
+
+<!-- Exemplo de uso -->
+
+<!-- Cuidados -->
+
+<!-- Comparação com SO padrão -->
+
+<!-- Rascunho -->
+
+As formas de comunicação entre as tarefas mostradas uitilizam um objeto intermediario para realizar a comunicação, assim sendo mais pesados e consumindo mais memoria.
+
+outro mecanismo que vem para reduzir esse consumo e ser mais leve são as notificações de tarefas, cada task tem uma lista de noiticações + um payload que pode ser enviada para ela, e no minimo cada task tem 2 noitificações.
+
+Exemplo para utilizar uma notificação de tarefa é quando uma interrupção é acionada e necessita enviar um sinal para uma task, por exemplo quando um botão é precionado precisa executar uma ação X.
+
+Algo semelhante são os sinais enviados para processos.
+
+### Software Timers
+
+<!-- Problema -->
+
+Imagine o cenario em que é necessario cortar a alimentação de um motor ou enviar um pacote via MQTT em um determinado tempo, não bloqueando a task de continuar o seu funcionamento.
+
+<!-- Solução -->
+
+Para resolver esse problema é possivel utilizar um _Software Timer_, em que é definido um tempo de expiração em que ele executará a função atribuida a ele.
+
+<!-- Especificações -->
+
+O prototipo da função callback utilizada no timer:
+```C
+void ATimerCallback( TimerHandle_t xTimer );
+```
+
+É necessario especificar qual modo será executado:
+
+ - _One-shot_: É executado uma vez apenas a função após o tempo expirar.
+ - _Auto-reload_: Após executar uma vez a função é recarregado o temporizado novamente obtendo-se uma execução periodica.
+
+<figure style="text-align: center;">
+  <img src="./images/freertos/software-timer-mode.png" 
+    style="max-width: 400px; width: 100%; height: auto;">
+  <figcaption>Diferença no comportamento do modo one-shot e auto-reload </figcaption>
+</figure>
+
+O timer tem dois estados definidos:
+ 
+ - _Dormant_: Não executará a contagem e a função _callback_.
+ - _Running_: Está contando e executará a função _callback_.
+
+<figure style="text-align: center;">
+  <img src="./images/freertos/software-timer-auto-reload-s.png" 
+    style="max-width: 400px; width: 100%; height: auto;">
+  <figcaption>Estados e transições do modo one-shot</figcaption>
+</figure>
+
+<figure style="text-align: center;">
+  <img src="./images/freertos/software-timer-auto-reload-s.png" 
+    style="max-width: 400px; width: 100%; height: auto;">
+  <figcaption>Estados e transições do modo auto-reload</figcaption>
+</figure>
+
+As funções de controle são:
+
+```C
+/**
+ * @brief Cria um timer
+ *
+ * Aloca os recursos para um novo timer e retorna o seu handle.
+ *
+ * @param pcTimerName Nome utilizado para debug.
+ * @param xTimerPeriodInTicks O periodo do timer especificado em tick. Pode ser utilizado a macro pdMS_TO_TICKS() para converter o tempo em ticks.
+ * @param xAutoReload Passe pdTRUE para criar um auto-reload timer e pdFalse para one-shot timer.
+ * @param pvTimerID Cada timer tem um ID e o desenvolvedor pode utilizar para oque desejar.
+ * @param pxCallbackFunction Callback que será executa após expirar o tempo.
+ * @return retornar o timer handle, caso seja NULL ouve uma insuficiencia de memoria para alocar o recurso.
+ */
+TimerHandle_t xTimerCreate( 
+  const char * const pcTimerName,
+  const TickType_t xTimerPeriodInTicks,
+  const BaseType_t xAutoReload,
+  void * const pvTimerID,
+  TimerCallbackFunction_t pxCallbackFunction 
+);
+
+/**
+ * @brief Inicia/Reinicia um timer
+ * 
+ * Caso o timer esteja dormente é colocado em execução.
+ * Caso o timer esteja em execução é reiniciado o seu contador.
+ * 
+ * @param xTimer O Handle do timer que será iniciado/reiniciado
+ * @param xTicksToWait Tempo em ticks para espera o commando ser enviado para a fila.
+ * @return Pode ter dois valores pdPASS ou pdFAIL
+ */
+BaseType_t xTimerStart( 
+  TimerHandle_t xTimer, 
+  TickType_t xTicksToWait 
+);
+
+/**
+ * @brief Para um timer
+ * 
+ * Caso o timer esteja em execução é colocado em dormente. 
+ *
+ * @param xTimer O Handle do timer que será parado.
+ * @param xTicksToWait Tempo em ticks para espera o commando ser enviado para a fila.
+ * @return Pode ter dois valores pdPASS ou pdFAIL
+ */
+BaseType_t xTimerStop( 
+  TimerHandle_t xTimer, 
+  TickType_t xTicksToWait 
+);
+
+/**
+ * @brief Deleta um timer, pode ser utilizada ao qualquer momento.
+ *
+ * Envia o comando de deletar o timer para a fila de comandos do (RTOS daemon task).
+ *
+ * @param xTimer O Handle do timer que será deletado.
+ * @param xTicksToWait Tempo em ticks para espera o commando ser enviado para a fila.
+ * @return Pode ter dois valores pdPASS ou pdFAIL
+ */
+BaseType_t xTimerDelete( 
+  TimerHandle_t xTimer,   
+  TickType_t xTicksToWait
+);
+```
+
+<!-- Exemplo de uso -->
+
+Para desmonstrar em ação, será emulado um temporizador de um forno.
+
+```C
+#include "examples.h"
+#include "esp_log.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/timers.h"
+
+//**************************************************
+// Defines
+//**************************************************
+
+#define WARMING_UP_MS_TIME 1000 * 5 // 5 segundos
+#define BAKING_MS_TIME 1000 * 10    // 10 segundos
+
+//**************************************************
+// Enums
+//**************************************************
+
+typedef enum
+{
+  OVEN_STATE_START = 0,
+  OVEN_STATE_WARMING_UP,
+  OVEN_STATE_BAKING,
+  OVEN_STATE_DONE,
+} oven_state_t;
+
+//**************************************************
+// Globals
+//**************************************************
+
+static const char TAG[] = "oven";
+
+static TaskHandle_t oven_task_handle = NULL; // Handle da task principal do forno
+
+//**************************************************
+// Function Prototypes
+//**************************************************
+
+static void oven_task(void *_);
+static void oven_timer(TimerHandle_t xTimer);
+static void get_temperature();
+static void set_heat_element();
+
+//**************************************************
+// Functions
+//**************************************************
+
+esp_err_t examples_software_timer()
+{
+  // Cria a task principal do forno
+  BaseType_t res = xTaskCreate(
+      oven_task,
+      "oven_task",
+      2048,
+      NULL,
+      0,
+      &oven_task_handle);
+
+  if (res != pdPASS)
+  {
+    ESP_LOGE(TAG, "Fail to create task");
+    return ESP_FAIL;
+  }
+
+  return ESP_OK;
+}
+
+//**************************************************
+// Static Functions
+//**************************************************
+
+static void oven_task(void *_)
+{
+  oven_state_t current_state = OVEN_STATE_START;
+
+  while (1)
+  {
+    switch (current_state)
+    {
+    case OVEN_STATE_START:
+      ESP_LOGI(TAG, "Start");
+      current_state = OVEN_STATE_WARMING_UP;
+      break;
+
+    case OVEN_STATE_WARMING_UP:
+    {
+      ESP_LOGI(TAG, "Warming Up");
+
+      // Cria um timer one-shot (pdFALSE) que dispara após 5s
+      TimerHandle_t warming_up_timer = xTimerCreate(
+          "oven_timer",
+          pdMS_TO_TICKS(WARMING_UP_MS_TIME),
+          pdFALSE, // one-shot, não periódico
+          NULL,
+          oven_timer);
+
+      // Inicia o timer
+      BaseType_t res = xTimerStart(warming_up_timer, portMAX_DELAY);
+      if (res != pdTRUE)
+      {
+        ESP_LOGE(TAG, "Fail to start timer");
+      }
+
+      while (1)
+      {
+        // Espera notificação do timer (com timeout de 500ms para processar outras ações)
+        if (ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(500)))
+        {
+          ESP_LOGI(TAG, "Warming up done");
+          current_state = OVEN_STATE_BAKING;
+
+          // Apaga o timer depois de usar
+          res = xTimerDelete(warming_up_timer, portMAX_DELAY);
+          if (res != pdTRUE)
+          {
+            ESP_LOGE(TAG, "Fail to delete timer");
+          }
+          break;
+        }
+
+        get_temperature();   // Simula leitura de temperatura
+        set_heat_element();  // Simula controle da resistência
+      }
+    }
+    break;
+
+    case OVEN_STATE_BAKING:
+    {
+      ESP_LOGI(TAG, "Baking");
+
+      // Cria um timer one-shot que dispara após 10s
+      TimerHandle_t baking_timer = xTimerCreate(
+          "oven_timer",
+          pdMS_TO_TICKS(BAKING_MS_TIME),
+          pdFALSE,
+          NULL,
+          oven_timer);
+
+      // Inicia o timer
+      BaseType_t res = xTimerStart(baking_timer, portMAX_DELAY);
+      if (res != pdTRUE)
+      {
+        ESP_LOGE(TAG, "Fail to start timer");
+      }
+
+      while (1)
+      {
+        // Espera notificação do timer
+        if (ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(500)))
+        {
+          ESP_LOGI(TAG, "Baking done");
+          current_state = OVEN_STATE_DONE;
+
+          // Apaga o timer depois de usar
+          res = xTimerDelete(baking_timer, portMAX_DELAY);
+          if (res != pdTRUE)
+          {
+            ESP_LOGE(TAG, "Fail to delete timer");
+          }
+          break;
+        }
+
+        get_temperature();
+        set_heat_element();
+      }
+    }
+    break;
+
+    case OVEN_STATE_DONE:
+      ESP_LOGI(TAG, "Done");
+      vTaskDelete(NULL); // Encerra a task principal
+      return;
+
+    default:
+      break;
+    }
+  }
+
+  vTaskDelete(NULL);
+}
+
+// Callback chamado quando o timer expira
+static void oven_timer(TimerHandle_t xTimer)
+{
+  if (oven_task_handle != NULL)
+  {
+    // Notifica a task principal do forno
+    xTaskNotifyGive(oven_task_handle);
+  }
+}
+
+static void get_temperature()
+{
+  ESP_LOGI(TAG, "Read temperature");
+}
+
+static void set_heat_element()
+{
+  ESP_LOGI(TAG, "Set heat element");
+}
+```
+
+Resultado da execução:
+
+```text
+I (321) oven: Start
+I (331) oven: Warming Up
+I (851) oven: Read temperature
+I (851) oven: Set heat element
+...
+I (4931) oven: Read temperature
+I (4931) oven: Set heat element
+I (5341) oven: Warming up done
+I (5351) oven: Baking
+I (5871) oven: Read temperature
+I (5871) oven: Set heat element
+...
+I (15051) oven: Read temperature
+I (15051) oven: Set heat element
+I (15361) oven: Baking done
+I (15371) oven: Done
+```
+
+<!-- Cuidados -->
+
+Um cuidado necessario ao utilizar o _software timer_ é que a _callback_ é executada no contexto da _RTOS daemon task_. Assim qualquer função que bloqueia uma task poderá afetar o desempenho ou o bloqueio indefinido da mesma, paralisando outros recursos que dependem dela.  
+
+<!-- Comparação com SO padrão -->
+
+O recurso similar em um sistema operacional tradicional é o POSIX timer.
 
 ### Grupos de Eventos (Event Groups)
 
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
+<!-- Problema -->
 
-### Interrupções (Interruptions)
+<!-- Solução -->
 
- - Explicar oque é tarefas
- - Utilidade
- - Exemplo
- - Paralelo com algo de um SO "Padrão"
+<!-- Especificações -->
+
+<!-- Exemplo de uso -->
+
+<!-- Cuidados -->
+
+<!-- Comparação com SO padrão -->
+
+<!-- Rascunho -->
+
+Quando temos um conjunto de eventos que gostariasmos de lidar, pode exemplo uma task que cuida do wifi, tem uma lista de eventos que podem ocorrer, como wifi conectado, adiquiriu ip e etc... Para isso pode ser utilizado um event group que basicamente é uma sequencia de bits, em que cada bit representa um evento.
+As task podem esperar um conjunto de eventos ou apenas um em especifico e limpar o evento caso ele seja processado.
+
+Exemplo de codigo no wifi:
+
+Não encontrei algo semelhante no SO padrão;
 
 ## Projeto final
 
@@ -160,8 +831,11 @@ Exibir pontos de melhorias como segurança
 
 ## Considerações Finais {#sec-freertos-consid-finais}
 
-@knuth1984
+@espidfdoc
 
+@freertosdoc
+
+@so-maziero
 
 ## Referências
 

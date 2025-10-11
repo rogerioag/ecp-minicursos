@@ -377,23 +377,98 @@ Um exemplo em um SO tradicional é a utilização do ptheads semelhança na decl
 
 <!-- Problema -->
 
-<!-- Solução -->
+Imagine um cenário onde uma tarefa produz dados de forma contínua, mas outra tarefa, responsável por processá-los, tem um ritmo mais lento. Se a tarefa que produz os dados for mais rápida que a que consome, podemos perder informações se não houver um local para armazená-las temporariamente. Como podemos garantir que os dados sejam armazenados de forma segura e processados na ordem correta, sem que uma tarefa bloqueie a outra? 
 
-<!-- Especificações -->
+#### Solução
 
-<!-- Exemplo de uso -->
+Para resolver esse problema, o FreeRTOS oferece as **Filas (_Queues_)**. Elas funcionam como um canal de comunicação seguro, permitindo a troca de dados entre tarefas, ou entre tarefas e interrupções. Uma fila se comporta como um _buffer_ **FIFO (_first-in first-out_)**, onde o primeiro item a entrar é o primeiro a ser processado. 
 
-<!-- Cuidados -->
+As filas são flexíveis e podem ser usadas em diversas situações, como:
 
-<!-- Comparação com SO padrão -->
+ - Passar mensagens ou dados de um produtos para um consumidor;
+ - Enfileirar comandos para serem executados por uma tarefa específica;
+ - Sincronizar tarefas, permitindo que uma tarefa espere que a fila contenha um item.
 
-<!-- Rascunho -->
+#### Especificações
 
-Uma fila é utilizada para entregar pacotes para uma task processar, é um meio de comunicação em que é enviado o dado e caso haja outros a serem processados é enfilerado até todos sejam consumidos.
+Uma fila é um objeto que armazena uma quantidade finita de itens, de um tamanho fixo, definidos em sua criação
 
-Vc pode criar uma fila com função, definindo o tamanho de cada item e o tamanho da fila, um exemplo com a uart é enviar dados para serem escritos, assim apenas uma task detem o controle do periferico uart, porem outras tasks podem utilizar ele.
+As principais funções para manipular filas são:
+```c
+/**
+ * @brief Cria uma fila
+ *
+ * Aloca os recursos para uma nova fila e retorna o seu handle.
 
-No so padrão tambem temos fila.
+ * @param uxQueueLength Máximo de itens que a fila pode armazenar.
+ * @param uxItemSize Tamanho em bytes de cada item na fila.
+ * @return Retorna o handle da fila, ou NULL caso não seja possível alocar os recursos.
+ */
+QueueHandle_t xQueueCreate( UBaseType_t uxQueueLength, UBaseType_t uxItemSize );
+
+/**
+ * @brief Envia um item para o começo da fila
+ *
+ * @param xQueue Handler da fila
+ * @param pvItemToQueue Endereço do item que será copiado para a fila.
+ * @param xTicksToWait Tempo máximo (em ticks) para aguardar caso a fila esteja cheia.
+ * @return pdPASS em caso de sucesso, ou pdFAIL se o item não pôde ser inserido.
+ */
+BaseType_t xQueueSendToFront( QueueHandle_t xQueue, const void * pvItemToQueue, TickType_t xTicksToWait );
+
+/**
+ * @brief Envia um item para o final da fila
+ *
+ * @param xQueue Handle da fila.
+ * @param pvItemToQueue Endereço do item que será copiado para a fila.
+ * @param xTicksToWait Tempo máximo (em ticks) para aguardar caso a fila esteja cheia.
+ * @return pdPASS em caso de sucesso, ou pdFAIL se o item não pôde ser inserido.
+ */
+BaseType_t xQueueSendToBack( QueueHandle_t xQueue, const void * pvItemToQueue, TickType_t xTicksToWait );
+
+/**
+ * @brief Envia um item para o final da fila
+ *
+ * @param xQueue Handle da fila.
+ * @param pvItemToQueue Endereço do item que será copiado para a fila.
+ * @param xTicksToWait Tempo máximo (em ticks) para aguardar caso a fila esteja cheia.
+ * @return pdPASS em caso de sucesso, ou pdFAIL se o item não pôde ser inserido.
+ */
+BaseType_t xQueueSend( QueueHandle_t xQueue, const void * pvItemToQueue, TickType_t xTicksToWait );
+
+/**
+ * @brief Lê e remove um item do começo da fila
+ *
+ * @param xQueue Handle da fila.
+ * @param pvBuffer Endereço do buffer onde o item lido será copiado.
+ * @param xTicksToWait Tempo máximo (em ticks) para aguardar um item ficar disponível.
+ * @return pdPASS em caso de sucesso, ou pdFAIL se a fila estiver vazia e o tempo de espera expirar.
+ */
+BaseType_t xQueueReceive( QueueHandle_t xQueue, void * const pvBuffer, TickType_t xTicksToWait );
+
+```
+#### Exemplo de uso
+
+#### Cuidados
+
+Fique atento ao contexto de execução das funções. As que não possuem o sufixo **ISR** (_Interrupt Service Routine_) não devem ser chamadas em rotinas de interrupção, pois isso pode causar efeitos colaterais indesejáveis.
+
+#### Comparação com SO padrão
+
+Em sistemas operacionais de propósito geral, como Linux e Windows, também existe o conceito de **fila de mensagens** (_message queue_), que cumpre uma função semelhante à **fila do FreeRTOS**: permitir a troca organizada de dados entre entidades concorrentes.
+
+No entanto, a implementação em um SO convencional é mais complexa, pois opera no **nível do kernel** e envolve o uso de **arquivos especiais** e **chamadas de sistema** (_syscalls_). Esse modelo garante isolamento e segurança entre processos distintos, mas também traz maior custo computacional e latência.
+
+No caso do Linux, por exemplo, as filas de mensagens seguem o **padrão POSIX**, que define uma interface padronizada para criação e manipulação dessas filas, por meio de funções como:
+ 
+ - **mq_open**: abre uma fila já existente ou cria uma nova fila;
+ - **mqt_send**: envia uma mensagem para a fila;
+ - **mq_receive**: recebe uma mensagem da fila;
+ - **mq_close**: fecha o descritor da fila criado por **mq_open**.
+
+Essas filas podem inclusive ser acessadas como arquivos no sistema, geralmente sob o diretório /dev/mqueue no caso do linux.
+
+Já no **FreeRTOS**, o conceito é simplificado e otimizado para **ambientes embarcados**, onde todas as tarefas compartilham o mesmo espaço de memória. As filas são implementadas inteiramente no espaço do usuário (RAM) e manipuladas por funções como xQueueSend() e xQueueReceive(), sem necessidade de interação com o kernel do sistema operacional.
 
 ### Semáforos e Mutex
 

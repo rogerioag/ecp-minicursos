@@ -11,7 +11,7 @@ for algoritmo in df["Algoritmo"].unique():
     dados = df[df["Algoritmo"] == algoritmo].sort_values(by="Tamanho")
     plt.plot(dados["Tamanho"], dados["Tempo"], marker="o", label=algoritmo)
 
-plt.xscale("log")  # escala log no eixo X
+plt.xscale("symlog")  # escala log no eixo X
 plt.xlabel("Tamanho da entrada (n)")
 plt.ylabel("Tempo de execução (s)")
 plt.title("Comparação de Desempenho dos Algoritmos de Ordenação")

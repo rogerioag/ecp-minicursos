@@ -104,7 +104,7 @@ void GerarArquivos(const long *tamanho_arquivos, const char **nomes_arquivos, co
 
         for (long j = 0; j < n; j++) 
         {
-            int num = rand() % 100000000;  // gera número aleatório entre 0 e o maior inteiro
+            int num = rand() % 100000000;  // gera número aleatório entre 0 e 100 milhões
             if (fwrite(&num, sizeof(int), 1, file) != 1) 
             {
                 perror("Erro ao escrever no arquivo");

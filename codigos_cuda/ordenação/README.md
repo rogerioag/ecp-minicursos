@@ -39,8 +39,8 @@ O objetivo é analisar o ganho de desempenho obtido com o uso de diferentes téc
 ### Clonando o repositório
 
 ```bash
-git clone https://github.com/Goosyx/Minicurso-Cuda-Codigos.git
-cd Minicurso-Cuda-Codigos
+git clone https://github.com/rogerioag/ecp-minicursos.git
+cd ecp-minicursos/codigos_cuda/ordenação
 ```
 
 ---
@@ -71,7 +71,7 @@ Antes de executar o projeto, verifique a **Compute Capability** da sua GPU e aju
 
 Para a execução dos algoritmos que utilizam threads, certifique-se de que seu sistema suporta a criação de múltiplas threads.
 
-Você pode modificar o número de threads no arquivo `main.cu`, alterando o valor da variável:
+Você pode modificar o número de threads utilizadas no arquivo `main.cu`, alterando o valor da variável:
 
 ```cpp
 const int num_threads = 8;
@@ -118,72 +118,8 @@ O gráfico mostra a evolução do tempo de execução em função do tamanho das
 
 - Caso sua GPU apresente erro de compatibilidade, edite o campo `FLAG` no `Makefile` conforme sua arquitetura.
 - Em máquinas com pouca memória, reduza o tamanho dos vetores no arquivo `main.cu` (vetor `tamanho_arquivos`).
-- Para evitar repetição de dados aleatórios entre execuções, adicione no início do `main`:
+- Caso queira evitar repetição de dados aleatórios entre execuções, adicione no início do `main`:
   ```cpp
   srand((unsigned)time(NULL));
   ```
 - Durante depuração, você pode comentar as linhas `rm` no `Makefile` para preservar os binários após a execução.
-
----
-
-## Estrutura do Projeto
-
-```
-Minicurso-Cuda-Codigos/
-├── dados/
-│   ├── 1m.bin
-│   ├── 2m500.bin
-│   ├── 5m.bin
-│   ├── 7m500.bin
-│   ├── 10m.bin
-│   ├── 25m.bin
-│   ├── 50m.bin
-│   ├── 100m.bin
-│   ├── 250k.bin
-│   ├── 500k.bin
-│   └── 750k.bin
-│
-├── results/
-│   ├── grafico_comparacao1.png
-│   └── tempos.csv
-│
-├── src/
-│   ├── ordenadores/
-│   │   ├── cuda/
-│   │   │   ├── merge_sort_cuda.cu
-│   │   │   └── radix_sort_cuda.cu
-│   │   │
-│   │   ├── sequencial/
-│   │   │   ├── merge_sort_seq.h
-│   │   │   └── radix_sort_seq.h
-│   │   │
-│   │   └── threads/
-│   │       ├── merge_sort_threads.h
-│   │       └── radix_sort_threads.h
-│   │
-│   ├── utils/
-│   │   └── utils.h
-│   │
-│   ├── gerador_dados.cpp
-│   └── main.cu
-│
-├── .gitignore
-├── Makefile
-├── plot_tempos.py
-└── README.md
-```
-
----
-
-## Licença
-
-Este projeto foi desenvolvido para fins acadêmicos e educacionais.
-Sinta-se livre para utilizar, modificar e distribuir com os devidos créditos.
-
----
-
-## Autor
-
-**Sérgio Murilo (Goosyx)**
-Email: *(sergiomurilo-cardoso@hotmail.com)*
-GitHub: [Goosyx](https://github.com/Goosyx)

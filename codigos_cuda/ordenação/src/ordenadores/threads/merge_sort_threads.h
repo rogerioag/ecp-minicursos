@@ -61,8 +61,7 @@ struct ThreadDados {
         - Copia os elementos dos subvetores para os auxiliares
         - Mescla os dois subvetores de volta ao vetor principal, mantendo a ordem
  */
-void MergeThread(int *vetor, int começo, int meio, int fim)
-{
+void MergeThread(int *vetor, int começo, int meio, int fim){
     int tam_esquerda = meio - começo + 1;
     int tam_direita = fim - meio;
 
@@ -71,15 +70,13 @@ void MergeThread(int *vetor, int começo, int meio, int fim)
 
     // Copia elementos para os vetores auxiliares
     int idx_esq = 0;
-    while(idx_esq < tam_esquerda)
-    {
+    while(idx_esq < tam_esquerda){
         vet_esq[idx_esq] = vetor[começo + idx_esq];
         idx_esq++;
     }
     
     int idx_dir = 0;
-    while(idx_dir < tam_direita)
-    {
+    while(idx_dir < tam_direita){
         vet_dir[idx_dir] = vetor[meio + 1 + idx_dir];
         idx_dir++;
     }
@@ -88,10 +85,8 @@ void MergeThread(int *vetor, int começo, int meio, int fim)
     idx_esq = 0;
     idx_dir = 0;
     int idx = começo;
-    while(idx_esq < tam_esquerda && idx_dir < tam_direita)
-    {
-        if(vet_esq[idx_esq] <= vet_dir[idx_dir])
-        {
+    while(idx_esq < tam_esquerda && idx_dir < tam_direita){
+        if(vet_esq[idx_esq] <= vet_dir[idx_dir]){
             vetor[idx] = vet_esq[idx_esq];
             idx_esq++;
         } else {
@@ -181,9 +176,7 @@ void* ThreadMergeWorker(void *arg)
 void MergeSortThread(int *vetor, int tamanho_total, int num_threads)
 {
     if(tamanho_total <= 1)
-    {
         return;
-    }
     
     int tamanho_subvetor = 1;
     while(tamanho_subvetor < tamanho_total)

@@ -44,12 +44,12 @@ using namespace std;
             MergeSortCuda esta variável dobra (1,2,4,8,...)
     Funcionamento:
         - Cada thread calcula qual par de sublistas deve mesclar baseado no seu ID.
-        - As sublistas a serem mescladas são [esquerda, meio) e [meio, direita)
+        - As sublistas a serem mescladas são [esquerda, meio] e [meio, direita)
         - Utiliza um merge clássico para combinar as duas sublistas em buffer_temp.
-        - Finalmente, copia o resultado de volta para o array original `dados`.
+        - Finalmente, copia o resultado de volta para o array original "dados".
 
     Cada thread é responsável por mesclar duas sublistas adjacentes
-    de tamanho tamanho_atual (ou menores se estivermos nas bordas).
+    de tamanho "tamanho_atual" (ou menores se estivermos nas bordas).
  */
 __global__ void MergeKernel(int* dados, int* buffer_temp, int N, int tamanho_atual)
 {
@@ -105,11 +105,10 @@ __global__ void MergeKernel(int* dados, int* buffer_temp, int N, int tamanho_atu
     }
         
 
-    // Copia o intervalo mesclado de volta para o array original `dados`.
-    // Fazemos isso aqui no final do kernel para manter `dados` sempre consistente
-    // para iterações futuras (essa escolha evita manter alternância entre dois
-    // buffers na CPU; no entanto, dependências de escrita/leitura precisam ser
-    // consideradas — aqui cada thread escreve apenas no seu segmento).
+    // Copia o intervalo mesclado de volta para o array original "dados".
+    // Fazemos isso aqui no final do kernel para manter "dados" sempre consistente
+    // para iterações futuras (evita manter alternância entre dois
+    // buffers na CPU. cada thread escreve apenas no seu segmento.
     for (long i = esquerda; i < direita && i < N; ++i)
     {
         dados[i] = buffer_temp[i];
@@ -133,7 +132,7 @@ __global__ void MergeKernel(int* dados, int* buffer_temp, int N, int tamanho_atu
         - A ideia do merge sort bottom-up: começamos com sublistas de tamanho 1,
         depois 2, 4, 8,... até cobrir todo o vetor. Em cada passo, lançamos
         um kernel onde cada thread junta (merge) duas sublistas adjacentes de
-        tamanho `tamanho`.
+        tamanho "N".
  */
 void MergeSortCuda(int* dados, int* buffer_temp, int N)
 {
@@ -143,22 +142,21 @@ void MergeSortCuda(int* dados, int* buffer_temp, int N)
     }
 
     // 'tamanho' é o tamanho atual das sublistas ordenadas (1,2,4,8...)
-    for (int tamanho = 1; tamanho < N; tamanho <<= 1) 
+    for (int tamanho = 1; tamanho < N; tamanho *= 2) 
     {
-        // Calcula quantas threads precisamos: cada thread faz o merge de
-        // duas sublistas de tamanho `tamanho` => cobre `tamanho*2` elementos.
+        // Calcula quantas threads serão usadas, cada thread faz o merge de
+        // duas sublistas de tamanho "tamanho" => "tamanho*2" elementos.
         long total_threads = (N + (tamanho * 2L - 1L)) / (tamanho * 2L);
 
-        // Converte número de threads em número de blocos considerando
-        // THREADS_POR_BLOCO por bloco.
+        // Converte número de threads em número de blocos considerando THREADS_POR_BLOCO.
         int blocos = (int)((total_threads + THREADS_POR_BLOCO - 1) / THREADS_POR_BLOCO);
 
         // Lança o kernel com a configuração (blocos, THREADS_POR_BLOCO).
         MergeKernel<<<blocos, THREADS_POR_BLOCO>>>(dados, buffer_temp, N, tamanho);
 
         // Sincroniza e verifica erros de execução. cudaDeviceSynchronize
-        // bloqueia até que o kernel termine — importante para checar erros
-        // e para garantir que a próxima iteração trabalhe com dados consistentes.
+        // bloqueia até que o kernel termine 
+        // garantindo que a próxima iteração trabalhe com dados consistentes.
         cudaError_t syncErr = cudaDeviceSynchronize();
         if (syncErr != cudaSuccess) 
         {
@@ -169,10 +167,10 @@ void MergeSortCuda(int* dados, int* buffer_temp, int N)
                 fprintf(stderr, "Erro de launch: %s\n", cudaGetErrorString(launchErr));
             }
 
-            return; // Em caso de erro, aborta a ordenação
+            return; // Em caso de erro aborta a ordenação
         }
 
-        // Checa erros residuais do lançamento do kernel
+        // Checa erros do lançamento do kernel
         cudaError_t err = cudaGetLastError();
         if (err != cudaSuccess) 
         {
@@ -187,7 +185,7 @@ void MergeSortCuda(int* dados, int* buffer_temp, int N)
 // ============================================================
 
 /*
-    HostParaDevice: interface que recebe os dados no host (CPU), aloca memória na GPU,
+    HostParaDevice: Função que recebe os dados no host (CPU), aloca memória no device (GPU),
     copia os dados para lá, executa MergeSortCuda na GPU e copia o resultado
     de volta para o host.
  
@@ -202,7 +200,7 @@ void HostParaDevice(int* dados_host, int N)
 
     cudaError_t err;
 
-    // Aloca memória para `dados_device` na GPU: espaço para N inteiros
+    // Aloca memória para "dados_device" na GPU com espaço para N inteiros
     err = cudaMalloc(&dados_device, N * sizeof(int));
     if (err != cudaSuccess) 
     {
@@ -210,7 +208,7 @@ void HostParaDevice(int* dados_host, int N)
         return; // aborta se não conseguiu alocar
     }
 
-    // Aloca memória para buffer temporário `buffer_device` na GPU
+    // Aloca memória para buffer temporário "buffer_device" na GPU
     err = cudaMalloc(&buffer_device, N * sizeof(int));
     if (err != cudaSuccess) 
     {
@@ -229,7 +227,7 @@ void HostParaDevice(int* dados_host, int N)
         return;
     }
 
-    // Chama a rotina que executa o merge sort na GPU (controlada por MergeSortCuda)
+    // Chama a função que executa o merge sort na GPU (controlada por MergeSortCuda)
     MergeSortCuda(dados_device, buffer_device, N);
 
     // Copia o resultado ordenado de volta para o host
@@ -272,11 +270,14 @@ void HostParaDevice(int* dados_host, int N)
 void ExecMergeCuda(const char **entradas, int num_entradas, const char *csv_saida)
 {
     FILE *csv = fopen(csv_saida, "a");
-    if (!csv) 
+    FILE *cuda_merge = fopen("results/cuda/merge_cuda.csv", "a");
+    if (!csv || !cuda_merge) 
     {
-        perror("Erro ao abrir arquivo CSV");
+        perror("Erro ao abrir arquivos de saída CSV");
         return;
     }
+
+    fprintf(cuda_merge, "Tamanho,Tempo\n");
 
     for (int i = 0; i < num_entradas; i++) 
     {
@@ -309,7 +310,9 @@ void ExecMergeCuda(const char **entradas, int num_entradas, const char *csv_said
         double tempo = elapsed.count();
 
         printf("MergeSort CUDA - Tempo para ordenar %s: %f s\n", entradas[i], tempo);
+
         fprintf(csv, "MergeSort - CUDA,%ld,%f\n", tamanho, tempo);
+        fprintf(cuda_merge, "%ld,%f\n", tamanho, tempo);
 
         // Regrava o arquivo com os valores ordenados (volta ao início com fseek)
         fseek(file, 0, SEEK_SET);
@@ -326,5 +329,6 @@ void ExecMergeCuda(const char **entradas, int num_entradas, const char *csv_said
     }
 
     fclose(csv);
+    fclose(cuda_merge);
 }
 

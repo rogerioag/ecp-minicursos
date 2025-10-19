@@ -67,7 +67,7 @@ void VerificarOrdenado(const char **arquivos, const int num_entradas)
             continue;
         }
 
-        long pos = 1; // posição do elemento atual (segunda leitura será pos=1)
+        long pos = 1;
         bool desordenado = false;
         while ((lidos = fread(&atual, sizeof(int), 1, file)) == 1) {
             if (atual < anterior) {

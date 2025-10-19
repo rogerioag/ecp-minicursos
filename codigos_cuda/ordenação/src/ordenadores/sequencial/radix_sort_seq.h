@@ -135,11 +135,14 @@ void RadixSort(int *vetor, int tamanho)
 void ExecRadixSeq(const char **entradas, int num_entradas, const char *csv_saida)
 {
     FILE *csv = fopen(csv_saida, "a");
-    if (!csv)
+    FILE *seq_radix_csv = fopen("results/sequencial/radix_seq.csv", "a");
+    if (!csv || !seq_radix_csv)
     {
         perror("Erro ao abrir arquivo CSV");
         return;
     }
+
+    fprintf(seq_radix_csv, "Tamanho,Tempo\n");
 
     for(int i = 0; i < num_entradas; i++)
     {
@@ -173,8 +176,8 @@ void ExecRadixSeq(const char **entradas, int num_entradas, const char *csv_saida
 
         printf("Radix Sort Sequencial - Tempo para ordenar %s: %f segundos\n", entradas[i], tempo);
 
-        // Registra tempo e tamanho no arquivo CSV
-        fprintf(csv, "RadixSort Sequencial,%ld,%f\n", (size_t)tamanho, tempo);
+        fprintf(csv, "RadixSort Sequencial,%ld,%f\n", tamanho, tempo);
+        fprintf(seq_radix_csv, "%ld,%f\n", tamanho, tempo);
 
         // Regrava o arquivo com os dados ordenados
         fseek(file, 0, SEEK_SET);
@@ -191,4 +194,5 @@ void ExecRadixSeq(const char **entradas, int num_entradas, const char *csv_saida
     }
 
     fclose(csv);
+    fclose(seq_radix_csv);
 }

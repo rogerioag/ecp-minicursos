@@ -176,7 +176,9 @@ void* ThreadMergeWorker(void *arg)
 void MergeSortThread(int *vetor, int tamanho_total, int num_threads)
 {
     if(tamanho_total <= 1)
+    {
         return;
+    }
     
     int tamanho_subvetor = 1;
     while(tamanho_subvetor < tamanho_total)
@@ -233,11 +235,14 @@ void MergeSortThread(int *vetor, int tamanho_total, int num_threads)
 void ExecMergeThread(const char **entradas, int num_entradas, int num_threads, const char *csv_saida)
 {
     FILE *csv = fopen(csv_saida, "a");
-    if (!csv)
+    FILE *thread_merge_csv = fopen("results/threads/merge_thread.csv", "a");
+    if (!csv || !thread_merge_csv)
     {
-        perror("Erro ao abrir arquivo CSV");
+        perror("Erro ao abrir arquivos de saída CSV");
         return;
     }
+
+    fprintf(thread_merge_csv, "Tamanho,Tempo\n");
 
     for(int i = 0; i < num_entradas; i++)
     {
@@ -270,6 +275,7 @@ void ExecMergeThread(const char **entradas, int num_entradas, int num_threads, c
         printf("MergeSort Threads - Tempo para ordenar %s: %f s\n", entradas[i], tempo);
 
         fprintf(csv, "MergeSort - Threads,%ld,%f\n", tamanho, tempo);
+        fprintf(thread_merge_csv, "%ld,%f\n", tamanho, tempo);
 
         fseek(file, 0, SEEK_SET);
         if(fwrite(v, sizeof(int), tamanho, file) != (size_t)tamanho)
@@ -285,4 +291,5 @@ void ExecMergeThread(const char **entradas, int num_entradas, int num_threads, c
     }
 
     fclose(csv);
+    fclose(thread_merge_csv);
 }

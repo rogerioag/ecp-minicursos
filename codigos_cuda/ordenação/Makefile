@@ -3,6 +3,9 @@ FLAG = sm_75
 all:
 	mkdir -p dados
 	mkdir -p results
+	mkdir -p results/sequencial
+	mkdir -p results/threads
+	mkdir -p results/cuda
 	nvcc -O3 -arch=$(FLAG) -std=c++14 -o main src/main.cu
 	./main
 	python3 plot_tempos.py

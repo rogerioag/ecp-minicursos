@@ -164,11 +164,14 @@ void MergeSortSeq(int *vetor, int n)
 void ExecMergeSeq(const char **entradas, int num_entradas, const char *csv_saida)
 {
     FILE *csv = fopen(csv_saida, "a");
-    if (!csv)
+    FILE *seq_merge_csv = fopen("results/sequencial/merge_seq.csv", "a");
+    if (!csv || !seq_merge_csv)
     {
-        perror("Erro ao abrir arquivo CSV");
+        perror("Erro ao abrir arquivos de saída CSV");
         return;
     }
+
+    fprintf(seq_merge_csv, "Tamanho,Tempo\n");
 
     for (int i = 0; i < num_entradas; i++)
     {
@@ -202,7 +205,9 @@ void ExecMergeSeq(const char **entradas, int num_entradas, const char *csv_saida
         double tempo = elapsed.count();
 
         printf("Merge Sort Sequencial - Tempo para ordenar %s: %f s\n", entradas[i], tempo);
+
         fprintf(csv, "MergeSort - Sequencial,%ld,%f\n", tamanho, tempo);
+        fprintf(seq_merge_csv, "%ld,%f\n", tamanho, tempo);
 
         fseek(file, 0, SEEK_SET);
         if(fwrite(vetor, sizeof(int), tamanho, file) != (size_t)tamanho)
@@ -218,4 +223,5 @@ void ExecMergeSeq(const char **entradas, int num_entradas, const char *csv_saida
     }
 
     fclose(csv);
+    fclose(seq_merge_csv);
 }

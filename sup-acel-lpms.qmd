@@ -1,0 +1,29 @@
+# Suporte a Aceleradores em Linguagens de Programação Modernas
+
+-- Christopher Eduardo Zai<br>
+<christopher.310704@alunos.utfpr.edu.br>
+
+> __Resumo:__
+> Texto do Resumo  {{< lipsum 2 >}}
+
+## Introdução {#sec-sup-acel-lpms-intro}
+
+## Linguagens Modernas
+
+## Aceleradores
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
+## Suporte a Aceleradores em Linguagens Modernas
+
+## Bibliotecas e Implementações
+
+## Modelo de Programação e Execução
+...
+
+## Considerações Finais {#sec-sup-acel-lpms-consid-finais}
+
+## Referências
+
+::: {#refs}
+:::

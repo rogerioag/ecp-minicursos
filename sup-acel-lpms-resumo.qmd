@@ -1,0 +1,3 @@
+# Minicurso: Suporte a Aceleradores em Linguagens de Programação Modernas
+
+Resumo do minicurso sobre Suporte a Aceleradores em Linguagens de Programação Modernas. {{< lipsum 2 >}}

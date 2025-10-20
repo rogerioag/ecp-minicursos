@@ -3,3 +3,5 @@
 rsconnect
 book/
 *.exe
+
+**/*.quarto_ipynb

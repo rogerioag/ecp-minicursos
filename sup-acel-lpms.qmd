@@ -4,15 +4,56 @@
 <christopher.310704@alunos.utfpr.edu.br>
 
 > __Resumo:__
-> Texto do Resumo  {{< lipsum 2 >}}
+> Este minicurso aborda o suporte a aceleradores (GPUs/FPGAs) em linguagens modernas, fundamental para a computação paralela de alto desempenho (HPC). O foco está em três pilares arquiteturais. C++ será explorado por sua portabilidade de desempenho usando padrões abertos como SYCL e abstrações avançadas. Python demonstrará como a produtividade é alcançada via compilação JIT (Numba) e delegação a backends nativos. Por fim, Julia apresentará sua integração nativa de baixo atrito através do sistema de multiple dispatch e arrays de GPU (CuArray). O objetivo é dominar os mecanismos de offloading e gestão de memória para otimizar aplicações intensivas.
 
 ## Introdução {#sec-sup-acel-lpms-intro}
+O panorama da computação de alto desempenho (HPC) e da inteligência artificial (IA) sofreu uma transformação fundamental nas últimas décadas. Historicamente, o aumento constante na frequência de clock dos processadores, conhecido por impulsionar a Lei de Moore, garantia que o software ficasse intrinsecamente mais rápido a cada nova geração de hardware. Contudo, essa era chegou ao fim com o limite físico e térmico dos processadores de propósito geral (CPUs).  
+
+Essa estagnação impulsionou um novo paradigma: a computação heterogênea. O crescimento do desempenho passou a depender não mais da velocidade de um único núcleo, mas sim da exploração do paralelismo massivo oferecido por processadores especializados, conhecidos como aceleradores. Dispositivos como Unidades de Processamento Gráfico (GPUs), FPGAs e TPUs, projetados para executar milhares de operações simultaneamente, tornaram-se o novo requisito padrão para cargas de trabalho intensivas, como o treinamento de modelos de Machine Learning e simulações científicas complexas.  
+
+O desafio crucial reside em como linguagens de programação de alto nível, valorizadas por sua alta produtividade e facilidade de uso (como Python, Julia e C++), conseguem coordenar e descarregar (offload) a execução de tarefas para esses aceleradores, mantendo o desempenho próximo ao código nativo. Este minicurso visa dissecar os mecanismos arquiteturais e as bibliotecas que permitem essa integração eficiente, focando nas abordagens distintas de C++, Python e Julia para dominar a programação em ambientes de hardware heterogêneo.
+
+Para navegar neste novo paradigma, é essencial que o participante compreenda tanto o hardware especializado quanto as estratégias de software. Assim, este minicurso iniciará com uma revisão das linguagens foco (C++, Python e Julia) e a taxonomia dos aceleradores. Em seguida, mergulharemos nos modelos de programação e nas bibliotecas específicas que permitem o offloading e a gestão otimizada de memória, garantindo que você possa aplicar esses conhecimentos para obter ganhos de desempenho significativos em aplicações intensivas em computação.
 
 ## Linguagens Modernas
+Para começarmos vamos conhecer as nossas ferramentas. E esse capítulo se dedica a isso, conheceremos um básico de C++, Python e Julia. Por hora explicarei somente como funciona cada linguagem e um exemplo bobo de código sem nenhuma otimização envolvendo suporte a aceleradores.
 
-## Aceleradores
+### C++
+Há quem diga que chamar C++ de linguagem moderna é um tanto quanto errado, visto que a linguagem foi criada no ano de 1979. Contudo, a sucessora do C, não se trata de uma linguagem estagnada no tempo, muito pelo contrário, ela continuou e até hoje continua a se aprimorar, incorporando recursos avançados de programação genérica e modularidade nos padrões recentes. Por sua idade mais avançada, seu ecossistema é estavel, confiavel e muito bem testado, a grande maioria dos projetos que exige alto desempenho nasce aqui, em meio aos assustadores projetos legados, os temiveis vasamentos de memória e os abominaveis **"std::"**.
 
-{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+Mas nem só de segmentation fault, gambiarra e dipirona vive o dev C++, também de código extremamente eficiente. A constante atualização da linguagem, com recursos como políticas de execução paralela (std::par) introduzidas no C++17, garante que ela permaneça a fundação das bibliotecas mais avançadas de abstração de aceleradores. Aqui abaixo vai um pequeno exemplo: 
+´´´{cpp}
+#include <iostream>
+#include <vector>
+#include <numeric> // Para std::iota
+
+int main() {
+    const int SIZE = 1000000; // Tamanho do vetor
+    std::vector<int> a(SIZE);
+    std::vector<int> b(SIZE);
+    std::vector<int> c(SIZE);
+
+    // Inicializa os vetores 'a' e 'b'
+    std::iota(a.begin(), a.end(), 0); // a = {0, 1, 2, ..., SIZE-1}
+    std::iota(b.begin(), b.end(), SIZE); // b = {SIZE, SIZE+1, ..., 2*SIZE-1}
+
+    // Realiza a soma dos vetores 
+    for (int i = 0; i < SIZE; ++i) {
+        c[i] = a[i] + b[i];
+    }
+
+    // Imprime alguns resultados para verificação 
+    std::cout << "c[0] = " << c[0] << std::endl;
+    std::cout << "c[SIZE-1] = " << c[SIZE-1] << std::endl;
+
+    return 0;
+
+Este é um simples loop de soma executado sequencialmente na CPU. O desafio será transformar este núcleo de computação (compute kernel) para ser executado de forma massivamente paralela no acelerador, utilizando as abstrações que veremos adiante.
+
+### Python
+
+## Taxonomia de Aceleradores
+A computação heterogênea baseia-se no uso de aceleradores, dispositivos projetados para executar tarefas específicas com maior eficiência energética e maior taxa de transferência (throughput) do que CPUs equivalentes.
 
 ## Suporte a Aceleradores em Linguagens Modernas
 
@@ -26,4 +67,10 @@
 ## Referências
 
 ::: {#refs}
+https://tecnoblog.net/responde/o-que-diz-a-lei-de-moore/ 
+https://kfcdicasdigital.com/glossario/o-que-e-heterogeneous-computing/
+https://gemini.google.com/share/26fec8ec6845 
+https://pt.wikipedia.org/wiki/C%2B%2B 
+https://pt.wikipedia.org/wiki/Python
+https://pt.wikipedia.org/wiki/Julia_(linguagem_de_programa%C3%A7%C3%A3o)
 :::

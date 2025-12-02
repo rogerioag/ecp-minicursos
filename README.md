@@ -30,7 +30,7 @@ Como produção de recursos educacionais para serem disponibilizados, pretendemo
 | Introdução ao uso de TensorFlow para Computação em GPUs para Implementação de Modelos de Aprendizagem Profunda | em aberto |
 | Introdução à Modernização de Código | em aberto |
 | Introdução à Computação Heterogênea com a Linguagem Julia | em aberto |
-| Suporte a Aceleradores em Linguagens de Programação Modernas | em aberto |
+| Suporte a Aceleradores em Linguagens de Programação Modernas | Christopher Eduardo Zai |
 | Introdução à Programação para Sistemas Embarcados com FreeRTOS | Luiz Gustavo Takeda |
 | Introdução à Computação Quântica usando `Qiskit` | Willian Wallace |
 | Introdução à Compilação Distribuída | Gustavo Reino |

@@ -1,0 +1,3 @@
+# Minicurso: Suporte a Aceleradores em Linguagens de Programação Modernas
+
+Este minicurso aborda o suporte a aceleradores (GPUs/FPGAs) em linguagens modernas, fundamental para a computação paralela de alto desempenho (HPC). O foco está em três pilares arquiteturais. C++ será explorado por sua portabilidade de desempenho usando padrões abertos como SYCL e abstrações avançadas. Python demonstrará como a produtividade é alcançada via compilação JIT (Numba) e delegação a backends nativos. Por fim, Julia apresentará sua integração nativa de baixo atrito através do sistema de multiple dispatch e arrays de GPU (CuArray). O objetivo é dominar os mecanismos de offloading e gestão de memória para otimizar aplicações intensivas.

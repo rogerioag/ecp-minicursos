@@ -42,6 +42,9 @@ book:
     - part: comp-dist-resumo.qmd
       chapters:
         - comp-dist.qmd
+    - part: sup-acel-lpms-resumo.qmd
+      chapters:
+        - sup-acel-lpms.qmd
     - references.qmd
   appendices:
     - a1.qmd

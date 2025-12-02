@@ -23,6 +23,7 @@ Este livro reune o material dos Minicursos preparados e ministrados no contexto 
 | Guilherme Saides Serbai | guilhermeserbai6@gmail.com | Aluno | GPUS/CUDA |
 | Sergio Murilo Cardoso Valentini | sergiovalentini@alunos.utfpr.edu.br | Aluno | GPUS/CUDA |
 | Gustavo Alexandre de Assis Reino | gustavoreino@alunos.utfpr.edu.br | Aluno | Compilação Distribuída |
+| Christopher Eduardo Zai | christopher.310704@alunos.utfpr.edu.br | Aluno | Suporte a Aceleradores em Linguagens de Programação Modernas |
 
 <!--
 ::: {.callout-note appearance="simple"}

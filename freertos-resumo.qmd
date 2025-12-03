@@ -12,14 +12,10 @@ A base teórica do minicurso será fundamentada na documentação oficial do Fre
 
 Durante o curso, os seguintes tópicos serão explorados:
 
-- **Co-rotinas**
 - **Tarefas** (Tasks)
-- **Semáforos e Mutex**
-- **Notificações de Tarefas** (Task Notifications)
+- **Mutex**
 - **Filas** (Queues)
-- **Timers**
-- **Grupos de Eventos** (Event Groups)
-- **Interrupções** (Interruptions)
+- **Software Timers**
 
 ## Projeto final
 
@@ -29,10 +25,10 @@ O projeto final consistirá no desenvolvimento de uma **dashboard web interativa
 - Exibição do estado atual das **saídas digitais**
 - Leitura de **temperatura e umidade** utilizando o sensor DHT11
 - Controle das **saídas digitais** através da interface web
-- Transmissão de dados em **tempo real via WebSocket**
+- Transmissão de dados em **tempo real via SSE**
 
-O ESP32 funcionará tanto como **servidor web** quanto como **servidor WebSocket**, eliminando a necessidade de servidores externos para o funcionamento do projeto.
+O ESP32 funcionará como **servidor web**, eliminando a necessidade de servidores externos para o funcionamento do projeto.
 
-Além disso, a **configuração das credenciais de rede Wi-Fi** será realizada por meio de comandos enviados pela **interface serial**.
+<!-- Além disso, a **configuração das credenciais de rede Wi-Fi** será realizada por meio de comandos enviados pela **interface serial**. -->
 
 ## Referências

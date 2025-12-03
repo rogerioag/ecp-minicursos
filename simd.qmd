@@ -3,18 +3,24 @@
 -- Guilherme A. Lopes <br>
 <guiguigui098@gmail.com>
 
-> __Resumo:__
-> Texto do Resumo  {{< lipsum 2 >}}
+> _Resumo:_
+Neste minicurso, exploraremos técnicas de vetorização e sua importância para o desenvolvimento de software de alto desempenho. Abordaremos desde conceitos básicos até a implementação prática de operações `SIMD` _(Single Instruction, Multiple Data)_, demonstrando como otimizar o processamento de dados em paralelo. O foco será na utilização eficiente das extensões vetoriais modernas, como `AVX` e `SSE`, disponíveis nos processadores atuais, usando `immutible.h`.
 
-Texto do Minicurso de Vetorização.
+~~Texto do Minicurso de Vetorização.~~
 
 ##  Introdução {#sec-vet-intro}
 
+\todo{Texto Introdutório? Se seu texto for iniciar pela seção Vetorização, tire o título da seção Vetorização e deixe o titulo introdução}
+
+
 ## Vetorização
+
+A vetorização é extremamente importante nos dias de hoje. Embora os compiladores abstraiam muitos aspectos do funcionamento do hardware, é possível instruí-los a utilizar instruções `SIMD` (Single Instruction, Multiple Data) para obter ganhos de desempenho em operações matriciais.
+O objetivo deste minicurso é ensinar os estudantes a utilizarem operações de vetorização para obter ganhos significativos de desempenho em software. A vetorização é muito aplicada atualmente em diversar áreas: aplicações científicas, análise financeira, Inteligência Artificial (IA)/aprendizado profundo, modelagem, análise 3D, Processamento de Imagens e áudio/vídeo, criptografia e compressão de dados.
 
 ## Suporte do Hardware
 
-__Intel AVX__
+_Intel AVX_
 
 AVX, ou Advanced Vector Extensions, são extensões de vetor SIMD (Single Instruction, Multiple Data) de 256 bits para processadores Intel e AMD que usam a arquitetura x86. Estas extensões permitem que os processadores executem operações matemáticas mais complexas e intensivas em dados de forma mais eficiente, acelerando o desempenho em aplicações que lidam com grandes conjuntos de dados, como processamento de imagem, vídeo, IA, entre outras.
 Em resumo:
@@ -50,9 +56,33 @@ Como verificar o suporte AVX:
 ## Intrisics do GCC
 
 ## Suporte do OpenMP?
+A Vetorização também pode ser implementada usando por meio de deretiva de compilação " #pragma omp parallel for", como mostrado no exemplo abaixo:
 
-...
+```{cpp}
+#include <iostream>
+#include <vector>
+#include <omp.h>
 
+int main() {
+    std::vector<int> arr = {0,1,2,3,4,5,6,7,8,9};
+    int sum = 0;
+
+    #pragma omp parallel for reduction(+:sum)
+    for(size_t i = 0; i < arr.size(); i++) {
+        sum += arr[i];
+        std::cout << "Thread " << omp_get_thread_num() 
+                  << " processou arr[" << i << "] = " << arr[i] << "\n";
+    }
+
+    std::cout << "Soma total: " << sum << std::endl;
+    return 0;
+}
+
+
+Usar immutable.h traz algumas vatagens comparado ao OpenMP,dentre elas a segurança das threads, 
+visto que os dados trabalhados são imutaveis, evitando inconsistência em condição de disputa. Ao mesmo tempo ao meu ver
+reduz a complexidade do codigo fonte. Permitindo trabalhar de forma clara com aspectos mais baixo nível do hardaware, permitindo um melhor aproveitando dos recursos computacionais
+ 
 ## Considerações Finais {#sec-vet-consid-finais}
 
 ## Referências

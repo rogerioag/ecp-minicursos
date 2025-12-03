@@ -6,6 +6,7 @@ __Projeto de Extensão:__ Escola de Computação Paralela (ECP 2024)
 
 __Registro UTFPR:__ 10503
 
+[Texto do Projeto](docs/projeto_extensao_escola_de_computacao_paralela_ecp_utfpr_2024.pdf)
 
 ## Objetivo
 
@@ -22,29 +23,43 @@ Como produção de recursos educacionais para serem disponibilizados, pretendemo
 | Introdução à Computação Paralela e Programação Multithreading usando Pthreads | Willian Wallace |
 | Introdução à Programação Paralela com `OpenMP` | Paulo Henrique |
 | Uso das Diretivas de Compilação do padrão OpenACC | em aberto |
-| Introdução  à  Computação Paralela em Sistemas Heterogêneos: Programação para GPUs com a Plataforma CUDA | em aberto |
+| Introdução  à  Computação Paralela em Sistemas Heterogêneos: Programação para GPUs com a Plataforma CUDA | Guilherme Saides Serbai e Sergio Murilo Cardoso Valentini |
 | Introdução à Infraestrutura de Compilação do LLVM | João Victor Briganti |
 | Introdução à Computação Heterogênea com OpenCL | em aberto |
 | Introdução à Implementação de Modelos de Aprendizagem Profunda com pyTorch usando GPUs | Gabriel Lobato |
 | Introdução ao uso de TensorFlow para Computação em GPUs para Implementação de Modelos de Aprendizagem Profunda | em aberto |
 | Introdução à Modernização de Código | em aberto |
 | Introdução à Computação Heterogênea com a Linguagem Julia | em aberto |
-| Suporte a Aceleradores em Linguagens de Programação Modernas | em aberto |
+| Suporte a Aceleradores em Linguagens de Programação Modernas | Christopher Eduardo Zai |
 | Introdução à Programação para Sistemas Embarcados com FreeRTOS | Luiz Gustavo Takeda |
 | Introdução à Computação Quântica usando `Qiskit` | Willian Wallace |
+| Introdução à Compilação Distribuída | Gustavo Reino |
 
 
 ## Desenvolvimento
 
 ## Orientações Gerais
 
+Cada minicurso tem dois arquivos principais:
+
+- <nome-do-minicurso>-resumo.qmd
+- <nome-do-minicurso>.qmd
+
+Por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_ terá os arquivos `pthreads-resumo.qmd` e o `pthreads.qmd`, o primeiro contem um resumo do minicurso e o segundo o texto completo do minicurso.
+
 ### Figuras
 
-As figuras utilizadas em cada um dos materiais devem ser colocadas dentro do diretório `images/<nome-do-minicurso>`.
+As figuras utilizadas em cada um dos materiais devem ser colocadas dentro do diretório `images/<nome-do-minicurso>`. No minicurso tomado como exemplo, teremos o diretório `images/pthreds`.
 
 ### Código dos Exemplos
 
-O código dos exemplos apresentados no material deve estar na pasta `src/<nome-do-minicurso>`, por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_  devem estar no diretório `src/pthreads`, podendo cada exemplo estar em um subdiretório dentro de `src/pthreads`.
+O código dos exemplos apresentados no material deve estar na pasta `src/<nome-do-minicurso>`, por exemplo, exemplos do minicurso _Introdução à Computação Paralela e Programação Multithreading usando Pthreads_ devem estar no diretório `src/pthreads`, podendo cada exemplo estar em um subdiretório dentro de `src/pthreads`.
+
+### Markdown
+
+Utilizem os recursos do Markdown, em específico do quarto markdown <https://quarto.org/docs/authoring/markdown-basics.html>
+
+Deem uma olhada no site <quarto.org>
 
 ### Reuniões
 

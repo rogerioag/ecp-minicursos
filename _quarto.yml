@@ -1,13 +1,13 @@
 project:
   type: book
   output-dir: book
-  
+
 book:
   title: "Escola de Computação Paralela: Minicursos e Tutoriais"
   author: "Rogério Aparecido Gonçalves (rogerioag@utfpr.edu.br) e João Fabrício Filho (joaof@utfpr.edu.br)"
   cover-image: images/cover.png
   site-url: https://rogerioag.github.io/ecp-minicursos
-  repo-url: https://github.com/rogerioag/ecp-minicursos  
+  repo-url: https://github.com/rogerioag/ecp-minicursos
   repo-branch: master
   repo-actions: [edit]
   sharing: [twitter, facebook, linkedin]
@@ -24,8 +24,9 @@ book:
     - part: simd-resumo.qmd
       chapters:
         - simd.qmd
-      bibliography:
-        - main: references.bib
+    - part: cuda-resumo.qmd
+      chapters:
+        - cuda.qmd
     - part: pytorch-resumo.qmd
       chapters:
         - pytorch.qmd
@@ -36,17 +37,29 @@ book:
       chapters:
         - freertos.qmd
     - part: quantica-resumo.qmd
-      chapters: 
+      chapters:
         - quantica.qmd
+    - part: comp-dist-resumo.qmd
+      chapters:
+        - comp-dist.qmd
+    - part: sup-acel-lpms-resumo.qmd
+      chapters:
+        - sup-acel-lpms.qmd
+    - references.qmd
   appendices:
     - a1.qmd
 
+citeproc: true
+bibliography: references.bib
+bibliographystyle: apa
+# csl: https://www.zotero.org/styles/apa-with-abstract
+
 format:
-  html: 
+  html:
     theme: cosmo
     cover-image: images/cover.png
     code-link: true
 
 # filters:
-#   - multibib
+# - multibib
 validate-yaml: false

@@ -1,0 +1,3 @@
+# Minicurso: Introdução à Compilação Distribuída
+
+Resumo do minicurso sobre Compilação Distribuída {{< lipsum 2 >}}

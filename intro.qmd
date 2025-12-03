@@ -2,3 +2,7 @@
 
 Introdução geral.
 {{< lipsum 5 >}}
+
+
+See @knuth84 for additional discussion of literate programming.
+

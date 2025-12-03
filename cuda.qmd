@@ -1,0 +1,57 @@
+# Introdução à Computação Paralela em Sistemas: Heterogêneos: Programação para  GPUs com a Plataforma CUDA
+
+-- Guilherme Saides Serbai e Sergio Murilo Cardoso Valentini<br>
+guilhermeserbai6@gmail.com> e <sergiovalentini@alunos.utfpr.edu.br>
+
+> __Resumo:__
+> Texto do Resumo  {{< lipsum 2 >}}
+
+## Introdução {#sec-cuda-intro}
+A era digital contemporânea é movida por uma sede insaciável por poder de processamento. Desde o treinamento de complexas redes neurais, que demandam dias ou semanas de cálculo intensivo, até simulações científicas que modelam desde o clima do planeta ao comportamento de galáxias, a computação atual busca constantemente superar uma barreira fundamental: a latência de programas com alta complexidade temporal.
+
+Durante muito tempo, a principal estratégia foi aumentar a frequência dos processadores. No entanto, esse caminho trouxe consigo desafios significativos: o maior consumo de energia exigido para cada ganho de desempenho, a dissipação do calor gerado pelos chips e a discrepância crescente entre a velocidade de processamento e a velocidade de acesso à memória. Esses obstáculos abriram espaço para novas abordagens, entre elas a computação paralela, que se apoia em três pilares essenciais: 
+
+1. A concorrência, que identifica quais partes de um programa podem ser executadas em qualquer ordem sem alterar o resultado final;
+2. O escalonamento, que organiza a distribuição eficiente das tarefas entre os processadores;
+3. A comunicação e sincronização, que garantem a correta coordenação entre múltiplos fluxos de execução.
+
+Nesse ponto, um fenômeno emblemático passou a marcar a evolução do design de processadores: o *dark silicon*. Com a miniaturização dos transistores, tornou-se possível colocar bilhões deles em um único chip. Porém, a energia e o calor necessários para ativar todos simultaneamente tornaram-se inviáveis. Assim, parte do silício precisa permanecer "escura" (desligada), sob risco de comprometer a eficiência e a integridade do processador. Paradoxalmente, quanto mais transistores se colocava em um chip, menor era a fração que podia ser usada ao mesmo tempo. Esse dilema revelou o limite do modelo tradicional de CPUs generalistas e abriu caminho para uma mudança de paradigma.
+
+A solução não foi insistir em CPUs cada vez mais rápidas e homogêneas, mas repensar como os transistores extras poderiam ser aproveitados. Surge então a era dos sistemas heterogêneos, nos quais parte do chip é dedicada a unidades especializadas, projetadas para tarefas específicas. Entre essas unidades, destacam-se as GPUs (Unidades de Processamento Gráfico), originalmente concebidas para renderização de imagens e vídeos, mas cuja arquitetura paralela se revelou perfeita para *workloads* de ciência, inteligência artificial e *big data* (CORDÉIRO, 2013).
+
+O pilar dessa transformação está na compreensão de que nem todas as tarefas computacionais são iguais. Enquanto a CPU (*host*), com seus poucos e poderosos núcleos, atua como o maestro capaz de conduzir operações complexas e sequenciais, a GPU (*device*) funciona como uma vasta orquestra de milhares de núcleos mais simples, especialmente afinados para o paralelismo massivo.
+
+Contudo, para que essa colaboração entre maestro e orquestra seja harmoniosa, é necessária uma ponte de comunicação robusta. É aqui que a plataforma CUDA (*Compute Unified Device Architecture*), criada e mantida pela NVIDIA, se torna fundamental. Mais do que uma simples API, CUDA é um ecossistema que permite a conexão direta entre *host* e *device*, oferecendo ao desenvolvedor ferramentas para gerenciar explicitamente a memória, escalonar tarefas paralelas e orquestrar a execução de milhares de *threads*. Assim, é possível explorar ao máximo os recursos disponíveis, extraindo o desempenho ideal do hardware.
+
+### Os Fundamentos do Paralelismo: A Taxonomia de Flynn
+
+Para compreender a magnitude dessa mudança de paradigma, é essencial revisitar os fundamentos da arquitetura de computadores. Em 1972, Michael J. Flynn propôs uma taxonomia que se tornou a linguagem universal para classificar arquiteturas segundo a forma como elas manipulam fluxos de instrução e de dados. A Taxonomia de Flynn é composta por quatro categorias clássicas:
+
+- **SISD** (*Single Instruction, Single Data*): Representa a computação sequencial clássica, alinhada ao Modelo de von Neumann (1945). Um único fluxo de instruções opera sobre um único fluxo de dados, sem qualquer paralelismo de hardware.
+- **SIMD** (*Single Instruction, Multiple Data*): O primeiro grande passo em direção ao paralelismo. Máquinas paralelas que executam o mesmo programa em múltiplas unidades de processamento, cada qual com seu próprio fluxo de dados. É o princípio por trás das instruções vetoriais em CPUs modernas e a base conceitual das GPUs.
+- **MIMD** (*Multiple Instruction, Multiple Data*): Arquiteturas capazes de executar fluxos independentes de instruções sobre fluxos distintos de dados. É o modelo dos supercomputadores e dos sistemas *multi-core*.
+- **MISD** (*Multiple Instructions, Single Data*): Mais raro, este modelo executa múltiplas instruções sobre um único fluxo de dados. Embora pouco explorado comercialmente, encontra aplicações em sistemas tolerantes a falhas e em certos cenários de processamento de sinais.
+
+### A Evolução da Taxonomia: Descrevendo o Paralelismo Moderno
+
+Com a crescente complexidade das arquiteturas, a taxonomia de Flynn, embora fundamental, tornou-se insuficiente para descrever as nuances dos sistemas modernos. Novas classificações surgiram para capturar níveis de abstração mais elevados e modelos de programação mais próximos da prática cotidiana:
+
+- **SPMD** (*Single Program, Multiple Data*): O modelo SPMD foi definido por (DAREMA, 2001), este modelo é mais geral que o modelo SIMD (*Single Instruction, Multiple Data*) e que o modelo *data-parallel*, pois o SPMD usa aplicações com paralelismo de dados e paralelismo de *threads*.
+- **MSIMD** (*Multiple SIMD*): Máquinas que possuem um memória global de tamanho ilimitado, e P processadores SIMD independentes (BRIDGES, 1990; JURKIEWICZ; DANILEWSKI, 2011).
+- **SIMT** (*Single Instruction, Multiple Threads*): Modelo utilizado para gerenciar a execução de várias *threads* na arquitetura, todas as *threads* em execução, executam a mesma instrução. Termo utilizado pela NVIDIA para a plataforma CUDA.
+
+## Ferramentas
+
+{{< video https://www.youtube.com/embed/wo9vZccmqwc >}}
+
+## Bibliotecas e Implementações
+
+## Modelo de Programação e Execução
+...
+
+## Considerações Finais {#sec-cuda-consid-finais}
+
+## Referências
+
+::: {#refs}
+:::

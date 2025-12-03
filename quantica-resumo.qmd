@@ -1,4 +1,4 @@
 # Minicurso: Introdução à Computação Quântica usando `Qiskit`
 
 
-Resumo do Minicurso sobre Computação Quântica {{< lipsum 2 >}}
+Este minicurso apresenta uma introdução abrangente à computação quântica, explorando seus fundamentos teóricos, arquiteturas físicas de qubits, algoritmos relevantes e aplicações práticas. Utilizando o framework Qiskit da IBM, o curso combina conceitos da mecânica quântica com exemplos de programação, permitindo ao leitor construir e simular circuitos quânticos reais.

@@ -382,5 +382,12 @@ Embora seu uso seja mais óbvio em algumas aplicações, como servidores web que
 - O modelo de programação com threads é mais complexo do que o modelo sequencial tradicional.
 - Converter programas sequenciais em programas com threads não é trivial, muitas vezes exigindo reescrita significativa do código.
 
-## Referências
+## Referências – Pthreads
+
+1. **POSIX Threads Programming**. The Open Group Base Specifications. Disponível em: [https://pubs.opengroup.org/onlinepubs/009695399/functions/pthread_create.html](https://pubs.opengroup.org/onlinepubs/009695399/functions/pthread_create.html)
+
+2. **Threads em C – Como Programar Usando Pthreads**. Programação Progressiva, 2019. Disponível em: [https://www.programacaoprogressiva.net/2019/02/Threads-em-C-Como-Programar-Usando-Pthreads.html](https://www.programacaoprogressiva.net/2019/02/Threads-em-C-Como-Programar-Usando-Pthreads.html)
+
+3. **Aula 03 – Pthreads**, ICMC-USP. Disponível em: [http://wiki.icmc.usp.br/images/3/30/Aula-03-_Pthreads.pdf](http://wiki.icmc.usp.br/images/3/30/Aula-03-_Pthreads.pdf)
+
 

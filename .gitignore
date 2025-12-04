@@ -3,5 +3,6 @@
 rsconnect
 book/
 *.exe
+book/
 /.vscode/
 **/*.quarto_ipynb

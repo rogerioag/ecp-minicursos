@@ -1,0 +1,69 @@
+:root {
+  --font-ui: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+button,
+.button,
+[role="button"] {
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  &.full {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &.center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.clean-a {
+  all: unset;
+  cursor: pointer;
+}
+
+.copyright {
+  text-align: center;
+  display: block;
+  font-weight: 600;
+}
+
+.digital-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.analog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

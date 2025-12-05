@@ -4,7 +4,7 @@
 <christopher.310704@alunos.utfpr.edu.br>
 
 > __Resumo:__
-> Este minicurso aborda o suporte a aceleradores (GPUs/FPGAs) em linguagens de programação, fundamental para a computação paralela de alto desempenho (HPC). O foco reside em **quatro pilares arquiteturais**. **C++** será explorado por sua portabilidade de desempenho usando padrões abertos como SYCL e abstrações avançadas. **Fortran**, o pilar da computação científica, ilustrará a eficácia dos modelos de aceleração baseados em diretivas (OpenACC/OpenMP). **Python** demonstrará como a produtividade é alcançada via compilação JIT (Numba) e delegação a *backends* nativos. Por fim, **Julia** apresentará sua integração nativa de baixo atrito através do sistema de *multiple dispatch* e *arrays* de GPU (CuArray). O objetivo é dominar os mecanismos de *offloading* e gestão de memória para otimizar aplicações intensivas.
+> Este minicurso aborda o suporte a aceleradores (GPUs/FPGAs) em linguagens de programação, fundamental para a computação paralela de alto desempenho (HPC). O foco reside em **três pilares arquiteturais. C++** será explorado por sua portabilidade de desempenho usando padrões abertos como SYCL e abstrações avançadas. **Python** demonstrará como a produtividade é alcançada via compilação JIT (Numba) e delegação a backends nativos. Por fim, **Julia** apresentará sua integração nativa de baixo atrito através do sistema de multiple dispatch e arrays de GPU (CuArray). O objetivo é dominar os mecanismos de offloading e gestão de memória para otimizar aplicações intensivas.
 
 ## Introdução {#sec-sup-acel-lpms-intro}
 O panorama da computação de alto desempenho (HPC) e da inteligência artificial (IA) sofreu uma transformação fundamental nas últimas décadas. Historicamente, o aumento constante na frequência de clock dos processadores, conhecido por impulsionar a Lei de Moore, garantia que o software ficasse intrinsecamente mais rápido a cada nova geração de hardware. Contudo, essa era chegou ao fim com o limite físico e térmico dos processadores de propósito geral (CPUs).  
@@ -13,10 +13,10 @@ Essa estagnação impulsionou um novo paradigma: a computação heterogênea. O 
 
 O desafio crucial reside em como linguagens de programação de alto nível, valorizadas por sua alta produtividade e facilidade de uso (como Python, Julia e C++), conseguem coordenar e descarregar (*offload*) a execução de tarefas para esses aceleradores, mantendo o desempenho próximo ao código nativo. Este minicurso visa dissecar os mecanismos arquiteturais e as bibliotecas que permitem essa integração eficiente, focando nas abordagens distintas dos nossos pilares para dominar a programação em ambientes de hardware heterogêneo.
 
-Para navegar neste novo paradigma, é essencial que o participante compreenda tanto o hardware especializado quanto as estratégias de software. Assim, este minicurso iniciará com uma revisão das linguagens foco (C++, Fortran, Python e Julia) e a taxonomia dos aceleradores. Em seguida, mergulharemos nos modelos de programação e nas bibliotecas específicas que permitem o *offloading* e a gestão otimizada de memória, garantindo que você possa aplicar esses conhecimentos para obter ganhos de desempenho significativos em aplicações intensivas em computação.
+Para navegar neste novo paradigma, é essencial que o participante compreenda tanto o hardware especializado quanto as estratégias de software. Assim, este minicurso iniciará com uma revisão das linguagens foco (C++, Python e Julia) e a taxonomia dos aceleradores. Em seguida, mergulharemos nos modelos de programação e nas bibliotecas específicas que permitem o *offloading* e a gestão otimizada de memória, garantindo que você possa aplicar esses conhecimentos para obter ganhos de desempenho significativos em aplicações intensivas em computação.
 
 ## Linguagens de Programação em Sistemas Heterogêneos
-Para começarmos vamos conhecer as nossas ferramentas e suas filosofias de aceleração. Este capítulo se dedica a isso, apresentando um básico de C++, Fortran, Python e Julia. Por hora, explicaremos como funciona cada linguagem e um exemplo sequencial de código sem nenhuma otimização envolvendo suporte a aceleradores.
+Para começarmos vamos conhecer as nossas ferramentas e suas filosofias de aceleração. Este capítulo se dedica a isso, apresentando um básico de C++, Python e Julia. Por hora, explicaremos como funciona cada linguagem e um exemplo sequencial de código sem nenhuma otimização envolvendo suporte a aceleradores.
 
 ### C++
 Embora o C++ tenha sido formalizado em 1985, sua relevância e aplicação permanecem inigualáveis no domínio da Computação de Alto Desempenho (HPC). Longe de ser uma linguagem estagnada, o C++ se aprimora continuamente, incorporando recursos avançados de programação genérica, gerenciamento de recursos e modularidade nos padrões ISO recentes. Devido à sua estabilidade, controle de baixo nível sobre a memória e a máquina, e um ecossistema robusto e bem testado, a maioria dos projetos críticos de desempenho é desenvolvida em C++.
@@ -128,12 +128,6 @@ Este código, executado de forma puramente sequencial, servirá como nossa base 
 
 (A ser desenvolvido...)
 
-### Fortran: O Pilar Adaptável da Computação Científica
-
-Para uma analise verdadeiramente completa, é necessário incluir o Fortran (**For**mula **Tran**slation). Embora seja a linguagem de programação de alto nível mais antiga em uso contínuo, datando de 1957, sua inclusão aqui não é um equívoco. Sua eficiência inigualável para o processamento numérico de vetores e matrizes garante sua posição como a linguagem de fundação do HPC.
-
-Se considerarmos "moderno" como a capacidade de uma linguagem de se adaptar e absorver as arquiteturas mais recentes, o Fortran é notavelmente moderno. Sua relevância nos sistemas heterogêneos reside na sua capacidade de suportar aceleradores através de modelos de programação baseados em diretivas—padrões abertos como OpenACC e OpenMP Offloading. Esses modelos permitem que o programador insira comentários especiais no código (pragmas) que instruem o compilador a descarregar automaticamente tarefas paralelas para a GPU, simplificando o gerenciamento de dados e o lançamento de kernels sem que o programador precise escrever código explícito de kernel.
-
 ## Estudos de Caso em Ecossistemas Alternativos
 
 ### Node.JS e WebGPU: Aceleração Pela Porta de Serviço
@@ -145,13 +139,86 @@ Embora o JavaScript (front-end e back-end via Node.JS) não seja uma linguagem p
 ### Taxonomia de Aceleradores
 
 A computação heterogênea baseia-se no uso de aceleradores, dispositivos projetados para executar tarefas específicas com maior eficiência energética e maior taxa de transferência (throughput) do que CPUs equivalentes.
+Os principais aceleradores e suas características são:
+
+GPUs (Unidades de Processamento Gráfico): Líderes em HPC e IA, devido ao seu paralelismo massivo. Uma GPU moderna pode ter milhares de núcleos pequenos otimizados para cálculos de ponto flutuante. Ex: NVIDIA (CUDA), AMD (HIP).
+
+FPGAs (Field-Programmable Gate Arrays): Oferecem a capacidade de reprogramar o hardware, permitindo otimizações extremas para pipelines de dados específicos. Excelentes para baixa latência e streaming de dados.
+
+TPUs (Tensor Processing Units): Desenvolvidas pelo Google, são ASIC's otimizadas para operações de multiplicação de matrizes de alta intensidade, o núcleo das redes neurais.
 
 ## Suporte a Aceleradores em Linguagens Modernas
+A aceleração de código em GPU envolve a delegação de tarefas do Host (CPU) para o Device (GPU). As linguagens C++, Python e Julia oferecem diversos modelos para isso, cada um equilibrando produtividade, portabilidade e controle de baixo nível.
+
+### Abordagens em C++ (Performance e Controle)
+
+O C++ é a base onde a performance é mais crítica, oferecendo controle total sobre o hardware.
+
+1. **CUDA C++ (NVIDIA)**: O modelo nativo da NVIDIA. Permite escrever kernels (funções que rodam na GPU) e gerenciar explicitamente a memória da GPU (alocação, cópia e liberação). É a abordagem com o melhor desempenho, mas a menor portabilidade.
+
+2. **HIP (Heterogeneous-Compute Interface for Portability) (AMD)**: Uma API C++ da AMD que funciona como uma ponte para portar código CUDA para GPUs AMD (via ROCm) e NVIDIA. Oferece desempenho próximo ao nativo com maior portabilidade entre fornecedores.
+
+3. **SYCL / oneAPI (Padrão Aberto)**: Uma camada de abstração C++ baseada em padrões abertos (Khronos Group) que permite escrever código de kernel genérico que pode ser compilado para diversos backends (CUDA, ROCm, OpenCL, FPGAs). É o principal caminho para o C++ com portabilidade de desempenho.
+
+4. **OpenMP Offloading (Baseado em Diretivas)**: Permite o uso de diretivas (#pragma omp target teams distribute parallel for) no código C++ para instruir o compilador a descarregar laços de repetição para a GPU, simplificando a programação paralela.
+
+### Abordagens em Python (Produtividade e Ecossistema)
+
+O Python foca na produtividade, utilizando técnicas de compilação JIT ou delegando o trabalho para bibliotecas implementadas em C++ otimizado.
+
+1. Numba CUDA (JIT Compilation): A biblioteca Numba usa um compilador JIT para traduzir funções Python para código de máquina otimizado (usando LLVM) e, especificamente com seu backend CUDA, para kernels de GPU. Permite que o programador escreva kernels em Python quase puro.
+Exemplo: @cuda.jit decorator.
+
+2. CuPy (Arrays de GPU): Fornece uma API compatível com NumPy, mas que opera diretamente com arrays na memória da GPU. Todas as operações de matriz (np.dot, np.sum) são automaticamente executadas na GPU, mantendo a sintaxe Python de alto nível.
+
+3. Frameworks de Deep Learning (Delegation): Bibliotecas como PyTorch e TensorFlow expõem APIs de GPU de alto nível. O usuário move seus tensores para a GPU (e.g., tensor.cuda()) e todas as operações subsequentes são automaticamente executadas pelo backend C++/CUDA subjacente.
+
+### Abordagens em Julia (Baixo Atrito e Multiple Dispatch)
+
+Julia tira vantagem de seu design de linguagem para oferecer uma integração mais transparente.
+
+1. CUDA.jl / AMDGPU.jl (Integração Nativa): Estes pacotes fornecem a implementação de tipos de Array de GPU (CuArray). O uso do multiple dispatch permite que a mesma função Julia que soma dois arrays na CPU seja automaticamente recompilada para a GPU quando os argumentos são CuArrays, eliminando a necessidade de distinção entre código host e device (com exceção da alocação de memória inicial).
+
+2. KernelAbstractions.jl (Abstração de Kernel): Fornece uma camada de abstração de kernel que permite ao desenvolvedor escrever um kernel genérico que pode ser executado em qualquer backend (CUDA, ROCm, CPU threads) sem alterar o código do kernel, melhorando a portabilidade dentro do ecossistema Julia.
 
 ## Bibliotecas e Implementações
 
 ## Modelo de Programação e Execução
-...
+
+Para entender como essas implementações funcionam, é crucial compreender três conceitos fundamentais do modelo de execução heterogênea:
+
+1. Offloading (Descarregamento de Tarefas)
+
+Offloading é o processo de transferir a execução de uma porção de código do Host (CPU) para o Device (GPU).
+Etapas Críticas:
+
+1. Cópia de Dados Host -> Device (H2D): Os dados de entrada necessários para a computação são copiados da memória principal da CPU para a memória local da GPU.
+
+2. Lançamento do Kernel: O Host envia um comando para a GPU para executar a função paralela (kernel).
+
+3. Execução do Kernel: Milhares de threads na GPU executam a computação em paralelo.
+
+4. Cópia de Dados Device -> Host (D2H): Os resultados são copiados de volta para a memória da CPU.
+
+A latência da cópia de dados é um gargalo comum. O ganho de desempenho da aceleração deve ser grande o suficiente para compensar o tempo de cópia.
+
+2. Compute Kernel (Núcleo de Computação)
+
+Um kernel é uma função que é executada por um grande número de threads na GPU. Na arquitetura CUDA, os threads são organizados em blocos (blocks) e grades (grids). O programador define o mapeamento do espaço de problema (ex: cada pixel de uma imagem, cada elemento de uma matriz) para um thread individual.
+
+- Em C++ (CUDA): A função é marcada com __global__.
+
+- Em Python (Numba): A função é marcada com @cuda.jit.
+
+- Em Julia (CUDA.jl): O código é o mesmo da CPU, mas o multiple dispatch escolhe a versão compilada para GPU.
+
+3. Unified Memory (Memória Unificada)
+
+Para simplificar a gestão explícita de H2D e D2H, arquiteturas mais recentes (como a Unified Memory da NVIDIA) e abstrações de alto nível (como SYCL) tentam fornecer uma visão única da memória, onde tanto a CPU quanto a GPU podem acessar o mesmo espaço de endereço.
+
+- Vantagem: Reduz a complexidade de programação, eliminando a necessidade de chamadas explícitas de cópia.
+
+- Mecanismo: O sistema operacional ou o runtime do acelerador gerencia a migração de páginas de dados entre a CPU e a GPU conforme a necessidade (on-demand).
 
 ## Considerações Finais {#sec-sup-acel-lpms-consid-finais}
 

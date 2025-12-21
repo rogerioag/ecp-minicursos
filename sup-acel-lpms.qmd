@@ -1,4 +1,4 @@
-# Suporte a Aceleradores em Linguagens de Programação em Sistemas Heterogêneos
+# Suporte a Aceleradores em Linguagens de Programação Modernas
 
 -- Christopher Eduardo Zai<br>
 <christopher.310704@alunos.utfpr.edu.br>
@@ -126,28 +126,91 @@ Este código, executado de forma puramente sequencial, servirá como nossa base 
 
 ### Julia
 
-(A ser desenvolvido...)
+Julia, lançada oficialmente em 2012, é uma linguagem de programação de alto nível e alto desempenho, projetada especificamente para computação técnica e científica. Sua principal proposta é resolver o "problema das duas linguagens": a necessidade de prototipar em uma linguagem lenta e produtiva (como Python ou MATLAB) e, em seguida, reescrever o código em uma linguagem rápida e de baixo nível (como C ou Fortran) para obter desempenho.
 
-## Estudos de Caso em Ecossistemas Alternativos
+Julia atinge velocidades comparáveis às de linguagens compiladas estaticamente, graças à sua compilação *Just-In-Time* (JIT) baseada em LLVM e a um sistema de tipos dinâmico, porém poderoso. Seu paradigma de *multiple dispatch* (despacho múltiplo) é uma de suas características mais marcantes, permitindo que funções sejam especializadas e otimizadas com base nos tipos de seus argumentos em tempo de execução. Isso facilita a escrita de código genérico e reutilizável sem sacrificar a performance.
 
-### Node.JS e WebGPU: Aceleração Pela Porta de Serviço
+Abaixo, um exemplo de uma iteração de Jacobi 1D, um método numérico para resolver equações diferenciais parciais, como a equação do calor. O cálculo de cada ponto no vetor depende apenas de seus vizinhos da iteração anterior, tornando-o um candidato ideal para paralelização.
 
-A busca por performance na computação heterogênea é tão onipresente que até mesmo ecossistemas tradicionalmente alheios ao HPC, como o JavaScript, estão se adaptando. O WebGPU é a nova API gráfica e de computação que se consolida como sucessora do WebGL. Sua relevância reside na sua capacidade de fornecer acesso moderno e unificado à GPU (baseado em Vulkan/Metal/DirectX 12).
+```julia
+# Função que aplica uma iteração do método de Jacobi em um vetor 1D
+function jacobi_1d_kernel!(new_array, old_array)
+    n = length(old_array)
+    for i in 2:n-1
+        # Cada novo ponto é a média de seus vizinhos no array antigo
+        new_array[i] = (old_array[i-1] + old_array[i+1]) / 2.0
+    end
+end
 
-Embora o JavaScript (front-end e back-end via Node.JS) não seja uma linguagem projetada para HPC, a existência de bindings e implementações como o Dawn (do Google) permite que o Node.JS utilize a WebGPU para rodar compute shaders de propósito geral no lado do servidor. Este é um exemplo fascinante de como a necessidade de aceleração em Machine Learning e tarefas intensivas está "contaminando" todas as plataformas, mesmo que o modelo de programação seja inerentemente mais complexo do que as soluções nativas.
+function run_jacobi(size, iterations)
+    # Inicializa dois arrays para representar o estado atual e o próximo
+    A = zeros(Float64, size)
+    next_A = zeros(Float64, size)
 
-### Taxonomia de Aceleradores
+    # Define condições de contorno
+    A = 100.0
+    A[size] = 100.0
+    next_A = 100.0
+    next_A[size] = 100.0
 
-A computação heterogênea baseia-se no uso de aceleradores, dispositivos projetados para executar tarefas específicas com maior eficiência energética e maior taxa de transferência (throughput) do que CPUs equivalentes.
-Os principais aceleradores e suas características são:
+    # Executa a simulação por um número de iterações
+    for _ in 1:iterations
+        jacobi_1d_kernel!(next_A, A)
+        # Troca os ponteiros dos arrays para a próxima iteração
+        A, next_A = next_A, A
+    end
 
-GPUs (Unidades de Processamento Gráfico): Líderes em HPC e IA, devido ao seu paralelismo massivo. Uma GPU moderna pode ter milhares de núcleos pequenos otimizados para cálculos de ponto flutuante. Ex: NVIDIA (CUDA), AMD (HIP).
+    return A
+end
 
-FPGAs (Field-Programmable Gate Arrays): Oferecem a capacidade de reprogramar o hardware, permitindo otimizações extremas para pipelines de dados específicos. Excelentes para baixa latência e streaming de dados.
+# Parâmetros da simulação
+const SIZE = 4096
+const ITERATIONS = 1000
 
-TPUs (Tensor Processing Units): Desenvolvidas pelo Google, são ASIC's otimizadas para operações de multiplicação de matrizes de alta intensidade, o núcleo das redes neurais.
+final_state = run_jacobi(SIZE, ITERATIONS)
 
-## Suporte a Aceleradores em Linguagens Modernas
+println("Resultado no centro do vetor: ", final_state[div(SIZE, 2)])
+println("Resultado em um quarto do vetor: ", final_state[div(SIZE, 4)])
+```
+
+## Modelo de Programação e Execução
+
+Para entender como é paralelizado o programa, é crucial compreender três conceitos fundamentais do modelo de execução heterogênea:
+
+### Offloading (Descarregamento de Tarefas)
+
+Offloading é o processo de transferir a execução de uma porção de código do Host (CPU) para o Device (GPU).
+Etapas Críticas:
+
+1. **Cópia de Dados Host -> Device (H2D)**: Os dados de entrada necessários para a computação são copiados da memória principal da CPU para a memória local da GPU.
+
+2. **Lançamento do Kernel**: O Host envia um comando para a GPU para executar a função paralela (kernel).
+
+3. **Execução do Kernel**: Milhares de threads na GPU executam a computação em paralelo.
+
+4. **Cópia de Dados Device -> Host (D2H)**: Os resultados são copiados de volta para a memória da CPU.
+
+A latência da cópia de dados é um gargalo comum. O ganho de desempenho da aceleração deve ser grande o suficiente para compensar o tempo de cópia.
+
+### Compute Kernel (Núcleo de Computação)
+
+Um kernel é uma função que é executada por um grande número de threads na GPU. Na arquitetura CUDA, os threads são organizados em blocos (blocks) e grades (grids). O programador define o mapeamento do espaço de problema (ex: cada pixel de uma imagem, cada elemento de uma matriz) para um thread individual.
+
+- **Em C++ (CUDA)**: A função é marcada com __global__.
+
+- **Em Python (Numba)**: A função é marcada com @cuda.jit.
+
+- **Em Julia (CUDA.jl)**: O código é o mesmo da CPU, mas o multiple dispatch escolhe a versão compilada para GPU.
+
+### Unified Memory (Memória Unificada)
+
+Para simplificar a gestão explícita de H2D e D2H, arquiteturas mais recentes (como a Unified Memory da NVIDIA) e abstrações de alto nível (como SYCL) tentam fornecer uma visão única da memória, onde tanto a CPU quanto a GPU podem acessar o mesmo espaço de endereço.
+
+- Vantagem: Reduz a complexidade de programação, eliminando a necessidade de chamadas explícitas de cópia.
+
+- Mecanismo: O sistema operacional ou o runtime do acelerador gerencia a migração de páginas de dados entre a CPU e a GPU conforme a necessidade (on-demand).
+
+## Suporte a Aceleradores nas Linguagens
 A aceleração de código em GPU envolve a delegação de tarefas do Host (CPU) para o Device (GPU). As linguagens C++, Python e Julia oferecem diversos modelos para isso, cada um equilibrando produtividade, portabilidade e controle de baixo nível.
 
 ### Abordagens em C++ (Performance e Controle)
@@ -181,46 +244,23 @@ Julia tira vantagem de seu design de linguagem para oferecer uma integração ma
 
 2. KernelAbstractions.jl (Abstração de Kernel): Fornece uma camada de abstração de kernel que permite ao desenvolvedor escrever um kernel genérico que pode ser executado em qualquer backend (CUDA, ROCm, CPU threads) sem alterar o código do kernel, melhorando a portabilidade dentro do ecossistema Julia.
 
-## Bibliotecas e Implementações
+## Estudos de Caso em Ecossistemas Alternativos
 
-## Modelo de Programação e Execução
+### Node.JS e WebGPU: Aceleração Pela Porta de Serviço
 
-Para entender como essas implementações funcionam, é crucial compreender três conceitos fundamentais do modelo de execução heterogênea:
+A busca por performance na computação heterogênea é tão onipresente que até mesmo ecossistemas tradicionalmente alheios ao HPC, como o JavaScript, estão se adaptando. O WebGPU é a nova API gráfica e de computação que se consolida como sucessora do WebGL. Sua relevância reside na sua capacidade de fornecer acesso moderno e unificado à GPU (baseado em Vulkan/Metal/DirectX 12).
 
-1. Offloading (Descarregamento de Tarefas)
+Embora o JavaScript (front-end e back-end via Node.JS) não seja uma linguagem projetada para HPC, a existência de bindings e implementações como o Dawn (do Google) permite que o Node.JS utilize a WebGPU para rodar compute shaders de propósito geral no lado do servidor. Este é um exemplo fascinante de como a necessidade de aceleração em Machine Learning e tarefas intensivas está "contaminando" todas as plataformas, mesmo que o modelo de programação seja inerentemente mais complexo do que as soluções nativas.
 
-Offloading é o processo de transferir a execução de uma porção de código do Host (CPU) para o Device (GPU).
-Etapas Críticas:
+### Rust: Segurança e Concorrência sem Data Races
 
-1. Cópia de Dados Host -> Device (H2D): Os dados de entrada necessários para a computação são copiados da memória principal da CPU para a memória local da GPU.
+Rust tem ganhado tração significativa como uma alternativa moderna ao C++ em programação de sistemas. Sua principal contribuição para o ecossistema de aceleradores é o sistema de *ownership* e *borrowing*, que permite garantir a segurança de memória e a ausência de condições de corrida (*data races*) em tempo de compilação, sem o custo de um Garbage Collector.
 
-2. Lançamento do Kernel: O Host envia um comando para a GPU para executar a função paralela (kernel).
-
-3. Execução do Kernel: Milhares de threads na GPU executam a computação em paralelo.
-
-4. Cópia de Dados Device -> Host (D2H): Os resultados são copiados de volta para a memória da CPU.
-
-A latência da cópia de dados é um gargalo comum. O ganho de desempenho da aceleração deve ser grande o suficiente para compensar o tempo de cópia.
-
-2. Compute Kernel (Núcleo de Computação)
-
-Um kernel é uma função que é executada por um grande número de threads na GPU. Na arquitetura CUDA, os threads são organizados em blocos (blocks) e grades (grids). O programador define o mapeamento do espaço de problema (ex: cada pixel de uma imagem, cada elemento de uma matriz) para um thread individual.
-
-- Em C++ (CUDA): A função é marcada com __global__.
-
-- Em Python (Numba): A função é marcada com @cuda.jit.
-
-- Em Julia (CUDA.jl): O código é o mesmo da CPU, mas o multiple dispatch escolhe a versão compilada para GPU.
-
-3. Unified Memory (Memória Unificada)
-
-Para simplificar a gestão explícita de H2D e D2H, arquiteturas mais recentes (como a Unified Memory da NVIDIA) e abstrações de alto nível (como SYCL) tentam fornecer uma visão única da memória, onde tanto a CPU quanto a GPU podem acessar o mesmo espaço de endereço.
-
-- Vantagem: Reduz a complexidade de programação, eliminando a necessidade de chamadas explícitas de cópia.
-
-- Mecanismo: O sistema operacional ou o runtime do acelerador gerencia a migração de páginas de dados entre a CPU e a GPU conforme a necessidade (on-demand).
+Projetos como **wgpu** (uma implementação nativa segura da especificação WebGPU) e crates como `accel` ou `rust-cuda` permitem escrever kernels de computação com a segurança do Rust. O ecossistema Rust demonstra que é possível ter abstrações de custo zero e controle de baixo nível, prevenindo classes inteiras de bugs de concorrência que são comuns em CUDA C++.
 
 ## Considerações Finais {#sec-sup-acel-lpms-consid-finais}
+
+Aceleradores em linguagens de programação são ferramentas fantásticas e super úteis para aumentar o desempenho de programas. As diferentes abordagens em diferentes linguagens, permitem uma ampla gama de aplicações. Como pode ser observado durante o curso, cada linguagem apresenta suas próprias peculiaridades na hora de se trabalhar com programação heterogenea. Espero que tenha sido de bom proveito o curso e se possivel, visite os links abaixo que contém parte do conteúdo pesquisado, para maior aprofundamento no assunto.
 
 ## Referências
 

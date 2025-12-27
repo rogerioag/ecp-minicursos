@@ -15,7 +15,7 @@ O desafio crucial reside em como linguagens de programação de alto nível, val
 
 Para navegar neste novo paradigma, é essencial que o participante compreenda tanto o hardware especializado quanto as estratégias de software. Assim, este minicurso iniciará com uma revisão das linguagens foco (C++, Python e Julia) e a taxonomia dos aceleradores. Em seguida, mergulharemos nos modelos de programação e nas bibliotecas específicas que permitem o *offloading* e a gestão otimizada de memória, garantindo que você possa aplicar esses conhecimentos para obter ganhos de desempenho significativos em aplicações intensivas em computação.
 
-## Linguagens de Programação em Sistemas Heterogêneos
+## Linguagens de Programação para Sistemas Heterogêneos
 Para começarmos vamos conhecer as nossas ferramentas e suas filosofias de aceleração. Este capítulo se dedica a isso, apresentando um básico de C++, Python e Julia. Por hora, explicaremos como funciona cada linguagem e um exemplo sequencial de código sem nenhuma otimização envolvendo suporte a aceleradores.
 
 ### C++
@@ -229,22 +229,24 @@ O C++ é a base onde a performance é mais crítica, oferecendo controle total s
 
 O Python foca na produtividade, utilizando técnicas de compilação JIT ou delegando o trabalho para bibliotecas implementadas em C++ otimizado.
 
-1. Numba CUDA (JIT Compilation): A biblioteca Numba usa um compilador JIT para traduzir funções Python para código de máquina otimizado (usando LLVM) e, especificamente com seu backend CUDA, para kernels de GPU. Permite que o programador escreva kernels em Python quase puro.
+1.**Numba CUDA (JIT Compilation)**: A biblioteca Numba usa um compilador JIT para traduzir funções Python para código de máquina otimizado (usando LLVM) e, especificamente com seu backend CUDA, para kernels de GPU. Permite que o programador escreva kernels em Python quase puro.
 Exemplo: @cuda.jit decorator.
 
-2. CuPy (Arrays de GPU): Fornece uma API compatível com NumPy, mas que opera diretamente com arrays na memória da GPU. Todas as operações de matriz (np.dot, np.sum) são automaticamente executadas na GPU, mantendo a sintaxe Python de alto nível.
+2. **CuPy (Arrays de GPU)**: Fornece uma API compatível com NumPy, mas que opera diretamente com arrays na memória da GPU. Todas as operações de matriz (np.dot, np.sum) são automaticamente executadas na GPU, mantendo a sintaxe Python de alto nível.
 
-3. Frameworks de Deep Learning (Delegation): Bibliotecas como PyTorch e TensorFlow expõem APIs de GPU de alto nível. O usuário move seus tensores para a GPU (e.g., tensor.cuda()) e todas as operações subsequentes são automaticamente executadas pelo backend C++/CUDA subjacente.
+3. **Frameworks de Deep Learning (Delegation)**: Bibliotecas como PyTorch e TensorFlow expõem APIs de GPU de alto nível. O usuário move seus tensores para a GPU (e.g., tensor.cuda()) e todas as operações subsequentes são automaticamente executadas pelo backend C++/CUDA subjacente.
 
 ### Abordagens em Julia (Baixo Atrito e Multiple Dispatch)
 
 Julia tira vantagem de seu design de linguagem para oferecer uma integração mais transparente.
 
-1. CUDA.jl / AMDGPU.jl (Integração Nativa): Estes pacotes fornecem a implementação de tipos de Array de GPU (CuArray). O uso do multiple dispatch permite que a mesma função Julia que soma dois arrays na CPU seja automaticamente recompilada para a GPU quando os argumentos são CuArrays, eliminando a necessidade de distinção entre código host e device (com exceção da alocação de memória inicial).
+1. **CUDA.jl / AMDGPU.jl (Integração Nativa)**: Estes pacotes fornecem a implementação de tipos de Array de GPU (CuArray). O uso do multiple dispatch permite que a mesma função Julia que soma dois arrays na CPU seja automaticamente recompilada para a GPU quando os argumentos são CuArrays, eliminando a necessidade de distinção entre código host e device (com exceção da alocação de memória inicial).
 
-2. KernelAbstractions.jl (Abstração de Kernel): Fornece uma camada de abstração de kernel que permite ao desenvolvedor escrever um kernel genérico que pode ser executado em qualquer backend (CUDA, ROCm, CPU threads) sem alterar o código do kernel, melhorando a portabilidade dentro do ecossistema Julia.
+2. **KernelAbstractions.jl (Abstração de Kernel)**: Fornece uma camada de abstração de kernel que permite ao desenvolvedor escrever um kernel genérico que pode ser executado em qualquer backend (CUDA, ROCm, CPU threads) sem alterar o código do kernel, melhorando a portabilidade dentro do ecossistema Julia.
 
 ## Estudos de Caso em Ecossistemas Alternativos
+
+Embora o objetivo desse curso seja instruir acerca da aceleração nas linguagens C++, Python e Julia. Existem outras formas de aceleração, e apesar delas não serem muito usuais, não tão práticas e com menor ganho de desempenho, ainda são aceleradores em linguagens modernas. Para que o curso não fique incompleto, resolvi ao menos fazer uma menção honrosa a elas.
 
 ### Node.JS e WebGPU: Aceleração Pela Porta de Serviço
 
@@ -257,6 +259,180 @@ Embora o JavaScript (front-end e back-end via Node.JS) não seja uma linguagem p
 Rust tem ganhado tração significativa como uma alternativa moderna ao C++ em programação de sistemas. Sua principal contribuição para o ecossistema de aceleradores é o sistema de *ownership* e *borrowing*, que permite garantir a segurança de memória e a ausência de condições de corrida (*data races*) em tempo de compilação, sem o custo de um Garbage Collector.
 
 Projetos como **wgpu** (uma implementação nativa segura da especificação WebGPU) e crates como `accel` ou `rust-cuda` permitem escrever kernels de computação com a segurança do Rust. O ecossistema Rust demonstra que é possível ter abstrações de custo zero e controle de baixo nível, prevenindo classes inteiras de bugs de concorrência que são comuns em CUDA C++.
+
+## Aplicação Prática dos Conceitos
+
+Agora que já entendemos como funciona cada uma de nossas linguagens, aprendemos sobre os mecanismos por trás da aceleração e os diferentes meios utilizados por cada linguagem, vamos agora visualizar o resultado do código com a aceleração implementada.
+
+### C++
+
+Exemplo otimizado do C++, aqui foi usado o CUDA C++. Mais especificamente utilizando Memória Unificada(Unified Memory).
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <chrono>
+#include <cuda_runtime.h>
+#include <device_launch_parameters.h>
+
+using namespace std;
+
+// Tamanhos das matrizes
+const int N = 256;
+const int M = 256;
+const int P = 256;
+
+__global__ void multiply_matrices(int* A, int* B, int* C) {
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+
+    int sum = 0;
+    for (int k = 0; k < M; ++k) {
+        sum += A[row * M + k] * B[k * P + col];
+    }
+    C[row * P + col] = sum;
+}
+
+void initialize_matrix(int* matrix, int size, int value_start) {
+    for (int i = 0; i < size; ++i) {
+        matrix[i] = value_start + i;
+    }
+}
+
+int main() {
+    int* A, * B, * C;
+    cudaMallocManaged(&A, N * M * sizeof(int));
+    cudaMallocManaged(&B, M * P * sizeof(int));
+    cudaMallocManaged(&C, N * P * sizeof(int));
+
+    initialize_matrix(A, N * M, 1);
+    initialize_matrix(B, M * P, 2);
+
+    // Configuração da execução na GPU
+    dim3 threadsPerBlock(16, 16);
+    dim3 numBlocks((P + threadsPerBlock.x - 1) / threadsPerBlock.x,
+                   (N + threadsPerBlock.y - 1) / threadsPerBlock.y);
+
+    // Lançamento do Kernel
+    multiply_matrices<<<numBlocks, threadsPerBlock>>>(A, B, C);
+
+    // Espera a GPU terminar
+    cudaDeviceSynchronize();
+
+    // Verificação simples
+    cout << "C[0, 0] = " << C[0] << endl;
+    cout << "C[N-1, P-1] = " << C[(N - 1) * P + (P - 1)] << endl;
+
+    // Libera memória
+    cudaFree(A);
+    cudaFree(B);
+    cudaFree(C);
+
+    return 0;
+}
+```
+
+### Python
+
+Para o Python, utilizaremos o **Numba**, que permite compilar funções Python para código de máquina (e GPU) em tempo de execução. Note como a estrutura do código muda para acomodar o paralelismo: o laço duplo `for` que percorria os pixels desaparece do kernel, sendo substituído pelo índice global da thread (`cuda.grid(2)`).
+
+```python
+from numba import cuda
+import numpy as np
+from PIL import Image
+import math
+
+@cuda.jit
+def mandelbrot_kernel(min_x, max_x, min_y, max_y, width, height, max_iter, image):
+    # Mapeia a thread atual para as coordenadas (x, y) da imagem
+    x, y = cuda.grid(2)
+    
+    # Verifica se a thread está dentro dos limites da imagem
+    if x < width and y < height:
+        real = min_x + x * (max_x - min_x) / width
+        imag = min_y + y * (max_y - min_y) / height
+        c = complex(real, imag)
+        z = 0j
+        n = 0
+        
+        while abs(z) <= 2 and n < max_iter:
+            z = z*z + c
+            n += 1
+            
+        image[y, x] = n
+
+def create_fractal_gpu(min_x, max_x, min_y, max_y, width, height, max_iter):
+    image = np.zeros((height, width), dtype=np.uint8)
+    
+    # Copia o array para a GPU
+    d_image = cuda.to_device(image)
+    
+    # Configuração da Grade de Threads
+    threadsperblock = (16, 16)
+    blockspergrid_x = math.ceil(width / threadsperblock[0])
+    blockspergrid_y = math.ceil(height / threadsperblock[1])
+    blockspergrid = (blockspergrid_x, blockspergrid_y)
+    
+    # Lançamento do Kernel
+    mandelbrot_kernel[blockspergrid, threadsperblock](
+        min_x, max_x, min_y, max_y, width, height, max_iter, d_image
+    )
+    
+    # Copia o resultado de volta para a CPU
+    return d_image.copy_to_host()
+
+fractal_image = create_fractal_gpu(-2.0, 1.0, -1.0, 1.0, 1024, 768, 255)
+Image.fromarray(fractal_image).save('mandelbrot_gpu.png')
+```
+
+### Julia
+
+Em Julia, a alteração no código é necessária para utilizar a biblioteca `CUDA.jl`. Diferente de C++, não há um comando de compilação separado no terminal; a compilação ocorre automaticamente na primeira execução (JIT). Abaixo, adaptamos o exemplo de Jacobi para rodar na GPU. Note que transformamos o laço `for` em um cálculo de índice baseado na thread, similar ao CUDA C++.
+
+```julia
+using CUDA
+
+# Kernel CUDA em Julia
+function jacobi_kernel_gpu!(new_array, old_array)
+    # Calcula o índice global da thread
+    i = (blockIdx().x - 1) * blockDim().x + threadIdx().x
+    
+    # Verifica limites (ignorando as bordas conforme lógica original)
+    if i > 1 && i < length(old_array)
+        new_array[i] = (old_array[i-1] + old_array[i+1]) / 2.0
+    end
+    return
+end
+
+function run_jacobi_gpu(size, iterations)
+    # Inicializa arrays na CPU
+    A = zeros(Float64, size)
+    A[1] = 100.0
+    A[size] = 100.0
+    
+    # Move dados para a GPU (CuArray)
+    A_d = CuArray(A)
+    next_A_d = copy(A_d)
+    
+    # Configuração de lançamento
+    threads = 256
+    blocks = cld(size, threads)
+    
+    for _ in 1:iterations
+        # Lança o kernel com a macro @cuda
+        @cuda threads=threads blocks=blocks jacobi_kernel_gpu!(next_A_d, A_d)
+        
+        # Troca os ponteiros (apenas referências, sem cópia de dados)
+        A_d, next_A_d = next_A_d, A_d
+    end
+    
+    # Traz o resultado de volta para a CPU
+    return Array(A_d)
+end
+
+final_state = run_jacobi_gpu(4096, 1000)
+println("Resultado no centro (GPU): ", final_state[div(4096, 2)])
+```
 
 ## Considerações Finais {#sec-sup-acel-lpms-consid-finais}
 

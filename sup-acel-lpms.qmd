@@ -175,7 +175,7 @@ println("Resultado em um quarto do vetor: ", final_state[div(SIZE, 4)])
 
 ## Modelo de Programação e Execução
 
-Para entender como é paralelizado o programa, é crucial compreender três conceitos fundamentais do modelo de execução heterogênea:
+Para entender como é paralelizado o programa, é crucial compreender quatro conceitos fundamentais do modelo de execução heterogênea:
 
 ### Offloading (Descarregamento de Tarefas)
 
@@ -192,15 +192,21 @@ Etapas Críticas:
 
 A latência da cópia de dados é um gargalo comum. O ganho de desempenho da aceleração deve ser grande o suficiente para compensar o tempo de cópia.
 
-### Compute Kernel (Núcleo de Computação)
+### Compute Kernel e Hierarquia de Threads
 
-Um kernel é uma função que é executada por um grande número de threads na GPU. Na arquitetura CUDA, os threads são organizados em blocos (blocks) e grades (grids). O programador define o mapeamento do espaço de problema (ex: cada pixel de uma imagem, cada elemento de uma matriz) para um thread individual.
+Um kernel é uma função executada simultaneamente por milhares de threads na GPU. Diferente da CPU, projetada para baixa latência em tarefas sequenciais, a GPU é projetada para alto throughput em tarefas paralelas (modelo SIMT - Single Instruction, Multiple Threads).
 
-- **Em C++ (CUDA)**: A função é marcada com __global__.
+Para gerenciar essa escala, as threads são organizadas hierarquicamente:
 
-- **Em Python (Numba)**: A função é marcada com @cuda.jit.
+1.  **Thread**: A unidade fundamental. Cada thread executa o mesmo código do kernel, mas possui um ID único (índice) que usa para calcular qual pedaço dos dados deve processar.
+2.  **Bloco (Block)**: Um agrupamento de threads que executam no mesmo multiprocessador. Threads no mesmo bloco podem compartilhar memória rápida (Shared Memory) e sincronizar entre si.
+3.  **Grade (Grid)**: O conjunto total de blocos lançados para resolver o problema inteiro.
 
-- **Em Julia (CUDA.jl)**: O código é o mesmo da CPU, mas o multiple dispatch escolhe a versão compilada para GPU.
+O programador deve definir as dimensões da Grade e dos Blocos para mapear o problema (ex: pixels de uma imagem) para o hardware.
+
+- **Em C++ (CUDA)**: A função é marcada com `__global__` e chamada com `kernel<<<grid, block>>>(args)`.
+- **Em Python (Numba)**: A função é decorada com `@cuda.jit` e chamada com `kernelgrid, block`.
+- **Em Julia (CUDA.jl)**: Usa-se a macro `@cuda threads=... blocks=... kernel(args)`.
 
 ### Unified Memory (Memória Unificada)
 
@@ -209,6 +215,10 @@ Para simplificar a gestão explícita de H2D e D2H, arquiteturas mais recentes (
 - Vantagem: Reduz a complexidade de programação, eliminando a necessidade de chamadas explícitas de cópia.
 
 - Mecanismo: O sistema operacional ou o runtime do acelerador gerencia a migração de páginas de dados entre a CPU e a GPU conforme a necessidade (on-demand).
+
+### Execução Assíncrona
+
+A chamada de um kernel pelo Host geralmente é assíncrona. Isso significa que a CPU envia o comando para a GPU e imediatamente continua a executar as próximas linhas de código, sem esperar a GPU terminar. Para ler os resultados corretos, é necessário usar mecanismos de **sincronização** (como `cudaDeviceSynchronize()` em C++ ou cópias de memória bloqueantes) para garantir que a GPU finalizou o trabalho antes de a CPU tentar acessar os dados.
 
 ## Suporte a Aceleradores nas Linguagens
 A aceleração de código em GPU envolve a delegação de tarefas do Host (CPU) para o Device (GPU). As linguagens C++, Python e Julia oferecem diversos modelos para isso, cada um equilibrando produtividade, portabilidade e controle de baixo nível.
@@ -243,6 +253,15 @@ Julia tira vantagem de seu design de linguagem para oferecer uma integração ma
 1. **CUDA.jl / AMDGPU.jl (Integração Nativa)**: Estes pacotes fornecem a implementação de tipos de Array de GPU (CuArray). O uso do multiple dispatch permite que a mesma função Julia que soma dois arrays na CPU seja automaticamente recompilada para a GPU quando os argumentos são CuArrays, eliminando a necessidade de distinção entre código host e device (com exceção da alocação de memória inicial).
 
 2. **KernelAbstractions.jl (Abstração de Kernel)**: Fornece uma camada de abstração de kernel que permite ao desenvolvedor escrever um kernel genérico que pode ser executado em qualquer backend (CUDA, ROCm, CPU threads) sem alterar o código do kernel, melhorando a portabilidade dentro do ecossistema Julia.
+
+### Tabela comparativa dos itens
+
+| Critério | C++ (CUDA/SYCL) | Python (Numba/CuPy) | Julia (CUDA.jl) |
+| :--- | :--- | :--- | :--- |
+| **Curva de Aprendizado** | Alta (Complexa) | Baixa (Amigável) | Média |
+| **Performance** | Máxima (Nativa) | Alta (via Backends) | Máxima (JIT Nativa) |
+| **Portabilidade** | Média (SYCL ajuda) | Alta | Alta |
+| **Uso Ideal** | Sistemas críticos/Jogos | IA / Prototipagem rápida | Ciência de Dados / HPC |
 
 ## Estudos de Caso em Ecossistemas Alternativos
 

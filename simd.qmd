@@ -6,13 +6,6 @@
 > _Resumo:_
 Neste minicurso, exploraremos técnicas de vetorização e sua importância para o desenvolvimento de software de alto desempenho. Abordaremos desde conceitos básicos até a implementação prática de operações `SIMD` _(Single Instruction, Multiple Data)_, demonstrando como otimizar o processamento de dados em paralelo. O foco será na utilização eficiente das extensões vetoriais modernas, como `AVX` e `SSE`, disponíveis nos processadores atuais, usando `immutible.h`.
 
-~~Texto do Minicurso de Vetorização.~~
-
-##  Introdução {#sec-vet-intro}
-
-\todo{Texto Introdutório? Se seu texto for iniciar pela seção Vetorização, tire o título da seção Vetorização e deixe o titulo introdução}
-
-
 ## Vetorização
 
 A vetorização é extremamente importante nos dias de hoje. Embora os compiladores abstraiam muitos aspectos do funcionamento do hardware, é possível instruí-los a utilizar instruções `SIMD` (Single Instruction, Multiple Data) para obter ganhos de desempenho em operações matriciais.
@@ -55,7 +48,23 @@ Como verificar o suporte AVX:
 
 ## Intrisics do GCC
 
+Intrínsecos são funções especiais fornecidas pelos compiladores que permitem aos programadores acessar diretamente instruções específicas do processador, como as instruções SIMD (Single Instruction, Multiple Data) usadas para vetorização. Eles são usados para otimizar o desempenho de operações matemáticas e manipulação de dados, permitindo que o código aproveite ao máximo as capacidades do hardware subjacente.
+
+Exemplo comuns de intrínsecos incluem:
+- `_mm256_add_ps`: Adiciona dois vetores de ponto flutuante de 256 bits.
+- `_mm256_loadu_ps`: Carrega dados de ponto flutuante de 256 bits de um endereço de memória não alinhado.
+- `_mm256_storeu_ps`: Armazena dados de ponto flutuante de 256 bits em um endereço de memória não alinhado.
+- `_mm256_mul_ps`: Multiplica dois vetores de ponto flutuante de 256 bits.
+- `_mm256_sub_ps`: Subtrai dois vetores de ponto flutuante de 256 bits.
+- `_mm256_div_ps`: Divide dois vetores de ponto flutuante de 256 bits.
+- ``#include <immintrin.h>``: Este cabeçalho inclui as definições para os intrínsecos AVX.
+- ``__m256``: Tipo de dado que representa um vetor de 256 bits, usado para armazenar múltiplos valores de ponto flutuante.
+- ``_mm256_loadu_ps``: Função intrínseca que carrega um vetor de 256 bits de ponto flutuante a partir de um endereço de memória não alinhado.
+- ``_mm256_add_ps``: Função intrínseca que realiza a adição de dois vetores de 256 bits de ponto flutuante.
+- ``_mm256_storeu_ps``: Função intrínseca que armazena um vetor de 256 bits de ponto flutuante em um endereço de memória não alinhado.
+
 ## Suporte do OpenMP?
+
 A Vetorização também pode ser implementada usando por meio de deretiva de compilação " #pragma omp parallel for", como mostrado no exemplo abaixo:
 
 ```{cpp}
@@ -77,13 +86,102 @@ int main() {
     std::cout << "Soma total: " << sum << std::endl;
     return 0;
 }
-
+```
 
 Usar immutable.h traz algumas vatagens comparado ao OpenMP,dentre elas a segurança das threads, 
 visto que os dados trabalhados são imutaveis, evitando inconsistência em condição de disputa. Ao mesmo tempo ao meu ver
 reduz a complexidade do codigo fonte. Permitindo trabalhar de forma clara com aspectos mais baixo nível do hardaware, permitindo um melhor aproveitando dos recursos computacionais
- 
+
+## Exemplos de Código {#sec-vet-exemplos-codigo}
+
+````{cpp}
+#include <iostream>
+#include <immintrin.h> 
+#include <chrono>
+void add_arrays_avx(const float* a, const float* b, float* result, size_t size) {
+    size_t i;
+    for (i = 0; i + 8 <= size; i += 8) {
+        __m256 vec_a = _mm256_loadu_ps(&a[i]);
+        __m256 vec_b = _mm256_loadu_ps(&b[i]);
+        __m256 vec_result = _mm256_add_ps(vec_a, vec_b);
+        _mm256_storeu_ps(&result[i], vec_result);
+    }
+
+    std::cout << "Processados " << i << " elementos usando AVX.\n";
+    // Processar os elementos restantes
+    for (; i < size; ++i) {
+        result[i] = a[i] + b[i];
+    }
+
+}
+
+````
+
+A função `add_arrays_avx` utiliza intrínsecos AVX para somar dois arrays de números de ponto flutuante em paralelo. Ela carrega 8 elementos de cada array em registradores vetoriais, realiza a soma e armazena o resultado de volta no array de resultados. além disso, o código lida com quaisquer elementos restantes que não se encaixam em um múltiplo de 8.
+
+## Benchmarking {#sec-vet-benchmarking}
+
+Para medir o desempenho da função vetorizada em comparação com uma implementação tradicional, podemos usar a biblioteca `<chrono>` do C++ para medir o tempo de execução. Aqui está um exemplo de como fazer isso:
+
+````{cpp}
+#include <iostream>
+#include <immintrin.h> 
+#include <chrono>
+void add_arrays_avx(const float* a, const float* b, float* result, size_t size) {
+    size_t i;
+    for (i = 0; i + 8 <= size; i += 8) {
+        __m256 vec_a = _mm256_loadu_ps(&a[i]);
+        __m256 vec_b = _mm256_loadu_ps(&b[i]);
+        __m256 vec_result = _mm256_add_ps(vec_a, vec_b);
+        _mm256_storeu_ps(&result[i], vec_result);
+    }
+    // Processar os elementos restantes
+    for (; i < size; ++i) {
+        result[i] = a[i] + b[i];
+    }
+}
+void add_arrays_scalar(const float* a, const float* b, float* result, size_t size) {
+    for (size_t i = 0; i < size; ++i) {
+        result[i] = a[i] + b[i];
+    }
+}
+int main() {
+    const size_t size = 1000000;
+    float* a = new float[size];
+    float* b = new float[size];
+    float* result_avx = new float[size];
+    float* result_scalar = new float[size];
+
+    // Inicializar os arrays
+    for (size_t i = 0; i < size; ++i) {
+        a[i] = static_cast<float>(i);
+        b[i] = static_cast<float>(i);
+    }   
+    // Medir o tempo da versão AVX
+    auto start_avx = std::chrono::high_resolution_clock::now();
+    add_arrays_avx(a, b, result_avx, size);
+    auto end_avx = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration_avx = end_avx - start_avx;
+    std::cout << "Tempo AVX: " << duration_avx.count() << " segundos\n";
+    // Medir o tempo da versão escalar
+    auto start_scalar = std::chrono::high_resolution_clock::now();
+    add_arrays_scalar(a, b, result_scalar, size);
+    auto end_scalar = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration_scalar = end_scalar - start_scalar;
+    std::cout << "Tempo Escalar: " << duration_scalar.count() << " segundos\n";
+    // Limpar memória
+    delete[] a;
+    delete[] b;
+    delete[] result_avx;
+    delete[] result_scalar;
+    return 0;
+}
+
+````
+
 ## Considerações Finais {#sec-vet-consid-finais}
+
+A vetorização é uma técnica poderosa para otimizar o desempenho de aplicações que lidam com grandes volumes de dados. Ao utilizar instruções SIMD, como as fornecidas pelas extensões AVX, é possível acelerar significativamente operações matemáticas comuns, como a soma de arrays. Neste minicurso, exploramos os conceitos básicos de vetorização, o suporte do hardware e apresentamos exemplos práticos de código em C++ utilizando intrínsecos AVX.
 
 ## Referências
 

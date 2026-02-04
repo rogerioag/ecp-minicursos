@@ -1,3 +1,5 @@
 # Minicurso: Introdução à Computação Paralela em Sistemas: Heterogêneos: Programação para  GPUs com a Plataforma CUDA
 
-Resumo do minicurso sobre CUDA {{< lipsum 2 >}}
+A estagnação do aumento da frequência dos processadores convencionais e as limitações energéticas impostas pelo fenômeno do Dark Silicon impulsionaram uma mudança de paradigma em direção à computação paralela e aos sistemas heterogêneos. Neste contexto, as Unidades de Processamento Gráfico (GPUs) transcenderam sua função original de renderização para se tornarem motores de processamento de propósito geral (GPGPU) essenciais para a computação de alto desempenho. Este trabalho apresenta uma introdução à programação paralela utilizando a plataforma NVIDIA CUDA, abordando desde a fundamentação teórica baseada na Taxonomia de Flynn e suas evoluções (SIMT), até a implementação prática de kernels. Serão explorados os conceitos de arquitetura host-device, hierarquia de memória e escalonamento de threads, com o objetivo de capacitar o leitor a desenvolver algoritmos capazes de explorar o paralelismo massivo para a solução de problemas computacionalmente intensivos.
+
+Palavras-chave: Computação Paralela, CUDA, GPGPU, Sistemas Heterogêneos, SIMT.

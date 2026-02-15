@@ -1,9 +1,9 @@
 verbatim:
-	@g++ -O3 -mavx2 -fverbose-asm -S SomarDoisVetores128.cpp
-	@g++ -O3 -mavx2 -fverbose-asm -S SomarDoisVetores256.cpp
+	@g++ -O0 -S SomarDoisVetoresEscalares.cpp
+	@g++ -O3 -mavx2 -S SomarDoisVetores256.cpp
 
 compilar:
-	@g++ -fno-tree-vectorize SomarDoisVetoresEscalares.cpp -o SomarDoisVetoresEscalar
+	@g++ -O0 SomarDoisVetoresEscalares.cpp -o SomarDoisVetoresEscalar
 	@g++ -mavx2 SomarDoisVetores256.cpp -o SomarDoisVetores256
 
 clean:
